@@ -1,0 +1,348 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap");
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+body {
+    font-family: "Nunito Sans", sans-serif;
+    background-color: #f5f6fa;
+}
+
+img {
+    max-width: 100%;
+}
+
+.dashboard-container {
+    width: 100%;
+    height: 100vh;
+    margin: 0 auto; 
+    max-width: 1536px;
+    display: flex;
+}
+
+.dashboard-container .side-bar {
+    width: 300px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+    background-color: #ffffff;
+    box-shadow: 0px 0px 2px #e0e0e0;
+    padding-block: 1.3rem;
+    overflow-y: auto;
+}
+
+.side-bar .logo {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.side-bar .logo a h1 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    text-align: center;
+    color: #4880ff;
+}
+
+.side-bar .logo a h1 span {
+    color: #202224;
+    font-size: 1;
+}
+
+/* side-bar links */
+.side-bar nav ul {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.side-bar nav ul li {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.side-bar nav ul li .path {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0px;
+    background-color: #4880ff;
+    width: 5px;
+    height: 100%;
+    border-radius: 5px;
+}
+
+.side-bar nav ul li:hover .path {
+    display: flex;
+}
+
+.side-bar nav ul li .d-link {
+    display: block;
+}
+
+.side-bar nav ul li a {
+    width: 80%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding-inline: 1rem;
+    gap: 1rem;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 550;
+    color: #202224;
+}
+
+.side-bar nav ul li .current-link {
+    background-color: #4880ff;
+    color: #ffffff;
+}
+
+.side-bar nav ul li .current-link img {
+    filter: invert(100%);
+}
+
+.side-bar nav ul li a:hover {
+    background-color: #4880ff;
+    color: #ffffff;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.side-bar nav ul li a:hover i {
+    color: #ffffff;
+}
+
+
+/* content section */
+.content-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+}
+
+/* header */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem 2rem;
+    width: 100%;
+    height: 60px;
+    background-color: #ffffff;
+    box-shadow: 0px 0px 2px #e0e0e0;
+    position: sticky;
+    top: 0;
+}
+
+header .left {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 1rem;
+}
+
+header .left .humberger {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    color: #202224;
+    font-size: 1.5rem;
+    z-index: 1111;
+}
+.register-btns{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.register-btns 
+.register-Intern-btn, .registerhospital{
+    background-color: #4880ff;
+    border: none;
+    border-radius: 10px;
+    padding: 0.5rem 1rem;
+    font-family: "Nunito Sans", sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+.register-btns .register-Intern-btn:hover{
+    background-color: #376dec;
+    transition: background-color 0.5s ease;
+}
+
+.registerhospital{
+    background-color: #28B463;
+}
+.registerhospital:hover{
+    background-color: #18c15e;
+    transition: background-color 0.5s ease;
+}
+header .right {
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+header form{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding-left: 0.7rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    background-color: #f5f6fa;
+}
+
+
+form input{
+    width: 80%;
+    padding: 0.7rem;
+    outline: none;
+    border: none;
+    background-color: #f5f6fa;
+    cursor: pointer;
+    font-family: "Nunito Sans", sans-serif;
+}
+
+form button{
+    width: 20%;
+    padding: 0.5rem;
+    outline: none;
+    border: none;
+    border-left: 1px solid #D5D5D5;
+    border-right: 1px solid #D5D5D5;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: #f5f6fa;
+    font-family: "Nunito Sans", sans-serif;
+    cursor: pointer;
+}
+
+form button i{
+    font-size: 1.3rem;
+}
+
+/* Dashboard page */
+.dashboard-page {
+    padding-inline: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+}
+
+.dashboard-page .page-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #202224;
+}
+
+
+/* resposive design */
+/* tablets and laptops */
+@media only screen and (min-width: 768px) and (max-width: 1200px) {
+    .dashboard-container {
+        flex-direction: column;
+    }
+
+    header {
+        padding: 1rem;
+    }
+
+    header .left {
+        width: 50%;
+    }
+
+    header .left .humberger {
+        display: flex;
+    }
+
+    header .left .humberger i[data-visible="true"] {
+        display: block;
+    }
+
+    header .left .humberger i[data-visible="false"] {
+        display: none;
+    }
+
+    .dashboard-container .side-bar {
+        height: 860px;
+        position: fixed;
+        top: 7.5%;
+        left: 0;
+        z-index: 1111;
+        transform: translateX(-100%);
+        transition: 0.4s ease-in-out;
+    }
+    .dashboard-container .side-bar[data-visible="true"] {
+        transform: translateX(4%);
+    }
+}
+
+/* phone */
+@media (max-width: 767px) {
+    .dashboard-container {
+        flex-direction: column;
+    }
+
+    header {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 1rem 0.5rem;
+        height: auto;
+    }
+
+    header .left {
+        gap: 0rem;
+        width: 100%;
+    }
+    header .right {
+        width: 100%;
+        padding-inline: 10px;
+    }
+
+    header .left .humberger {
+        display: flex;
+    }
+
+    header .left .humberger i[data-visible="true"] {
+        display: block;
+    }
+
+    header .left .humberger i[data-visible="false"] {
+        display: none;
+    }
+
+    .dashboard-container .side-bar {
+        width: 250px;
+        position: fixed;
+        top: 13%;
+        left: 0;
+        z-index: 1111;
+        transform: translateX(-100%);
+        transition: 0.4s ease-in-out;
+    }
+
+    .dashboard-container .side-bar[data-visible="true"] {
+        transform: translateX(4%);
+    }
+
+    .dashboard-page {
+        padding: 1rem;
+    }
+}

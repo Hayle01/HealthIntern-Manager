@@ -1,11 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HealthIntern Manager - dashboard</title>
-</head>
-<body>
-    <h1>Welcome Bodie❤️✅</h1>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <title>HealthIntern Manager - dashboard</title>
+    <link rel="stylesheet" href="../Css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- side bar section -->
+    <div class="dashboard-container">
+      <section class="side-bar" data-visible="false">
+        <div class="logo">
+          <a href="./Dashboard.html"
+            ><h1>HealthIntern <span>Manager</span></h1></a
+          >
+        </div>
+        <nav>
+          <ul class="side-bar-links">
+            <li>
+              <div class="path d-link"></div>
+              <a href="#" class="current-link"
+                ><img src="../Icons/dashboard2.svg" alt="" />Dashboard</a
+              >
+            </li>
+            <li>
+              <div class="path"></div>
+              <a href="#"
+                ><i class="fa-solid fa-user"></i>Register Intern</a
+              >
+            </li>
+            <li>
+              <div class="path"></div>
+              <a href="#"
+                ><i class="fa-solid fa-house-medical"></i>Register Hospital</a
+              >
+            </li>
+            <li>
+              <div class="path"></div>
+              <a href="#" id="interns"><i class="fa-solid fa-user-group"></i>Interns</a
+              >
+            </li>
+            <li>
+              <div class="path"></div>
+              <a href="#" id="Hospitals"><i class="fa-solid fa-hospital"></i>Hospitals</a
+              >
+            </li>
+            <li>
+              <div class="path"></div>
+              <a href="#" id="logout"><i class="fa-solid fa-power-off"></i>Log out</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </section>
+
+
+      <!-- content section -->
+      <section class="content-section">
+        <!-- Header -->
+        <header>
+          <div class="left">
+            <div class="humberger">
+              <i class="fa-solid fa-bars" data-visible="true"></i>
+              <i class="fa-solid fa-xmark" data-visible="false"></i>
+            </div>
+
+            <div class="register-btns">
+                <a href="#" id="registerIntern"><button class="register-Intern-btn">Register Intern</button></a>
+                <a href="#" id="registerhospital"><button class="registerhospital">Register Hospital</button></a>
+            </div>
+        </div>
+
+
+        <div class="right">
+                <form id="searchInternForm">
+                    <input type="text" id="search-intern" placeholder="Search Intern by ID" />
+                    <button type="submit" id="searchInternbtn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </form>
+          </div>
+        </header>
+
+
+        <!-- Dashboard Page -->
+        <div class="dashboard-page">
+          <a href="Dashboard.html"><h1 class="page-title">Dashboard</h1></a>
+
+
+          <!-- Latest Interns -->
+           <div class="Latest-interns"></div>
+
+
+        </div>
+      </section>
+    </div>
+
+
+    <script src="../Js/script.js"></script>
+  </body>
 </html>
