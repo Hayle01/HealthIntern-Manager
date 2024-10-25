@@ -18,7 +18,7 @@ img {
 
 .dashboard-container {
     width: 100%;
-    height: 100vh;
+    height: 100%;
     margin: 0 auto; 
     max-width: 1536px;
     display: flex;
@@ -33,7 +33,6 @@ img {
     background-color: #ffffff;
     box-shadow: 0px 0px 2px #e0e0e0;
     padding-block: 1.3rem;
-    overflow-y: auto;
 }
 
 .side-bar .logo {
@@ -153,14 +152,22 @@ header .left {
     gap: 1rem;
 }
 
-header .left .humberger {
+.toggle-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
     display: none;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem;
-    color: #202224;
-    font-size: 1.5rem;
-    z-index: 1111;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+}
+
+.toggle-btn .bar {
+    height: 3px;
+    width: 100%;
+    background-color: white;
+    border-radius: 10px;
 }
 .register-btns{
     display: flex;
@@ -198,7 +205,7 @@ header .right {
     align-items: center;
     justify-content: flex-end;
 }
-header form{
+header .right form{
     width: 100%;
     display: flex;
     align-items: center;
@@ -210,7 +217,7 @@ header form{
 }
 
 
-form input{
+.right form input{
     width: 80%;
     padding: 0.7rem;
     outline: none;
@@ -220,7 +227,7 @@ form input{
     font-family: "Nunito Sans", sans-serif;
 }
 
-form button{
+.right form button{
     width: 20%;
     padding: 0.5rem;
     outline: none;
@@ -234,25 +241,125 @@ form button{
     cursor: pointer;
 }
 
-form button i{
+.right form button i{
     font-size: 1.3rem;
 }
 
 /* Dashboard page */
-.dashboard-page {
+.dashboard-page, .Register-intern {
     padding-inline: 2rem;
     display: flex;
     flex-direction: column;
     gap: 1.75rem;
 }
-
-.dashboard-page .page-title {
-    font-size: 2rem;
+.page-title {
+    font-size: 1.5rem;
     font-weight: 700;
     color: #202224;
 }
 
+.model {
+    width: 100%;
+    height: 100%;
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    background-color: rgb(0, 0, 0, 0.5);
+}
+.model .path{
+    background-color: #406ed9;
+    width: 100%;
+    height: 25px;
 
+}
+
+.model-content {
+    position: relative;
+    margin: 5% auto;
+    width: 80%;
+    background-color: #f5f6fa;
+    /* padding: 30px; */
+    border: 3px solid #406ed9;
+}
+.model-content form{
+    padding: 20px;
+}
+
+.close-model {
+    position: absolute;
+    top: -10px;
+    right: -5px;
+    cursor: pointer;
+    font-size: 30px;
+    font-weight: bold;
+    color: black;
+    padding: 0px 10px;
+}
+
+.close-model:hover {
+    color: rgb(51, 51, 51, 0.8);
+}
+
+/* Registeration Intern */
+.InternRegisteration{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding-bottom: 10px;
+}
+
+.InternRegisteration input, select{
+    width: 100%;
+    border: 1px solid #D5D5D5;
+    padding: 0.8rem 1rem;
+    border-radius: 10px;
+    font-size: 1rem;
+    outline: none;
+}
+
+.InternRegisteration .input-Label{
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+.input-Label label{
+    font-size: 1rem;
+    font-weight: 600;
+    color: #202224;
+}
+.input-Label .gender, .martialStatus {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 10px;
+}
+.gender .male, .female, .Status{
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.Status .single, .married, .divorced, .widowed{
+   display: flex;
+   align-items: center;
+   flex-direction: wrap;
+   gap: 0.5rem;
+   font-size: 1rem;
+   color: #202224;
+}
+
+.InternRegisteration .registerBTN{
+    grid-column: 1 / span 3;
+    border: none;
+    background: #4880ff;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+}
 /* resposive design */
 /* tablets and laptops */
 @media only screen and (min-width: 768px) and (max-width: 1200px) {
@@ -267,31 +374,30 @@ form button i{
     header .left {
         width: 50%;
     }
-
-    header .left .humberger {
-        display: flex;
+    .navbar.active .toggle-btn .bar:nth-child(2) {
+        opacity: 0;
     }
 
-    header .left .humberger i[data-visible="true"] {
-        display: block;
+    .navbar.active .toggle-btn .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
     }
 
-    header .left .humberger i[data-visible="false"] {
-        display: none;
-    }
-
-    .dashboard-container .side-bar {
-        height: 860px;
+    .navbar.active .toggle-btn .bar:nth-child(3) {
+        transform: translateY(-9.5px) rotate(-45deg);
+        }
+    .dashboard-container .side-bar.active {
+        height: 100vh;
         position: fixed;
         top: 7.5%;
         left: 0;
-        z-index: 1111;
-        transform: translateX(-100%);
+        z-index: 1111; 
         transition: 0.4s ease-in-out;
     }
-    .dashboard-container .side-bar[data-visible="true"] {
-        transform: translateX(4%);
-    }
+        .InternRegisteration {
+            padding-right: 10px;
+            grid-template-columns: 1fr 1fr;
+        }
+
 }
 
 /* phone */
@@ -311,38 +417,48 @@ form button i{
         gap: 0rem;
         width: 100%;
     }
+    .toggle-btn {
+        display: flex;
+    }
+    .navbar.active .toggle-btn .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .navbar.active .toggle-btn .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .navbar.active .toggle-btn .bar:nth-child(3) {
+        transform: translateY(-9.5px) rotate(-45deg);
+    }
+
+    .dashboard-container .side-bar.active {
+        height: 100vh;
+        position: fixed;
+        top: 7.5%;
+        left: 0;
+        z-index: 1111;
+        transition: 0.4s ease-in-out;
+    }
     header .right {
         width: 100%;
         padding-inline: 10px;
     }
 
-    header .left .humberger {
-        display: flex;
-    }
-
-    header .left .humberger i[data-visible="true"] {
-        display: block;
-    }
-
-    header .left .humberger i[data-visible="false"] {
-        display: none;
-    }
-
-    .dashboard-container .side-bar {
-        width: 250px;
-        position: fixed;
-        top: 13%;
-        left: 0;
-        z-index: 1111;
-        transform: translateX(-100%);
-        transition: 0.4s ease-in-out;
-    }
-
-    .dashboard-container .side-bar[data-visible="true"] {
-        transform: translateX(4%);
-    }
-
     .dashboard-page {
         padding: 1rem;
+    }
+    .InternRegisteration{
+        padding-left: -10px;
+       grid-template-columns: 1fr;
+    }
+    .InternRegisteration input,
+    select {
+        width: 95%;
+        border: 1px solid #D5D5D5;
+        padding: 0.8em;
+        border-radius: 10px;
+        font-size: 1rem;
+        outline: none;
     }
 }

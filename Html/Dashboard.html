@@ -11,7 +11,7 @@
   <body>
     <!-- side bar section -->
     <div class="dashboard-container">
-      <section class="side-bar" data-visible="false">
+      <section class="side-bar mobile-device">
         <div class="logo">
           <a href="./Dashboard.html"
             ><h1>HealthIntern <span>Manager</span></h1></a
@@ -27,7 +27,7 @@
             </li>
             <li>
               <div class="path"></div>
-              <a href="#"
+              <a href="../Html/registerIntern.html"
                 ><i class="fa-solid fa-user"></i>Register Intern</a
               >
             </li>
@@ -62,10 +62,11 @@
         <!-- Header -->
         <header>
           <div class="left">
-            <div class="humberger">
-              <i class="fa-solid fa-bars" data-visible="true"></i>
-              <i class="fa-solid fa-xmark" data-visible="false"></i>
-            </div>
+            <a href="#" class="toggle-btn">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </a> 
 
             <div class="register-btns">
                 <a href="#" id="registerIntern"><button class="register-Intern-btn">Register Intern</button></a>
@@ -82,7 +83,25 @@
           </div>
         </header>
 
+        <!-- registeration modal -->
+      <div id="register-model" class="model">
+        <div class="model-content">
+          <div class="path">
+            <h1 style="font-size: 14px;">Hello World</h1>
+          </div>
+          <form id="register-form">
+            <Label>Name:</Label>
+            <input type="text" placeholder="Enter intern name">
+            <label for="email">Email</label>
+            <input type="email" placeholder="Enter intern email">
+            <label for="password">Password</label>
+            <input type="password" placeholder="Enter intern password"> 
+            <button type="submit">Click me</button>
+          </form>
+            <span class="close-model">&times;</span>
 
+        </div>
+    </div>
         <!-- Dashboard Page -->
         <div class="dashboard-page">
           <a href="Dashboard.html"><h1 class="page-title">Dashboard</h1></a>
@@ -90,8 +109,6 @@
 
           <!-- Latest Interns -->
            <div class="Latest-interns"></div>
-
-
         </div>
       </section>
     </div>

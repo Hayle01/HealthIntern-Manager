@@ -1,18 +1,40 @@
-const hamburger = document.querySelector(".humberger");
-const mobileMenu = document.querySelector(".side-bar");
-const icons = document.querySelectorAll("i");
+const toggleButton = document.querySelector(".toggle-btn");
+const sideBar = document.querySelector(".side-bar");
 
-hamburger.addEventListener("click", () => {
-  const isVisible = mobileMenu.getAttribute("data-visible");
-  if (isVisible == "true") {
-    mobileMenu.setAttribute("data-visible", "false");
-    icons[0].setAttribute("data-visible", "true"); // Hamburger icon
-    icons[1].setAttribute("data-visible", "false"); // Close (X) icon
-    console.log("Hamburger icon shown");
-  } else if (isVisible == "false") {
-    mobileMenu.setAttribute("data-visible", "true");
-    icons[0].setAttribute("data-visible", "false"); // Hamburger icon
-    icons[1].setAttribute("data-visible", "true"); // Close (X) icon
-    console.log("Close (X) icon shown");
-  }
+toggleButton.addEventListener("click", function () {
+  navbar.classList.toggle("active");
 });
+
+const registerIntern = document.querySelector("#registerIntern");
+const registerhospital = document.querySelector("#registerhospital");
+
+registerIntern.addEventListener("click", openModal);
+
+document
+  .querySelector(".close-model")
+  .addEventListener("click", () => closeModel());
+
+function openModal() {
+  const registerModal = document.querySelector("#register-model");
+  registerModal.style.display = "flex";
+}
+
+function closeModel() {
+  const registerModal = document.querySelector("#register-model");
+  registerModal.style.display = "none";
+}
+
+window.onclick = function (event) {
+  const registerModal = document.querySelector("#register-model");
+  if (event.target == registerModal) {
+    closeModel();
+  }
+};
+
+
+const registerform = document.querySelector("#register-form");
+
+registerform.addEventListener("submit", function(event) {
+  event.preventDefault();
+  
+})
