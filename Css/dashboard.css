@@ -152,22 +152,32 @@ header .left {
     gap: 1rem;
 }
 
-.toggle-btn {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    display: none;
+.toggle-btn{
+    display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 30px;
-    height: 21px;
+    width: 35px;
+    height: 35px;
+    text-align: left;
+    margin-right: 30px;
 }
 
 .toggle-btn .bar {
-    height: 3px;
     width: 100%;
-    background-color: white;
+    height: 6px;
+    background-color: #202224;
     border-radius: 10px;
+    margin: 2px 0;
+
+}
+
+.toggle-btn.sideClosetoggle{
+    display: none;
+    position: absolute;
+    left: 240px;
+
+}
+.toggle-btn.sideClosetoggle .bar{
 }
 .register-btns{
     display: flex;
@@ -374,29 +384,10 @@ header .right form{
     header .left {
         width: 50%;
     }
-    .navbar.active .toggle-btn .bar:nth-child(2) {
-        opacity: 0;
+    .InternRegisteration {
+        padding-right: 10px;
+        grid-template-columns: 1fr 1fr;
     }
-
-    .navbar.active .toggle-btn .bar:nth-child(1) {
-        transform: translateY(8px) rotate(45deg);
-    }
-
-    .navbar.active .toggle-btn .bar:nth-child(3) {
-        transform: translateY(-9.5px) rotate(-45deg);
-        }
-    .dashboard-container .side-bar.active {
-        height: 100vh;
-        position: fixed;
-        top: 7.5%;
-        left: 0;
-        z-index: 1111; 
-        transition: 0.4s ease-in-out;
-    }
-        .InternRegisteration {
-            padding-right: 10px;
-            grid-template-columns: 1fr 1fr;
-        }
 
 }
 
@@ -404,6 +395,30 @@ header .right form{
 @media (max-width: 767px) {
     .dashboard-container {
         flex-direction: column;
+    }
+    .side-bar {
+        width: 0px;
+        height: 100vh;
+        position: fixed;
+        left: -100%;
+        top: 0;
+        z-index: 999;
+        transition: 0.3s ease;
+    }
+    .side-bar .logo{
+        padding-top: 40px;
+    }
+    .side-bar.active .toggle-btn.sideClosetoggle{
+        display: flex;
+    }
+    .toggle-btn.sideClosetoggle .bar:nth-child(2){
+        opacity: 0;
+    }
+    .toggle-btn.sideClosetoggle .bar:nth-child(3){
+        transform: translateY(-9px) rotate(-45deg);
+    }
+    .toggle-btn.sideClosetoggle .bar:nth-child(1){
+        transform: translateY(16px) rotate(45deg);
     }
 
     header {
@@ -414,31 +429,9 @@ header .right form{
     }
 
     header .left {
-        gap: 0rem;
+        justify-content: flex-end;
+        gap: 1rem;
         width: 100%;
-    }
-    .toggle-btn {
-        display: flex;
-    }
-    .navbar.active .toggle-btn .bar:nth-child(2) {
-        opacity: 0;
-    }
-
-    .navbar.active .toggle-btn .bar:nth-child(1) {
-        transform: translateY(8px) rotate(45deg);
-    }
-
-    .navbar.active .toggle-btn .bar:nth-child(3) {
-        transform: translateY(-9.5px) rotate(-45deg);
-    }
-
-    .dashboard-container .side-bar.active {
-        height: 100vh;
-        position: fixed;
-        top: 7.5%;
-        left: 0;
-        z-index: 1111;
-        transition: 0.4s ease-in-out;
     }
     header .right {
         width: 100%;

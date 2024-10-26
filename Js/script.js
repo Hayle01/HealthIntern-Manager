@@ -1,10 +1,6 @@
 const toggleButton = document.querySelector(".toggle-btn");
 const sideBar = document.querySelector(".side-bar");
 
-toggleButton.addEventListener("click", function () {
-  navbar.classList.toggle("active");
-});
-
 const registerIntern = document.querySelector("#registerIntern");
 const registerhospital = document.querySelector("#registerhospital");
 
@@ -31,10 +27,8 @@ window.onclick = function (event) {
   }
 };
 
-
 const registerform = document.querySelector("#register-form");
 
-registerform.addEventListener("submit", function(event) {
+registerform.addEventListener("submit", function (event) {
   event.preventDefault();
-  
-})
+});
