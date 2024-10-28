@@ -1,35 +1,4 @@
-// making responsive side-bar
-const toggleButton = document.querySelector(".toggle-btn");
-const sideBar = document.querySelector(".side-bar");
-
-// quick registeration btn modals
-const registerIntern = document.querySelector("#registerIntern");
-const registerhospital = document.querySelector("#registerhospital");
-
-registerIntern.addEventListener("click", openModal);
-
-document
-  .querySelector(".close-model")
-  .addEventListener("click", () => closeModel());
-
-function openModal() {
-  const registerModal = document.querySelector("#register-model");
-  registerModal.style.display = "flex";
-}
-
-function closeModel() {
-  const registerModal = document.querySelector("#register-model");
-  registerModal.style.display = "none";
-}
-
-window.onclick = function (event) {
-  const registerModal = document.querySelector("#register-model");
-  if (event.target == registerModal) {
-    closeModel();
-  }
-};
-
- // Intern registeration form element selections
+// Intern registeration form element selections
 const InternRegisterForm = document.getElementById("InternRegister");
 const InternfullName = document.getElementById("fullName");
 const InternmotherName = document.getElementById("mothername");
@@ -139,3 +108,4 @@ InternRegisterForm.addEventListener("submit", (e) => {
     e.preventDefault();
     saveInternData();
 });
+

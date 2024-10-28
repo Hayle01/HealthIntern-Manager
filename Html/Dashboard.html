@@ -11,7 +11,7 @@
   <body>
     <!-- side bar section -->
     <div class="dashboard-container">
-      <section class="side-bar">
+      <section class="side-bar d-side-bar">
            <a href="#" class="toggle-btn sideClosetoggle">
             <span class="bar"></span>
             <span class="bar"></span>
@@ -44,7 +44,7 @@
             </li>
             <li>
               <div class="path"></div>
-              <a href="#" id="interns"><i class="fa-solid fa-user-group"></i>Interns</a
+              <a href="../Html/Interns.html" id="interns"><i class="fa-solid fa-user-group"></i>Interns</a
               >
             </li>
             <li>
@@ -68,11 +68,11 @@
         <header>
           <div class="left">
 
-            <a href="#" class="toggle-btn">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-        </a> 
+            <!-- <a href="#" class="toggle-btn">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </a>  -->
 
             <div class="register-btns">
                 <a href="#" id="registerIntern"><button class="register-Intern-btn">Register Intern</button></a>
@@ -92,18 +92,123 @@
         <!-- registeration modal -->
       <div id="register-model" class="model">
         <div class="model-content">
-          <div class="path">
+          <!-- <div class="path">
             <h1 style="font-size: 14px;">Hello World</h1>
-          </div>
-          <form id="register-form">
-            <Label>Name:</Label>
-            <input type="text" placeholder="Enter intern name">
-            <label for="email">Email</label>
-            <input type="email" placeholder="Enter intern email">
-            <label for="password">Password</label>
-            <input type="password" placeholder="Enter intern password"> 
-            <button type="submit">Click me</button>
-          </form>
+          </div> -->
+           <form id="InternRegister" class="InternRegisteration">
+            <div class="input-Label">
+                <label for="fullName">Full Name:</label>
+                <input type="text" id="fullName" placeholder="Enter Fullname">
+            </div>
+            <div class="input-Label">
+                <label for="mothername">Mother's Name:</label>
+                <input type="text" id="mothername" placeholder="Enter Mother Name">
+            </div>
+            <div class="input-Label">
+                <label for="dateoFBirth">Date of Birth:</label>
+                <input type="date" id="dateoFBirth" >
+            </div>
+            <div class="input-Label">
+                <label for="Gender">Gender:</label>
+                <div class="gender">
+
+                    <div class="male">
+                        <input type="radio" id="male" name="gender" value="male">
+                        <label for="male">Male</label>
+                    </div>
+                    <div class="female">
+                        <input type="radio" id="female" name="gender" value="female">
+                        <label for="female">Female</label>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <div class="input-Label">
+                <label for="martialStatus">Martial Status:</label>
+                <div class="martialStatus">
+                    
+                    <div class="Status">
+                        <div class="single">
+                            <input type="radio" id="single" name="martialStatus" value="single">
+                            <span id="Single">Single</span>
+                        </div>
+                        <div class="married">
+                            <input type="radio" name="martialStatus" id="married" value="married">
+                            <span id="Married">Married</span>
+                        </div>
+                        <div class="divorced">
+                            <input type="radio" name="martialStatus" id="Divorced" value="Divorced">
+                            <span id="Divorced">Divorced</span>
+                        </div>
+                        <div class="widowed">
+                            <input type="radio" name="martialStatus" id="Widowed" value="Widowed">
+                            <span id="Widowed">Widowed</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="input-Label">
+                <label for="nationality">Nationality:</label>
+                <input type="text" id="nationality" placeholder="Enter Nationality">
+            </div>
+            <div class="input-Label">
+                <label for="address">Address:</label>
+                <input type="text" id="addresss" placeholder="Enter Address">
+            </div>
+            <div class="input-Label">
+                <label for="email">Email:</label>
+                <input type="text" id="email" placeholder="Enter Email">
+            </div>
+            <div class="input-Label">
+                <label for="phonenumber">Phone Number:</label>
+                <input type="text" id="phonenumber" placeholder="Enter Phone Number">
+            </div>
+            <div class="input-Label">
+                <label for="Department">Department:</label>
+                <select id="Department" name="Department">
+                    <option value="NUR">Nursing</option>
+                    <option value="PHA">Pharmacy</option>
+                    <option value="LAB">Laboratory</option>
+                    <option value="RAD">Radiology</option>
+                    <option value="SUR">Surgery</option>
+                    <option value="PED">Pediatrics</option>
+                    <option value="OBS">Obstetrics</option>
+                    <option value="DEN">Dentistry</option>
+                    <option value="PH">Public Health</option>
+                    <option value="PHY">Physiotherapy</option>
+                    <option value="EM">Emergency Medicine</option>
+                    <option value="CAR">Cardiology</option>
+                    <option value="NEU">Neurology</option>
+                    <option value="ORT">Orthopedics</option>
+                    <option value="ANE">Anesthesiology</option>
+                </select>
+            </div>
+            <div class="input-Label">
+                <label for="InternID">ID</label>
+                <input type="text" id="IntenID" >
+            </div>
+
+            <div class="input-Label">
+                <label for="Institution">Institution:</label>
+                <input type="text" id="Institution" placeholder="Enter Intern Institution">
+            </div>
+            <div class="input-Label">
+                <label for="StartDate">Start Date:</label>
+                <input type="date" id="StartDate">
+            </div>
+            <div class="input-Label">
+                <label for="EndDate">End Date:</label>
+                <input type="date" id="EndDate">
+            </div>
+            <div class="input-Label">
+                <label for="upoadImage">Upload Image:</label>
+                <input type="file" style="border: none;" id="InternImage">
+            </div>
+
+            <button type="submit" id="RegisterFormBtn" class="registerBTN">Register Intern</button>
+        
+           </form>
             <span class="close-model">&times;</span>
 
         </div>

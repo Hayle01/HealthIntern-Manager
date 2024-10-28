@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HealthIntern Manager - Interns</title>
+    <link rel="stylesheet" href="../Css/dashboard.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- side bar section -->
+    <div class="dashboard-container">
+      <section class="side-bar d-side-bar">
+        <div class="logo">
+          <a href="./Dashboard.html"
+            ><h1>HealthIntern <span>Manager</span></h1></a
+          >
+        </div>
+        <nav>
+          <ul class="side-bar-links">
+            <li>
+              <div class="path"></div>
+              <a href="../Html/Dashboard.html"
+                ><img src="../Icons/dashboard2.svg" alt="" />Dashboard</a
+              >
+            </li>
+            <li>
+              <div class="path"></div>
+              <a href="../Html/registerIntern.html"><i class="fa-solid fa-user"></i>Register Intern</a>
+            </li>
+            <li>
+              <div class="path"></div>
+              <a href="#"
+                ><i class="fa-solid fa-house-medical"></i>Register Hospital</a
+              >
+            </li>
+            <li>
+              <div class="path d-link"></div>
+              <a href="#" id="interns" class="current-link"
+                ><i class="fa-solid fa-user-group"></i>Interns</a
+              >
+            </li>
+            <li>
+              <div class="path"></div>
+              <a href="#" id="Hospitals"
+                ><i class="fa-solid fa-hospital"></i>Hospitals</a
+              >
+            </li>
+            <li>
+              <div class="path"></div>
+              <a href="#" id="logout"
+                ><i class="fa-solid fa-power-off"></i>Log out</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </section>
+
+      <!-- content section -->
+      <section class="content-section">
+
+        <!-- registered interns display -->
+         <div class="RegisteredInterns">
+            <a href="Interns.html"><h1 class="page-title">Interns</h1></a>
+
+             <div class="filter-bar">
+               <div class="filter-icon">
+                <img src="../Icons/filter.svg" alt="filter-icon">
+               </div>
+               <div class="byDate">
+                <label for="filterby" class="filterby">Filter By</label>
+                </select>
+
+               <div class="byDate">
+                <select id="byDateFilter" class="filter">
+                  <option value="" hidden>Date</option>
+                  <option value="Today">Today</option>
+                  <option value="This Week">This Week</option>
+                  <option value="This Month">This Month</option>
+                </select>
+               </div>
+                <div class="byDate">
+                <select id="byDateFilter" class="filter">
+                  <option value="" hidden>Gender</option>
+                  <option value="Male">Male</option>
+                  <option value="female">Female</option>
+                </select>
+               </div>
+                <div class="byDate">
+                <select id="byDateFilter" class="filter">
+                  <option value="" hidden>Intern Status</option>
+                  <option value="Completed">Completed</option>
+                  <option value="pending">Pending</option>
+                  <option value="Processing">Processing</option>
+                </select>
+               </div>
+             </div>
+         </div>
+
+         <!-- Interns Sections display-->
+         <section class="internsDisplay">
+
+          <table class="intern-table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Institution</th>
+            <th>Department</th>
+            <th>Start-Date</th>
+            <th>End-Date</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>NUR001</td>
+            <td>Ayaan Ali Mohamed</td>
+            <td>Jamhuuriya University</td>
+            <td>Nursing</td>
+            <td>2024-01-15</td>
+            <td>2024-06-15</td>
+            <td><span class="status approved">Approved</span></td>
+        </tr>
+        <tr>
+            <td>PHM002</td>
+            <td>Mohamed Abdi Mohamud</td>
+            <td>Jamacada Ummada</td>
+            <td>Pharmacy</td>
+            <td>2024-02-01</td>
+            <td>2024-07-30</td>
+            <td><span class="status pending">Pending</span></td>
+        </tr>
+        <tr>
+            <td>MED003</td>
+            <td>Halima Yusuf Abdirisak</td>
+            <td>Simad University</td>
+            <td>Medicine</td>
+            <td>2024-03-05</td>
+            <td>2024-08-20</td>
+            <td><span class="status completed">Completed</span></td>
+        </tr>
+        <tr>
+            <td>LAB004</td>
+            <td>Abdullahi Ahmed Mohamed</td>
+            <td>Mogadishu University</td>
+            <td>Laboratory</td>
+            <td>2024-01-20</td>
+            <td>2024-06-10</td>
+            <td><span class="status completed">Completed</span></td>
+        </tr>
+        <tr>
+            <td>DNT005</td>
+            <td>Layla Warsame Raage</td>
+            <td>Banadir University</td>
+            <td>Dentistry</td>
+            <td>2024-08-15</td>
+            <td>2024-08-15</td>
+            <td><span class="status processing">Processing</span></td>
+        </tr>
+    </tbody>
+</table>
+
+         </section>
+         </div>
+        </section>
+    </div>
+  </body>
+</html>

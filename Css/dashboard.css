@@ -26,13 +26,15 @@ img {
 
 .dashboard-container .side-bar {
     width: 300px;
-    height: 100vh;
     display: flex;
     flex-direction: column;
     gap: 1.8rem;
     background-color: #ffffff;
     box-shadow: 0px 0px 2px #e0e0e0;
     padding-block: 1.3rem;
+}
+.d-side-bar{
+    height: 100vh;
 }
 
 .side-bar .logo {
@@ -177,8 +179,6 @@ header .left {
     left: 240px;
 
 }
-.toggle-btn.sideClosetoggle .bar{
-}
 .register-btns{
     display: flex;
     align-items: center;
@@ -256,7 +256,7 @@ header .right form{
 }
 
 /* Dashboard page */
-.dashboard-page, .Register-intern {
+.dashboard-page, .Register-intern{
     padding-inline: 2rem;
     display: flex;
     flex-direction: column;
@@ -266,6 +266,8 @@ header .right form{
     font-size: 1.5rem;
     font-weight: 700;
     color: #202224;
+}
+.Register-intern{ 
 }
 
 .model {
@@ -287,16 +289,13 @@ header .right form{
 
 .model-content {
     position: relative;
-    margin: 5% auto;
-    width: 80%;
+    margin: 2% auto;
+    width: 85%;
+    height: auto;
     background-color: #f5f6fa;
-    /* padding: 30px; */
-    border: 3px solid #406ed9;
-}
-.model-content form{
+    border-radius: 10px;
     padding: 20px;
 }
-
 .close-model {
     position: absolute;
     top: -10px;
@@ -319,7 +318,6 @@ header .right form{
     grid-template-columns: repeat(3, 1fr);
     flex-wrap: wrap;
     gap: 1rem;
-    padding-bottom: 10px;
 }
 
 .InternRegisteration input, select{
@@ -370,6 +368,122 @@ header .right form{
     border-radius: 0.5rem;
     font-size: 1rem;
 }
+
+/* Interns display Page */
+.RegisteredInterns{
+    padding: 1rem 1rem 0rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+.filter-bar {
+    max-width: 500px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    border: 0.6px solid rgba(213, 213, 213, 0.74);
+}
+
+.filter-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding-inline: 10px;
+    /* border-right: 0.6px solid #D5D5D5; */
+}
+
+.filter-icon img{
+    width:  100%;
+}
+.byDate{
+    display: flex;
+    align-items: center;
+    border-left: 0.6px solid #D5D5D5;
+}
+.filter, .filterby{
+    background-color: transparent;
+    border-radius: 0px;
+    border: none;
+    padding: 10px 0px; 
+    padding-inline: 10px;
+    cursor: pointer;
+}
+
+.internsDisplay{
+    border: 0.6px solid #D5D5D5;
+    background-color: transparent;
+    border-radius: 10px;
+    border-bottom: none;
+}
+
+.intern-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #FFFFFF;
+}
+
+.intern-table thead {
+    background-color: rgba(214, 214, 214, 0.4);
+    text-align: left;
+}
+
+.intern-table th,
+.intern-table td {
+    padding: 12px 15px;
+    text-align: left;
+    color: #202224;
+    font-size: 0.9rem;
+    border-bottom: 0.6px solid rgba(151, 151, 151, 0.4);
+}
+.intern-table th {
+    font-weight: bold;
+    color: #333;
+}
+.intern-table tbody tr {
+    cursor: pointer;
+}
+.intern-table tbody tr:hover {
+    background-color: #f1f5f9;
+}
+
+.status {
+    padding: 5px 10px;
+    border-radius: 12px;
+    font-weight: bold;
+    color: #202224;
+    font-size: 0.8rem;
+    display: inline-block;
+
+}
+
+/* Status colors */
+.status.approved {
+    background-color: #a7f3d0;
+    color: #065f46;
+}
+
+.status.pending {
+    background-color: #f3f4f6;
+    color: #6b7280;
+    padding: 5px 20px;
+}
+.status.completed {
+    background-color: #d1fae5;
+    color: #047857;
+}
+
+.status.processing {
+    background-color: #e9d5ff;
+    color: #6d28d9;
+}
+
+
+
 /* resposive design */
 /* tablets and laptops */
 @media only screen and (min-width: 768px) and (max-width: 1200px) {

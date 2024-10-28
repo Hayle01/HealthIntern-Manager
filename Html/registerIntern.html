@@ -39,7 +39,7 @@
             </li>
             <li>
               <div class="path"></div>
-              <a href="#" id="interns"><i class="fa-solid fa-user-group"></i>Interns</a
+              <a href="../Html/Interns.html" id="interns"><i class="fa-solid fa-user-group"></i>Interns</a
               >
             </li>
             <li>
@@ -60,15 +60,10 @@
       <!-- content section -->
       <section class="content-section">
         <!-- Header -->
-        <header>
+        <!-- <header>
           <div class="left">
-            <a href="#" class="toggle-btn">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-        </a> 
         </div>
-        </header>
+        </header> -->
 
         <!-- Register Intern -->
         <div class="Register-intern">
@@ -111,11 +106,11 @@
                     <div class="Status">
                         <div class="single">
                             <input type="radio" id="single" name="martialStatus" value="single">
-                            <span id="Single">Single</span>
+                            <label id="Single">Single</label>
                         </div>
                         <div class="married">
                             <input type="radio" name="martialStatus" id="married" value="married">
-                            <span id="Married">Married</span>
+                            <label id="Married">Married</label>
                         </div>
                         <div class="divorced">
                             <input type="radio" name="martialStatus" id="Divorced" value="Divorced">
@@ -166,7 +161,7 @@
             </div>
             <div class="input-Label">
                 <label for="InternID">ID</label>
-                <input type="email" id="Email" >
+                <input type="text" id="IntenID" >
             </div>
 
             <div class="input-Label">
@@ -186,11 +181,14 @@
                 <input type="file" style="border: none;" id="InternImage">
             </div>
 
-            <button type="submit" class="registerBTN">Register Intern</button>
+            <button type="submit" id="RegisterFormBtn" class="registerBTN">Register Intern</button>
         
            </form>
         </div>
       </section>
     </div>
+
+    <script src="../Js/Intern.js">
+    </script>
 </body>
 </html>
