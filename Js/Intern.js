@@ -1,4 +1,29 @@
-// Intern registeration form element selections
+// Retrieve departmentSerials from localStorage or initialize
+let departmentSerials = JSON.parse(
+  localStorage.getItem("departmentSerials")
+) || {
+  NUR: 1,
+  PHA: 1,
+  LAB: 1,
+  RAD: 1,
+  SUR: 1,
+  PED: 1,
+  OBS: 1,
+  DEN: 1,
+  PH: 1,
+  PHY: 1,
+  EM: 1,
+  CAR: 1,
+  NEU: 1,
+  ORT: 1,
+  ANE: 1,
+};
+
+// Display departmentSerials on page load for debugging
+console.log("Loaded department serials:", departmentSerials);
+
+
+// Intern registration form element selections
 const InternRegisterForm = document.getElementById("InternRegister");
 const InternfullName = document.getElementById("fullName");
 const InternmotherName = document.getElementById("mothername");
@@ -16,25 +41,6 @@ const StartDate = document.getElementById("StartDate");
 const EndDate = document.getElementById("EndDate");
 const InternImage = document.getElementById("InternImage");
 const RegisterFormBtn = document.getElementById("RegisterFormBtn");
-
-// Variables to store the next serial number for each department
-let departmentSerials = {
-  NUR: 1,
-  PHA: 1,
-  LAB: 1,
-  RAD: 1,
-  SUR: 1,
-  PED: 1,
-  OBS: 1,
-  DEN: 1,
-  PH: 1,
-  PHY: 1,
-  EM: 1,
-  CAR: 1,
-  NEU: 1,
-  ORT: 1,
-  ANE: 1,
-};
 
 // Function to get selected gender
 function getSelectedGender() {
@@ -58,54 +64,68 @@ function getSelectedMaritalStatus() {
   return selectedStatus;
 }
 
-
 // Function to update the ID input when department changes
 departmentDropdown.addEventListener("change", function () {
-  const selectedDepartment = departmentDropdown.value; // e.g., "NUR"
+  const selectedDepartment = departmentDropdown.value;
   const serial = departmentSerials[selectedDepartment]; // get current serial for the department
-  IntenID.value = `${selectedDepartment}${String(serial).padStart(3, "0")}`; // e.g., "NUR001"
+
+  // Set the ID using the department code and current serial
+  IntenID.value = `${selectedDepartment}${String(serial).padStart(3, "0")}`;
 });
 
 // Function to handle image conversion to Base64
 function getImageBase64(imageFile) {
-    return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.readAsDataURL(imageFile);
-        reader.onload = () => resolve(reader.result);
-        reader.onerror = error => reject(error);
-    });
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(imageFile);
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = (error) => reject(error);
+  });
 }
 
 // Function to save intern data
 async function saveInternData() {
-    const internData = {
-        fullName: InternfullName.value,
-        motherName: InternmotherName.value,
-        dateOfBirth: dateoFBirth.value,
-        gender: getSelectedGender(),
-        maritalStatus: getSelectedMaritalStatus(),
-        nationality: InternNationality.value,
-        address: InternAddresss.value,
-        email: InternEmail.value,
-        phoneNumber: InternPhonenumber.value,
-        department: departmentDropdown.value,
-        internID: IntenID.value,
-        institution: InternInstitution.value,
-        startDate: StartDate.value,
-        endDate: EndDate.value,
-        image: InternImage.files[0] ? await getImageBase64(InternImage.files[0]) : null 
-    };
+  const selectedDepartment = departmentDropdown.value; // Define selectedDepartment here
+  const serial = departmentSerials[selectedDepartment]; // Get the current serial
 
-    let interns = JSON.parse(localStorage.getItem("interns")) || [];
-    interns.push(internData);
-    localStorage.setItem("interns", JSON.stringify(interns));
-    alert("Intern registered successfully!");
-    InternRegisterForm.reset();
+  // Set the ID using the department code and current serial
+  IntenID.value = `${selectedDepartment}${String(serial).padStart(3, "0")}`;
+
+  const internData = {
+    fullName: InternfullName.value,
+    motherName: InternmotherName.value,
+    dateOfBirth: dateoFBirth.value,
+    gender: getSelectedGender(),
+    maritalStatus: getSelectedMaritalStatus(),
+    nationality: InternNationality.value,
+    address: InternAddresss.value,
+    email: InternEmail.value,
+    phoneNumber: InternPhonenumber.value,
+    department: selectedDepartment,
+    internID: IntenID.value,
+    institution: InternInstitution.value,
+    startDate: StartDate.value,
+    endDate: EndDate.value,
+    image: InternImage.files[0]
+      ? await getImageBase64(InternImage.files[0])
+      : null,
+  };
+
+  let interns = JSON.parse(localStorage.getItem("interns")) || [];
+  interns.push(internData);
+  localStorage.setItem("interns", JSON.stringify(interns));
+
+  // Increment and save the updated serial in localStorage
+  departmentSerials[selectedDepartment]++;
+  localStorage.setItem("departmentSerials", JSON.stringify(departmentSerials));
+
+  alert("Intern registered successfully!");
+  InternRegisterForm.reset();
 }
 
 // Event listener for form submission
 InternRegisterForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    saveInternData();
+  e.preventDefault();
+  saveInternData();
+  window.location.href = "../Html/Interns.html";
 });
-
