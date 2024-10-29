@@ -67,7 +67,7 @@ function getSelectedMaritalStatus() {
 // Function to update the ID input when department changes
 departmentDropdown.addEventListener("change", function () {
   const selectedDepartment = departmentDropdown.value;
-  const serial = departmentSerials[selectedDepartment]; // get current serial for the department
+  const serial = departmentSerials[selectedDepartment]; 
 
   // Set the ID using the department code and current serial
   IntenID.value = `${selectedDepartment}${String(serial).padStart(3, "0")}`;
@@ -85,10 +85,8 @@ function getImageBase64(imageFile) {
 
 // Function to save intern data
 async function saveInternData() {
-  const selectedDepartment = departmentDropdown.value; // Define selectedDepartment here
-  const serial = departmentSerials[selectedDepartment]; // Get the current serial
-
-  // Set the ID using the department code and current serial
+  const selectedDepartment = departmentDropdown.value; 
+  const serial = departmentSerials[selectedDepartment]; 
   IntenID.value = `${selectedDepartment}${String(serial).padStart(3, "0")}`;
 
   const internData = {

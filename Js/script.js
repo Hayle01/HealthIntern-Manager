@@ -24,6 +24,7 @@ console.log("Loaded department serials:", departmentSerials);
 
 document.addEventListener("DOMContentLoaded", function () {
   if (window.location.pathname.includes("Dashboard.html")) {
+    
     // Modal for quick registration
     const registerIntern = document.querySelector("#registerIntern");
     const registerhospital = document.querySelector("#registerhospital");
@@ -103,9 +104,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Function to update the ID input when department changes
     departmentDropdown.addEventListener("change", function () {
       const selectedDepartment = departmentDropdown.value;
-      const serial = departmentSerials[selectedDepartment]; // get current serial for the department
-
-      // Set the ID using the department code and current serial
+      const serial = departmentSerials[selectedDepartment]; 
       IntenID.value = `${selectedDepartment}${String(serial).padStart(3, "0")}`;
     });
 
@@ -121,7 +120,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Function to save intern data
     async function saveInternData() {
-      const selectedDepartment = departmentDropdown.value; // Define selectedDepartment here
+      const selectedDepartment = departmentDropdown.value;
       const serial = departmentSerials[selectedDepartment]; // Get the current serial
 
       // Set the ID using the department code and current serial
