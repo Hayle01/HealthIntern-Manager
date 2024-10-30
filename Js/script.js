@@ -24,7 +24,6 @@ console.log("Loaded department serials:", departmentSerials);
 
 document.addEventListener("DOMContentLoaded", function () {
   if (window.location.pathname.includes("Dashboard.html")) {
-    
     // Modal for quick registration
     const registerIntern = document.querySelector("#registerIntern");
     const registerhospital = document.querySelector("#registerhospital");
@@ -104,7 +103,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Function to update the ID input when department changes
     departmentDropdown.addEventListener("change", function () {
       const selectedDepartment = departmentDropdown.value;
-      const serial = departmentSerials[selectedDepartment]; 
+      const serial = departmentSerials[selectedDepartment];
       IntenID.value = `${selectedDepartment}${String(serial).padStart(3, "0")}`;
     });
 
@@ -170,38 +169,98 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   if (window.location.pathname.includes("Interns.html")) {
-    const departmentNames = {
-      NUR: "Nursing",
-      PHA: "Pharmacy",
-      LAB: "Laboratory",
-      RAD: "Radiology",
-      SUR: "Surgery",
-      PED: "Pediatrics",
-      OBS: "Obstetrics",
-      DEN: "Dentistry",
-      PH: "Public Health",
-      PHY: "Physiotherapy",
-      EM: "Emergency Medicine",
-      CAR: "Cardiology",
-      NEU: "Neurology",
-      ORT: "Orthopedics",
-      ANE: "Anesthesiology",
-    };
+     const departmentNames = {
+       NUR: "Nursing",
+       PHA: "Pharmacy",
+       LAB: "Laboratory",
+       RAD: "Radiology",
+       SUR: "Surgery",
+       PED: "Pediatrics",
+       OBS: "Obstetrics",
+       DEN: "Dentistry",
+       PH: "Public Health",
+       PHY: "Physiotherapy",
+       EM: "Emergency Medicine",
+       CAR: "Cardiology",
+       NEU: "Neurology",
+       ORT: "Orthopedics",
+       ANE: "Anesthesiology",
+     };
 
-    const tableBody = document.getElementById("InternsTableBody");
-    const RegisteredInterns = JSON.parse(localStorage.getItem("interns")) || [];
-    RegisteredInterns.forEach((intern) => {
-      const row = document.createElement("tr");
-      row.innerHTML = `
+     const tableBody = document.getElementById("InternsTableBody");
+     const RegisteredInterns =
+       JSON.parse(localStorage.getItem("interns")) || [];
+     RegisteredInterns.forEach((intern) => {
+       const row = document.createElement("tr");
+       row.innerHTML = `
         <td>${intern.internID}</td>
         <td>${intern.fullName}</td>
         <td>${intern.institution}</td>
         <td>${departmentNames[intern.department]}</td>
         <td>${intern.startDate}</td>
         <td>${intern.endDate}</td>
-        <td><span class="status pending">${intern.status || "Pending"}</span></td>`;
-      tableBody.appendChild(row);
-    });
-  }
-  console.log("Hello Interns Page");
+        <td><span class="status pending">${
+          intern.status || "Pending"
+        }</span></td>`;
+
+       // Add a click event to the row to open modal with intern details
+       row.addEventListener("click", () => {
+         openInternModal(intern);
+       });
+       tableBody.appendChild(row);
+     });
+
+     const modal = document.getElementById("internModal");
+     const modalImage = document.getElementById("InternImagModal");
+     const modalFullName = document.getElementById("modalFullName");
+     const modalMotherName = document.getElementById("modalMotherName");
+     const modalDateOfBirth = document.getElementById("modalDateOfBirth");
+     const modalGender = document.getElementById("modalGender");
+     const modalMaritalStatus = document.getElementById("modalMaritalStatus");
+     const modalNationality = document.getElementById("modalNationality");
+     const modalAddress = document.getElementById("modalAddress");
+     const modalEmail = document.getElementById("modalEmail");
+     const modalPhoneNumber = document.getElementById("modalPhoneNumber");
+     const modalDepartment = document.getElementById("modalDepartment");
+     const modalInstitution = document.getElementById("modalInstitution");
+     const modalStartDate = document.getElementById("modalStartDate");
+     const modalEndDate = document.getElementById("modalEndDate");
+     const modalStatus = document.getElementById("modalStatus");
+
+     function openInternModal(intern) {
+      console.log("Opening Modal:", intern);
+       // Populate modal with intern data
+       modalImage.src = intern.image || "../Images/default-profile-image.png";
+       modalFullName.textContent = intern.fullName;
+       modalMotherName.textContent = intern.motherName;
+       modalDateOfBirth.textContent = intern.dateOfBirth;
+       modalGender.textContent = intern.gender;
+       modalMaritalStatus.textContent = intern.maritalStatus;
+       modalNationality.textContent = intern.nationality;
+       modalAddress.textContent = intern.address;
+       modalEmail.textContent = intern.email;
+       modalPhoneNumber.textContent = intern.phoneNumber; // fixed key
+       modalDepartment.textContent = departmentNames[intern.department];
+       modalInstitution.textContent = intern.institution;
+       modalStartDate.textContent = intern.startDate;
+       modalEndDate.textContent = intern.endDate;
+       modalStatus.textContent = intern.status || "Pending"; // default status
+
+       modal.style.display = "block";
+     }
+
+     // Close modal functionality
+     document
+       .querySelector("#CloseInternModal")
+       .addEventListener("click", function () {
+         modal.style.display = "none";
+       });
+
+     // Close modal when clicking outside of it
+     window.onclick = function (event) {
+       if (event.target == modal) {
+         modal.style.display = "none";
+       }
+     };
+}
 });

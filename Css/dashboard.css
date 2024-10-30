@@ -270,7 +270,7 @@ header .right form{
 .Register-intern{ 
 }
 
-.model {
+.model, .Internmodal {
     width: 100%;
     height: 100%;
     display: none;
@@ -303,8 +303,8 @@ header .right form{
     cursor: pointer;
     font-size: 30px;
     font-weight: bold;
-    color: black;
-    padding: 0px 10px;
+    color: #202224;
+    padding: 0 10px;
 }
 
 .close-model:hover {
@@ -449,6 +449,7 @@ header .right form{
 }
 .intern-table tbody tr:hover {
     background-color: #f1f5f9;
+    transition: background-color 0.3s ease-in-out;
 }
 
 .status {
@@ -482,6 +483,55 @@ header .right form{
     color: #6d28d9;
 }
 
+
+/* Intern modal section */
+.Internmodal-content{
+    position: relative;
+    margin: 2% auto;
+    width: 70%;
+    height: 80%;
+    background-color: #f5f6fa;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.Internmodal-content h2{
+    margin-top: 10px;
+}
+.Internmodal-content p{
+    font-size: 1rem;
+    font-weight: bold;
+    color: #202224;
+}
+
+.Internmodal-content p span {
+    font-weight: normal;
+
+}
+
+.InternImage{
+    width: 100%;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.InternImage img{
+    width: 150px;
+    height: 150px;
+    border: 0.6px solid #D5D5D5;
+    border-radius: 10px;
+}
+
+.internInfo{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    background-color: #f1f5f9;
+}
 
 
 /* resposive design */

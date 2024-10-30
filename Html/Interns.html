@@ -1,107 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>HealthIntern Manager - Interns</title>
-    <link rel="stylesheet" href="../Css/dashboard.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-    />
-  </head>
-  <body>
-    <!-- side bar section -->
-    <div class="dashboard-container">
-      <section class="side-bar d-side-bar">
-        <div class="logo">
-          <a href="./Dashboard.html"
-            ><h1>HealthIntern <span>Manager</span></h1></a
-          >
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HealthIntern Manager - Interns</title>
+  <link rel="stylesheet" href="../Css/dashboard.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+</head>
+
+<body>
+  <!-- side bar section -->
+  <div class="dashboard-container">
+    <section class="side-bar d-side-bar">
+      <div class="logo">
+        <a href="./Dashboard.html">
+          <h1>HealthIntern <span>Manager</span></h1>
+        </a>
+      </div>
+      <nav>
+        <ul class="side-bar-links">
+          <li>
+            <div class="path"></div>
+            <a href="../Html/Dashboard.html"><img src="../Icons/dashboard2.svg" alt="" />Dashboard</a>
+          </li>
+          <li>
+            <div class="path"></div>
+            <a href="../Html/registerIntern.html"><i class="fa-solid fa-user"></i>Register Intern</a>
+          </li>
+          <li>
+            <div class="path"></div>
+            <a href="#"><i class="fa-solid fa-house-medical"></i>Register Hospital</a>
+          </li>
+          <li>
+            <div class="path d-link"></div>
+            <a href="#" id="interns" class="current-link"><i class="fa-solid fa-user-group"></i>Interns</a>
+          </li>
+          <li>
+            <div class="path"></div>
+            <a href="#" id="Hospitals"><i class="fa-solid fa-hospital"></i>Hospitals</a>
+          </li>
+          <li>
+            <div class="path"></div>
+            <a href="#" id="logout"><i class="fa-solid fa-power-off"></i>Log out</a>
+          </li>
+        </ul>
+      </nav>
+    </section>
+
+    <!-- content section -->
+    <section class="content-section">
+
+      <!-- registered interns display -->
+      <div class="RegisteredInterns">
+        <a href="Interns.html">
+          <h1 class="page-title">Interns</h1>
+        </a>
+
+        <div class="filter-bar">
+          <div class="filter-icon">
+            <img src="../Icons/filter.svg" alt="filter-icon">
+          </div>
+          <div class="byDate">
+            <label for="filterby" class="filterby">Filter By</label>
+            </select>
+
+            <div class="byDate">
+              <select id="byDateFilter" class="filter">
+                <option value="" hidden>Date</option>
+                <option value="Today">Today</option>
+                <option value="This Week">This Week</option>
+                <option value="This Month">This Month</option>
+              </select>
+            </div>
+            <div class="byDate">
+              <select id="byDateFilter" class="filter">
+                <option value="" hidden>Gender</option>
+                <option value="Male">Male</option>
+                <option value="female">Female</option>
+              </select>
+            </div>
+            <div class="byDate">
+              <select id="byDateFilter" class="filter">
+                <option value="" hidden>Intern Status</option>
+                <option value="Completed">Completed</option>
+                <option value="pending">Pending</option>
+                <option value="Processing">Processing</option>
+              </select>
+            </div>
+          </div>
         </div>
-        <nav>
-          <ul class="side-bar-links">
-            <li>
-              <div class="path"></div>
-              <a href="../Html/Dashboard.html"
-                ><img src="../Icons/dashboard2.svg" alt="" />Dashboard</a
-              >
-            </li>
-            <li>
-              <div class="path"></div>
-              <a href="../Html/registerIntern.html"><i class="fa-solid fa-user"></i>Register Intern</a>
-            </li>
-            <li>
-              <div class="path"></div>
-              <a href="#"
-                ><i class="fa-solid fa-house-medical"></i>Register Hospital</a
-              >
-            </li>
-            <li>
-              <div class="path d-link"></div>
-              <a href="#" id="interns" class="current-link"
-                ><i class="fa-solid fa-user-group"></i>Interns</a
-              >
-            </li>
-            <li>
-              <div class="path"></div>
-              <a href="#" id="Hospitals"
-                ><i class="fa-solid fa-hospital"></i>Hospitals</a
-              >
-            </li>
-            <li>
-              <div class="path"></div>
-              <a href="#" id="logout"
-                ><i class="fa-solid fa-power-off"></i>Log out</a
-              >
-            </li>
-          </ul>
-        </nav>
-      </section>
 
-      <!-- content section -->
-      <section class="content-section">
-
-        <!-- registered interns display -->
-         <div class="RegisteredInterns">
-            <a href="Interns.html"><h1 class="page-title">Interns</h1></a>
-
-             <div class="filter-bar">
-               <div class="filter-icon">
-                <img src="../Icons/filter.svg" alt="filter-icon">
-               </div>
-               <div class="byDate">
-                <label for="filterby" class="filterby">Filter By</label>
-                </select>
-
-               <div class="byDate">
-                <select id="byDateFilter" class="filter">
-                  <option value="" hidden>Date</option>
-                  <option value="Today">Today</option>
-                  <option value="This Week">This Week</option>
-                  <option value="This Month">This Month</option>
-                </select>
-               </div>
-                <div class="byDate">
-                <select id="byDateFilter" class="filter">
-                  <option value="" hidden>Gender</option>
-                  <option value="Male">Male</option>
-                  <option value="female">Female</option>
-                </select>
-               </div>
-                <div class="byDate">
-                <select id="byDateFilter" class="filter">
-                  <option value="" hidden>Intern Status</option>
-                  <option value="Completed">Completed</option>
-                  <option value="pending">Pending</option>
-                  <option value="Processing">Processing</option>
-                </select>
-               </div>
-             </div>
-         </div>
-
-         <!-- Interns Sections display-->
-         <section class="internsDisplay">
+        <!-- Interns Sections display-->
+        <section class="internsDisplay">
 
           <table class="intern-table">
             <thead>
@@ -116,16 +107,49 @@
               </tr>
             </thead>
             <tbody id="InternsTableBody">
-          
+
             </tbody>
           </table>
-         </section>
-
-         
-         </div>
         </section>
-    </div>
+        <!-- Modal Structure -->
+        <div id="internModal" class="Internmodal">
+          <div class="Internmodal-content">
+            <span id="CloseInternModal" class="close-model">&times;</span>
+            <h2>Intern Details</h2>
+            <img src="" alt="">
+            <div class="InternImage">
+              <img id="InternImagModal"  src="" alt="Intern Image">
+              <img id="InstinLogo"  src="../Images/just logo.png" alt="Intern Image">
+            </div>
+            <div class="internInfo">
+              <div class="left-info">
+                <p>Full Name: <span id="modalFullName"></span></p>
+                <p>Mother Name: <span id="modalMotherName"></span></p>
+                <p>Date of Birth: <span id="modalDateOfBirth"></span></p>
+                <p>Gender: <span id="modalGender"></span></p>
+                <p>Marital Status: <span id="modalMaritalStatus"></span></p>
+                <p>Nationality: <span id="modalNationality"></span></p>
+                <p>Address: <span id="modalAddress"></span></p>
+              </div>
+              <div class="right-info">
+                <p>Email: <span id="modalEmail"></span></p>
+                <p>Phone Number: <span id="modalPhoneNumber"></span></p>
+                <p>Department: <span id="modalDepartment"></span></p>
+                <p>Institution: <span id="modalInstitution"></span></p>
+                <p>Start Date: <span id="modalStartDate"></span></p>
+                <p>End Date: <span id="modalEndDate"></span></p>
+                <p>Status: <span id="modalStatus"></span></p>
+              </div>
+            </div>
+          </div>
+        </div>
 
-    <script src="../Js/script.js"></script>
-  </body>
+
+      </div>
+    </section>
+  </div>
+
+  <script src="../Js/script.js"></script>
+</body>
+
 </html>
