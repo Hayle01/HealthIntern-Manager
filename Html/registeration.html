@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HealthIntern Manager - Registeration</title>
+    <link rel="stylesheet" href="../Css/dashboard.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <!-- side bar section -->
+    <div class="dashboard-container">
+      <section class="side-bar mobile-device">
+        <div class="logo">
+          <a href="./Dashboard.html">
+            <h1>HealthIntern <span>Manager</span></h1>
+          </a>
+        </div>
+        <nav>
+          <ul class="side-bar-links">
+            <li>
+              <div class="path"></div>
+              <a href="../Html/Dashboard.html"
+                ><img src="../Icons/dashboard2.svg" alt="" />Dashboard</a
+              >
+            </li>
+            <li>
+              <div class="path d-link"></div>
+              <a href="#" class="current-link"
+                ><i class="fa-solid fa-user"></i>Registeration</a
+              >
+            </li>
+            <li>
+              <div class="path"></div>
+              <a href="#"
+                ><i class="fa-solid fa-house-medical"></i>Register Hospital</a
+              >
+            </li>
+            <li>
+              <div class="path"></div>
+              <a href="../Html/Interns.html" id="interns"
+                ><i class="fa-solid fa-user-group"></i>Interns</a
+              >
+            </li>
+            <li>
+              <div class="path"></div>
+              <a href="#" id="Hospitals"
+                ><i class="fa-solid fa-hospital"></i>Hospitals</a
+              >
+            </li>
+            <li>
+              <div class="path"></div>
+              <a href="#" id="logout"
+                ><i class="fa-solid fa-power-off"></i>Log out</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </section>
+
+      <!-- content section -->
+      <section class="content-section">
+        <!-- Header -->
+        <header>
+          <div class="left">
+            <div class="register-btns">
+              <button class="register-Intern-btn" id="registerIntern">
+                Register Intern
+              </button>
+              <button class="registerhospital" id="registerhospital">
+                Register Hospital
+              </button>
+              <button class="registerInstitutionBtn" id="registerInstitution">
+                Register Institution
+              </button>
+            </div>
+          </div>
+        </header>
+
+        <!-- Register Intern -->
+        <div class="registers Register-intern">
+          <h1 class="page-title">Intern Registration</h1>
+          <!-- Form for Intern registration-->
+          <form id="InternRegister" class="registerForm">
+            <div class="input-Label">
+              <label for="fullName">Full Name:</label>
+              <input type="text" id="fullName" placeholder="Enter Fullname" />
+            </div>
+            <div class="input-Label">
+              <label for="mothername">Mother's Name:</label>
+              <input
+                type="text"
+                id="mothername"
+                placeholder="Enter Mother Name"
+              />
+            </div>
+            <div class="input-Label">
+              <label for="dateoFBirth">Date of Birth:</label>
+              <input type="date" id="dateoFBirth" />
+            </div>
+            <div class="input-Label">
+              <label for="Gender">Gender:</label>
+              <div class="gender">
+                <div class="male">
+                  <input type="radio" id="male" name="gender" value="male" />
+                  <label for="male">Male</label>
+                </div>
+                <div class="female">
+                  <input
+                    type="radio"
+                    id="female"
+                    name="gender"
+                    value="female"
+                  />
+                  <label for="female">Female</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="input-Label">
+              <label for="martialStatus">Martial Status:</label>
+              <div class="martialStatus">
+                <div class="Status">
+                  <div class="single">
+                    <input
+                      type="radio"
+                      id="single"
+                      name="martialStatus"
+                      value="single"
+                    />
+                    <label id="Single">Single</label>
+                  </div>
+                  <div class="married">
+                    <input
+                      type="radio"
+                      name="martialStatus"
+                      id="married"
+                      value="married"
+                    />
+                    <label id="Married">Married</label>
+                  </div>
+                  <div class="divorced">
+                    <input
+                      type="radio"
+                      name="martialStatus"
+                      id="Divorced"
+                      value="Divorced"
+                    />
+                    <span id="Divorced">Divorced</span>
+                  </div>
+                  <div class="widowed">
+                    <input
+                      type="radio"
+                      name="martialStatus"
+                      id="Widowed"
+                      value="Widowed"
+                    />
+                    <span id="Widowed">Widowed</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="input-Label">
+              <label for="nationality">Nationality:</label>
+              <input
+                type="text"
+                id="nationality"
+                placeholder="Enter Nationality"
+              />
+            </div>
+            <div class="input-Label">
+              <label for="address">Address:</label>
+              <input type="text" id="addresss" placeholder="Enter Address" />
+            </div>
+            <div class="input-Label">
+              <label for="email">Email:</label>
+              <input type="text" id="email" placeholder="Enter Email" />
+            </div>
+            <div class="input-Label">
+              <label for="phonenumber">Phone Number:</label>
+              <input
+                type="text"
+                id="phonenumber"
+                placeholder="Enter Phone Number"
+              />
+            </div>
+            <div class="input-Label">
+              <label for="Department">Department:</label>
+              <select id="Department" name="Department">
+                <option value="NUR">Nursing</option>
+                <option value="PHA">Pharmacy</option>
+                <option value="LAB">Laboratory</option>
+                <option value="RAD">Radiology</option>
+                <option value="SUR">Surgery</option>
+                <option value="PED">Pediatrics</option>
+                <option value="OBS">Obstetrics</option>
+                <option value="DEN">Dentistry</option>
+                <option value="PH">Public Health</option>
+                <option value="PHY">Physiotherapy</option>
+                <option value="EM">Emergency Medicine</option>
+                <option value="CAR">Cardiology</option>
+                <option value="NEU">Neurology</option>
+                <option value="ORT">Orthopedics</option>
+                <option value="ANE">Anesthesiology</option>
+              </select>
+            </div>
+            <div class="input-Label">
+              <label for="InternID">ID</label>
+              <input type="text" id="IntenID" />
+            </div>
+
+            <div class="input-Label">
+              <label for="Institution">Institution:</label>
+              <input
+                type="text"
+                id="Institution"
+                placeholder="Enter Intern Institution"
+              />
+            </div>
+            <div class="input-Label">
+              <label for="StartDate">Start Date:</label>
+              <input type="date" id="StartDate" />
+            </div>
+            <div class="input-Label">
+              <label for="EndDate">End Date:</label>
+              <input type="date" id="EndDate" />
+            </div>
+            <div class="input-Label">
+              <label for="upoadImage">Upload Image:</label>
+              <input type="file" style="border: none" id="InternImage" />
+            </div>
+
+            <button type="submit" id="RegisterFormBtn" class="registerBTN">
+              Register Intern
+            </button>
+          </form>
+        </div>
+
+        <div class="registers registerHospital">
+          <h1 class="page-title">Hospital Registration</h1>
+          <!-- form for register hospital -->
+          <form id="registerHospital" class="registerForm">
+            <!-- hospital name -->
+            <div class="input-Label">
+              <label for="hospitalName">Hospital Name:</label>
+              <input
+                type="text"
+                id="hospitalName"
+                placeholder="Enter Hospital Name"
+              />
+            </div>
+            <!-- hospital location -->
+            <div class="input-Label">
+              <label for="Location">Location:</label>
+              <input
+                type="text"
+                id="hospitallocation"
+                placeholder="Enter Hospital Location"
+              />
+            </div>
+
+            <!-- hospital contact for email-->
+            <div class="input-Label">
+              <label for="hospitalcontact">Hospital Contact</label>
+              <input
+                type="email"
+                id="hospitalEmail"
+                placeholder="Enter Hospital email"
+              />
+            </div>
+
+            <!-- hospital contact for phone -->
+            <div class="input-Label">
+              <label for="hospitalContact">Hospital Contact</label>
+              <input
+                type="tel"
+                id="hospitalPhone"
+                placeholder="Enter Hospital phonenumber"
+                required
+              />
+            </div>
+            <!-- hopital capacity intern can accomodate -->
+            <div class="input-Label">
+              <label for="hospitalCapacity">Hospital Capacity</label>
+              <input
+                type="number"
+                id="hospitalCapacity"
+                name="hospitalCapacity"
+                placeholder="Enter m-number interns the hospital can accommodate."
+                required
+              />
+            </div>
+
+            <!-- Hospital type-->
+            <div class="input-label">
+              <label for="hospitalType">Hospital Type:</label>
+              <select id="hospitalType" name="hospitalType" required>
+                <option value="public" selected>Public</option>
+                <option value="private">Private</option>
+              </select>
+            </div>
+
+            <!-- hospital available departments -->
+            <div class="input-label">
+              <label for="departmentsAvailable">Departments Available:</label>
+              <select
+                id="departmentsAvailable"
+                name="departmentsAvailable"
+                multiple
+              >
+                <option value="emergency">Emergency</option>
+                <option value="pediatrics">Pediatrics</option>
+                <option value="surgery">Surgery</option>
+              </select>
+            </div>
+
+            <!-- hospital avaible shifts -->
+            <div class="input-label">
+              <label for="availableShifts">Available Shifts for Interns:</label>
+              <select id="availableShifts" name="availableShifts" multiple>
+                <option value="day">Day</option>
+                <option value="night">Night</option>
+                <option value="weekend">Weekend</option>
+              </select>
+            </div>
+
+            <!-- hosppital logo -->
+            <div class="input-Label">
+              <label for="hospitalLogo">Hospital Logo</label>
+              <input
+                type="file"
+                class="form-control-file"
+                id="hospitalLogo"
+                name="hospitalLogo"
+              />
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" id="RegisterFormBtn" class="registerBTN">
+              Register Hospital
+            </button>
+          </form>
+        </div>
+
+        <div class="registers RegisterInstitution">
+          <h1 class="page-title">University/Institution Registration</h1>
+          <!-- form for register institution -->
+          <form id="RegisterInstitution" class="registerForm">
+            <!-- Basic Information -->
+            <!-- institution name -->
+            <div class="input-label">
+              <label for="institutionName">Institution Name:</label>
+              <input
+                type="text"
+                id="institutionName"
+                name="institutionName"
+                placeholder="Institution Name"
+                required
+              />
+            </div>
+            <!-- institution Location -->
+            <div class="input-label">
+              <label for="institutionLocation">Location:</label>
+              <input
+                type="text"
+                id="institutionLocation"
+                name="institutionLocation"
+                placeholder="Enter Institution Location"
+                required
+              />
+            </div>
+            <!--  institution Contact phone-->
+            <div class="input-label">
+              <label for="institutionPhone">Phone Number:</label>
+              <input
+                type="tel"
+                id="institutionPhone"
+                name="institutionPhone"
+                placeholder="Enter phone number"
+                required
+              />
+            </div>
+            <!-- Email Address -->
+            <div class="input-label">
+              <label for="institutionEmail">Email Address:</label>
+              <input
+                type="email"
+                id="institutionEmail"
+                name="institutionEmail"
+                placeholder="Enter email address"
+                required
+              />
+            </div>
+            <!-- Student Capacity: -->
+            <div class="input-label">
+              <label for="studentCapacity">Student Capacity:</label>
+              <input
+                type="number"
+                id="studentCapacity"
+                name="studentCapacity"
+                required
+              />
+            </div>
+            <!-- Programs and Degrees Offered  -->
+            <div class="input-label">
+              <label for="programsOffered">Programs and Degrees Offered:</label>
+              <select id="programsOffered" name="programsOffered" multiple>
+                <option value="diploma">Diploma</option>
+                <option value="bachelors">Bachelor’s</option>
+                <option value="masters">Master’s</option>
+                <option value="doctorate">Doctorate</option>
+              </select>
+            </div>
+            <!-- Additional Remarks: -->
+            <div class="input-label additionalRemarks">
+              <label for="additionalRemarks">Additional Remarks:</label>
+              <textarea
+                id="additionalRemarks"
+                name="additionalRemarks"
+              ></textarea>
+            </div>
+
+            <!-- Institution logo -->
+            <div class="input-Label">
+              <label for="institutionLogo">Institution Logo</label>
+              <input type="file" name="institutionLogo" id="institutionLogo" />
+            </div>
+
+            <!-- submit btn -->
+            <button
+              type="submit"
+              id="registerInstitutionBTN"
+              class="registerBTN"
+            >
+              Register Institution
+            </button>
+          </form>
+        </div>
+      </section>
+    </div>
+
+    <script src="../Js/Registration.js"></script>
+  </body>
+</html>

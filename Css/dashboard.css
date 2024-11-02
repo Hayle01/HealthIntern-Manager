@@ -19,13 +19,14 @@ img {
 .dashboard-container {
     width: 100%;
     height: 100%;
-    margin: 0 auto; 
+    margin: 0 auto;
     max-width: 1536px;
     display: flex;
 }
 
 .dashboard-container .side-bar {
     width: 300px;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     gap: 1.8rem;
@@ -33,7 +34,8 @@ img {
     box-shadow: 0px 0px 2px #e0e0e0;
     padding-block: 1.3rem;
 }
-.d-side-bar{
+
+.d-side-bar {
     height: 100vh;
 }
 
@@ -154,7 +156,7 @@ header .left {
     gap: 1rem;
 }
 
-.toggle-btn{
+/* .toggle-btn {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -173,20 +175,22 @@ header .left {
 
 }
 
-.toggle-btn.sideClosetoggle{
+.toggle-btn.sideClosetoggle {
     display: none;
     position: absolute;
     left: 240px;
 
-}
-.register-btns{
+} */
+
+.register-btns {
     display: flex;
     align-items: center;
     gap: 1rem;
 }
 
-.register-btns 
-.register-Intern-btn, .registerhospital{
+.register-btns .register-Intern-btn,
+.registerhospital,
+.registerInstitutionBtn {
     background-color: #4880ff;
     border: none;
     border-radius: 10px;
@@ -197,25 +201,33 @@ header .left {
     color: #FFFFFF;
     cursor: pointer;
 }
-.register-btns .register-Intern-btn:hover{
+
+.register-btns .register-Intern-btn:hover {
     background-color: #376dec;
     transition: background-color 0.5s ease;
 }
 
-.registerhospital{
+.registerhospital {
     background-color: #28B463;
 }
-.registerhospital:hover{
+
+.registerhospital:hover {
     background-color: #18c15e;
     transition: background-color 0.5s ease;
 }
+
+.registerInstitutionBtn {
+    background-color: #6b7280;
+}
+
 header .right {
     width: 60%;
     display: flex;
     align-items: center;
     justify-content: flex-end;
 }
-header .right form{
+
+header .right form {
     width: 100%;
     display: flex;
     align-items: center;
@@ -227,7 +239,7 @@ header .right form{
 }
 
 
-.right form input{
+.right form input {
     width: 80%;
     padding: 0.7rem;
     outline: none;
@@ -237,7 +249,7 @@ header .right form{
     font-family: "Nunito Sans", sans-serif;
 }
 
-.right form button{
+.right form button {
     width: 20%;
     padding: 0.5rem;
     outline: none;
@@ -251,26 +263,39 @@ header .right form{
     cursor: pointer;
 }
 
-.right form button i{
+.right form button i {
     font-size: 1.3rem;
 }
 
 /* Dashboard page */
-.dashboard-page, .Register-intern{
+.dashboard-page,
+.registers {
     padding-inline: 2rem;
     display: flex;
     flex-direction: column;
-    gap: 1.75rem;
+    gap: 1.55rem;
 }
+
+.registers.Register-intern {
+    display: flex;
+}
+
+.registerHospital {
+    display: none;
+}
+
+.RegisterInstitution {
+    display: none;
+}
+
 .page-title {
     font-size: 1.5rem;
     font-weight: 700;
     color: #202224;
 }
-.Register-intern{ 
-}
 
-.model, .Internmodal {
+.model,
+.Internmodal {
     width: 100%;
     height: 100%;
     display: none;
@@ -280,7 +305,8 @@ header .right form{
     top: 0;
     background-color: rgb(0, 0, 0, 0.5);
 }
-.model .path{
+
+.model .path {
     background-color: #406ed9;
     width: 100%;
     height: 25px;
@@ -296,6 +322,7 @@ header .right form{
     border-radius: 10px;
     padding: 20px;
 }
+
 .close-model {
     position: absolute;
     top: -10px;
@@ -311,8 +338,8 @@ header .right form{
     color: rgb(51, 51, 51, 0.8);
 }
 
-/* Registeration Intern */
-.InternRegisteration{
+/* Registeration Form */
+.registerForm {
     width: 100%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -320,7 +347,10 @@ header .right form{
     gap: 1rem;
 }
 
-.InternRegisteration input, select{
+
+.registerForm input,
+select,
+textarea {
     width: 100%;
     border: 1px solid #D5D5D5;
     padding: 0.8rem 1rem;
@@ -329,37 +359,47 @@ header .right form{
     outline: none;
 }
 
-.InternRegisteration .input-Label{
+.registerForm .input-Label {
     display: flex;
     flex-direction: column;
     gap: 0.2rem;
 }
-.input-Label label{
+
+.input-Label label {
     font-size: 1rem;
     font-weight: 600;
     color: #202224;
 }
-.input-Label .gender, .martialStatus {
+
+.input-Label .gender,
+.martialStatus {
     display: flex;
     align-items: center;
     gap: 1rem;
     margin-top: 10px;
 }
-.gender .male, .female, .Status{
+
+.gender .male,
+.female,
+.Status {
     display: flex;
     align-items: center;
     gap: 0.5rem;
 }
-.Status .single, .married, .divorced, .widowed{
-   display: flex;
-   align-items: center;
-   flex-direction: wrap;
-   gap: 0.5rem;
-   font-size: 1rem;
-   color: #202224;
+
+.Status .single,
+.married,
+.divorced,
+.widowed {
+    display: flex;
+    align-items: center;
+    flex-direction: wrap;
+    gap: 0.5rem;
+    font-size: 1rem;
+    color: #202224;
 }
 
-.InternRegisteration .registerBTN{
+.registerForm .registerBTN {
     grid-column: 1 / span 3;
     border: none;
     background: #4880ff;
@@ -369,13 +409,19 @@ header .right form{
     font-size: 1rem;
 }
 
+.registerForm .additionalRemarks {
+    grid-column: 1 / span 2;
+}
+
+
 /* Interns display Page */
-.RegisteredInterns{
+.RegisteredInterns {
     padding: 1rem 1rem 0rem 2rem;
     display: flex;
     flex-direction: column;
     gap: 1.2rem;
 }
+
 .filter-bar {
     max-width: 500px;
     display: flex;
@@ -395,24 +441,27 @@ header .right form{
     /* border-right: 0.6px solid #D5D5D5; */
 }
 
-.filter-icon img{
-    width:  100%;
+.filter-icon img {
+    width: 100%;
 }
-.byDate{
+
+.byDate {
     display: flex;
     align-items: center;
     border-left: 0.6px solid #D5D5D5;
 }
-.filter, .filterby{
+
+.filter,
+.filterby {
     background-color: transparent;
     border-radius: 0px;
     border: none;
-    padding: 10px 0px; 
+    padding: 10px 0px;
     padding-inline: 10px;
     cursor: pointer;
 }
 
-.internsDisplay{
+.internsDisplay {
     border: 0.6px solid #D5D5D5;
     background-color: transparent;
     border-radius: 10px;
@@ -440,13 +489,16 @@ header .right form{
     font-size: 0.9rem;
     border-bottom: 0.6px solid rgba(151, 151, 151, 0.4);
 }
+
 .intern-table th {
     font-weight: bold;
     color: #333;
 }
+
 .intern-table tbody tr {
     cursor: pointer;
 }
+
 .intern-table tbody tr:hover {
     background-color: #f1f5f9;
     transition: background-color 0.3s ease-in-out;
@@ -473,6 +525,7 @@ header .right form{
     color: #6b7280;
     padding: 5px 20px;
 }
+
 .status.completed {
     background-color: #d1fae5;
     color: #047857;
@@ -485,7 +538,7 @@ header .right form{
 
 
 /* Intern modal section */
-.Internmodal-content{
+.Internmodal-content {
     position: relative;
     margin: 2% auto;
     width: 70%;
@@ -497,10 +550,12 @@ header .right form{
     flex-direction: column;
     gap: 1rem;
 }
-.Internmodal-content h2{
+
+.Internmodal-content h2 {
     margin-top: 10px;
 }
-.Internmodal-content p{
+
+.Internmodal-content p {
     font-size: 1rem;
     font-weight: bold;
     color: #202224;
@@ -511,7 +566,7 @@ header .right form{
 
 }
 
-.InternImage{
+.InternImage {
     width: 100%;
     border-radius: 10px;
     display: flex;
@@ -519,20 +574,23 @@ header .right form{
     justify-content: space-between;
 }
 
-.InternImage img{
+.InternImage img {
     width: 150px;
     height: 150px;
     border: 0.6px solid #D5D5D5;
     border-radius: 10px;
 }
 
-.internInfo{
+.internInfo {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
     background-color: #f1f5f9;
 }
 
+
+
+/* Regsiterations */
 
 /* resposive design */
 /* tablets and laptops */
@@ -548,6 +606,7 @@ header .right form{
     header .left {
         width: 50%;
     }
+
     .InternRegisteration {
         padding-right: 10px;
         grid-template-columns: 1fr 1fr;
@@ -560,6 +619,7 @@ header .right form{
     .dashboard-container {
         flex-direction: column;
     }
+
     .side-bar {
         width: 0px;
         height: 100vh;
@@ -569,19 +629,24 @@ header .right form{
         z-index: 999;
         transition: 0.3s ease;
     }
-    .side-bar .logo{
+
+    .side-bar .logo {
         padding-top: 40px;
     }
-    .side-bar.active .toggle-btn.sideClosetoggle{
+
+    .side-bar.active .toggle-btn.sideClosetoggle {
         display: flex;
     }
-    .toggle-btn.sideClosetoggle .bar:nth-child(2){
+
+    .toggle-btn.sideClosetoggle .bar:nth-child(2) {
         opacity: 0;
     }
-    .toggle-btn.sideClosetoggle .bar:nth-child(3){
+
+    .toggle-btn.sideClosetoggle .bar:nth-child(3) {
         transform: translateY(-9px) rotate(-45deg);
     }
-    .toggle-btn.sideClosetoggle .bar:nth-child(1){
+
+    .toggle-btn.sideClosetoggle .bar:nth-child(1) {
         transform: translateY(16px) rotate(45deg);
     }
 
@@ -597,6 +662,7 @@ header .right form{
         gap: 1rem;
         width: 100%;
     }
+
     header .right {
         width: 100%;
         padding-inline: 10px;
@@ -605,10 +671,12 @@ header .right form{
     .dashboard-page {
         padding: 1rem;
     }
-    .InternRegisteration{
+
+    .InternRegisteration {
         padding-left: -10px;
-       grid-template-columns: 1fr;
+        grid-template-columns: 1fr;
     }
+
     .InternRegisteration input,
     select {
         width: 95%;

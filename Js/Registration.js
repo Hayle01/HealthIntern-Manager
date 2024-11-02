@@ -1,3 +1,31 @@
+const RegisterInternForm = document.querySelector(".Register-intern");
+const RegisterHospitalForm = document.querySelector(".registerHospital");
+const RegisterInstitutionForm = document.querySelector(".RegisterInstitution");
+
+// BTNS registration
+const registerInternBTN = document.querySelector("#registerIntern");
+const registerhospitalBTN = document.querySelector("#registerhospital");
+const registerInstitutionBTN = document.querySelector("#registerInstitution");
+
+registerInternBTN.addEventListener("click", () => {
+  RegisterInternForm.style.display = "flex";
+  RegisterHospitalForm.style.display = "none";
+  RegisterInstitutionForm.style.display = "none";
+});
+
+registerhospitalBTN.addEventListener("click", () => {
+  RegisterHospitalForm.style.display = "flex";
+  RegisterInternForm.style.display = "none";
+  RegisterInstitutionForm.style.display = "none";
+});
+
+registerInstitutionBTN.addEventListener("click", () => {
+  RegisterInstitutionForm.style.display = "flex";
+  RegisterHospitalForm.style.display = "none";
+  RegisterInternForm.style.display = "none";
+});
+
+// Intern registration form handling events
 // Retrieve departmentSerials from localStorage or initialize
 let departmentSerials = JSON.parse(
   localStorage.getItem("departmentSerials")
@@ -18,10 +46,6 @@ let departmentSerials = JSON.parse(
   ORT: 1,
   ANE: 1,
 };
-
-// Display departmentSerials on page load for debugging
-console.log("Loaded department serials:", departmentSerials);
-
 
 // Intern registration form element selections
 const InternRegisterForm = document.getElementById("InternRegister");
@@ -67,7 +91,7 @@ function getSelectedMaritalStatus() {
 // Function to update the ID input when department changes
 departmentDropdown.addEventListener("change", function () {
   const selectedDepartment = departmentDropdown.value;
-  const serial = departmentSerials[selectedDepartment]; 
+  const serial = departmentSerials[selectedDepartment];
 
   // Set the ID using the department code and current serial
   IntenID.value = `${selectedDepartment}${String(serial).padStart(3, "0")}`;
@@ -85,8 +109,8 @@ function getImageBase64(imageFile) {
 
 // Function to save intern data
 async function saveInternData() {
-  const selectedDepartment = departmentDropdown.value; 
-  const serial = departmentSerials[selectedDepartment]; 
+  const selectedDepartment = departmentDropdown.value;
+  const serial = departmentSerials[selectedDepartment];
   IntenID.value = `${selectedDepartment}${String(serial).padStart(3, "0")}`;
 
   const internData = {
