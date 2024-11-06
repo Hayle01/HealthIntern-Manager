@@ -93,11 +93,19 @@ function getSelectedMaritalStatus() {
 departmentDropdown.addEventListener("change", function () {
   const selectedDepartment = departmentDropdown.value;
   const serial = departmentSerials[selectedDepartment];
-
-  // Set the ID using the department code and current serial
   IntenID.value = `${selectedDepartment}${String(serial).padStart(3, "0")}`;
 });
 
+const currentDate = new Date();
+// console.log(currentDate)
+let status = "Pending";
+
+if (StartDate.value && new Date(StartDate.value) <= currentDate) {
+  status = "Active"; 
+}
+if (EndDate.value && new Date(EndDate.value) <= currentDate) {
+  status = "Completed"; 
+}
 
 // get hospitals from the local storage
 let hospitals = JSON.parse(localStorage.getItem("hospitals")) || [];
@@ -138,13 +146,13 @@ async function saveInternData() {
     department: selectedDepartment,
     internID: IntenID.value,
     institution: InternInstitution.value,
-    SelectedHospitalID: selectedhospital.value, // This stores the hospital ID in the intern data
-    // SelectedHospital: selectedhospital.value || null,
+    SelectedHospitalID: selectedhospital.value,
     startDate: StartDate.value,
     endDate: EndDate.value,
     image: InternImage.files[0]
       ? await getImageBase64(InternImage.files[0])
       : null,
+    status: status
   };
 
   let interns = JSON.parse(localStorage.getItem("interns")) || [];

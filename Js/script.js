@@ -172,6 +172,30 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   if (window.location.pathname.includes("Interns.html")) {
+    function updateInternStatuses() {
+      let interns = JSON.parse(localStorage.getItem("interns")) || [];
+      const currentDate = new Date();
+
+      interns = interns.map((intern) => {
+        let status = intern.status;
+
+        if (
+          intern.startDate &&
+          new Date(intern.startDate) <= currentDate &&
+          status !== "Completed"
+        ) {
+          status = "Active"; 
+        }
+        if (intern.endDate && new Date(intern.endDate) <= currentDate) {
+          status = "Completed"; 
+        }
+        
+        return { ...intern, status };
+      });
+
+      localStorage.setItem("interns", JSON.stringify(interns));
+    }
+    updateInternStatuses();
      const departmentNames = {
        NUR: "Nursing",
        PHA: "Pharmacy",
@@ -201,9 +225,9 @@ document.addEventListener("DOMContentLoaded", function () {
         <td>${departmentNames[intern.department]}</td>
         <td>${intern.startDate}</td>
         <td>${intern.endDate}</td>
-        <td><span class="status pending">${
-          intern.status || "Pending"
-        }</span></td>`;
+         <td><span class="status">${
+         intern.status
+       }</span></td>`;
 
        // Add a click event to the row to open modal with intern details
        row.addEventListener("click", () => {
