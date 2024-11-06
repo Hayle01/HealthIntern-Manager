@@ -27,6 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Modal for quick registration
     const registerIntern = document.querySelector("#registerIntern");
     const registerhospital = document.querySelector("#registerhospital");
+    const registerInstitution = document.querySelector("#registerInstitution");
 
     if (registerIntern) {
       registerIntern.addEventListener("click", openModal);
@@ -35,10 +36,12 @@ document.addEventListener("DOMContentLoaded", function () {
     if (registerhospital) {
       registerhospital.addEventListener("click", openModal);
     }
-
-    document
-      .querySelector(".close-model")
-      .addEventListener("click", () => closeModel());
+    if (registerInstitution){
+      registerInstitution.addEventListener("click", openModal);
+    }
+      document
+        .querySelector(".close-model")
+        .addEventListener("click", () => closeModel());
 
     function openModal() {
       const registerModal = document.querySelector("#register-model");
@@ -188,8 +191,7 @@ document.addEventListener("DOMContentLoaded", function () {
      };
 
      const tableBody = document.getElementById("InternsTableBody");
-     const RegisteredInterns =
-       JSON.parse(localStorage.getItem("interns")) || [];
+     const RegisteredInterns = JSON.parse(localStorage.getItem("interns")) || [];
      RegisteredInterns.forEach((intern) => {
        const row = document.createElement("tr");
        row.innerHTML = `
@@ -223,12 +225,16 @@ document.addEventListener("DOMContentLoaded", function () {
      const modalPhoneNumber = document.getElementById("modalPhoneNumber");
      const modalDepartment = document.getElementById("modalDepartment");
      const modalInstitution = document.getElementById("modalInstitution");
+     const ModalSelectedHospital = document.getElementById("ModalSelectedHospital");
      const modalStartDate = document.getElementById("modalStartDate");
      const modalEndDate = document.getElementById("modalEndDate");
      const modalStatus = document.getElementById("modalStatus");
 
      function openInternModal(intern) {
       console.log("Opening Modal:", intern);
+      const hospitals = JSON.parse(localStorage.getItem("hospitals")) || [];
+      // Find the hospital that matches the intern's SelectedHospitalID
+      const hospital = hospitals.find(h => h.id === intern.SelectedHospitalID);
        // Populate modal with intern data
        modalImage.src = intern.image || "../Images/default-profile-image.png";
        modalFullName.textContent = intern.fullName;
@@ -239,9 +245,12 @@ document.addEventListener("DOMContentLoaded", function () {
        modalNationality.textContent = intern.nationality;
        modalAddress.textContent = intern.address;
        modalEmail.textContent = intern.email;
-       modalPhoneNumber.textContent = intern.phoneNumber; // fixed key
+       modalPhoneNumber.textContent = intern.phoneNumber; 
        modalDepartment.textContent = departmentNames[intern.department];
        modalInstitution.textContent = intern.institution;
+       ModalSelectedHospital.textContent = hospital
+         ? hospital.hospitalName
+         : "Unknown Hospital";
        modalStartDate.textContent = intern.startDate;
        modalEndDate.textContent = intern.endDate;
        modalStatus.textContent = intern.status || "Pending"; // default status
@@ -263,4 +272,36 @@ document.addEventListener("DOMContentLoaded", function () {
        }
      };
 }
+
+if (window.location.pathname.includes("Hospitals.html")) {
+  const HospitalTableBody = document.getElementById("HospitalTableBody");
+  const registeredHospitals = JSON.parse(localStorage.getItem("hospitals")) || [];
+  const registeredInterns = JSON.parse(localStorage.getItem("interns")) || [];
+
+  registeredHospitals.forEach((hospital) => {
+    const internCount = registeredInterns.filter(
+      (intern) => intern.SelectedHospitalID === hospital.id
+    ).length;
+    const row = document.createElement("tr");
+    row.innerHTML = `
+      <td>${hospital.id}</td>
+      <td>${hospital.hospitalName}</td>
+      <td>${hospital.hospitalsdepartment}</td> 
+      <td>${hospital.hospitalType}</td>
+      <td>${hospital.hospitalCapacity}</td>
+      <td>${hospital.availableShifts}</td>
+      <td>${internCount}</td>
+    `;
+
+    // Add click event to show hospital details modal
+    row.addEventListener("click", () => {
+      openHospitalDetailsModal(hospital);
+    });
+
+    HospitalTableBody.appendChild(row);
+  });
+}
+
+
+
 });

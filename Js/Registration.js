@@ -61,6 +61,7 @@ const InternPhonenumber = document.getElementById("phonenumber");
 const departmentDropdown = document.getElementById("Department");
 const IntenID = document.getElementById("IntenID");
 const InternInstitution = document.getElementById("Institution");
+const selectedhospital = document.getElementById("hospitalSelect");
 const StartDate = document.getElementById("StartDate");
 const EndDate = document.getElementById("EndDate");
 const InternImage = document.getElementById("InternImage");
@@ -97,6 +98,17 @@ departmentDropdown.addEventListener("change", function () {
   IntenID.value = `${selectedDepartment}${String(serial).padStart(3, "0")}`;
 });
 
+
+// get hospitals from the local storage
+let hospitals = JSON.parse(localStorage.getItem("hospitals")) || [];
+
+hospitals.forEach((hospital) => {
+  const option = document.createElement("option");
+  option.value = hospital.id; 
+  option.textContent = hospital.hospitalName; 
+  selectedhospital.appendChild(option);
+});
+
 // Function to handle image conversion to Base64
 function getImageBase64(imageFile) {
   return new Promise((resolve, reject) => {
@@ -126,6 +138,8 @@ async function saveInternData() {
     department: selectedDepartment,
     internID: IntenID.value,
     institution: InternInstitution.value,
+    SelectedHospitalID: selectedhospital.value, // This stores the hospital ID in the intern data
+    // SelectedHospital: selectedhospital.value || null,
     startDate: StartDate.value,
     endDate: EndDate.value,
     image: InternImage.files[0]
@@ -151,3 +165,64 @@ InternRegisterForm.addEventListener("submit", (e) => {
   saveInternData();
   window.location.href = "../Html/Interns.html";
 });
+
+
+
+
+
+
+// hospital registration form handling events
+const registerationHospital = document.getElementById("registerHospital");
+const hospitalName = document.querySelector("#hospitalName");
+const hospitallocation = document.querySelector("#hospitallocation");
+const hospitalEmail = document.querySelector("#hospitalEmail");
+const hospitalPhone = document.querySelector("#hospitalPhone");
+const hospitalCapacity = document.querySelector("#hospitalCapacity");
+const hospitalType = document.querySelector("#hospitalType");
+const HdepartmentsAvailable = document.querySelector("#departmentsAvailable");
+const availableShifts = document.querySelector("#availableShifts");
+const hospitalLogo = document.querySelector("#hospitalLogo");
+const RegisterHospitalSubBTN = document.querySelector("#RegisterHospitalBTN");
+
+
+async function registerHospitalFunction() {
+
+  let hospitals = JSON.parse(localStorage.getItem("hospitals")) || [];
+  const hospitalData = {
+    id: "HOS" + (hospitals.length + 1).toString().padStart(3, "0"),
+    hospitalName: hospitalName.value,
+    hospitallocation: hospitallocation.value,
+    hospitalEmail: hospitalEmail.value,
+    hospitalPhone: hospitalPhone.value,
+    hospitalCapacity: hospitalCapacity.value,
+    hospitalType: hospitalType.value,
+    hospitalsdepartment: Array.from(HdepartmentsAvailable.selectedOptions)
+      .map((opt) => opt.value)
+      .join(", "),
+    availableShifts: Array.from(availableShifts.selectedOptions)
+      .map((opt) => opt.value)
+      .join(", "),
+    hospitalLogo: hospitalLogo.files[0]
+      ? await getImageBase64(hospitalLogo.files[0])
+      : null,
+  };
+  console.log('HOSPITAL ID is :', hospitalData.id);
+  
+  hospitals.push(hospitalData);
+  localStorage.setItem("hospitals", JSON.stringify(hospitals));
+  registerationHospital.reset();
+  alert("Hospital registered successfully!");
+}
+RegisterHospitalSubBTN.addEventListener("click", (e) => {
+  e.preventDefault();
+  if (hospitalName.value == "") {
+    alert("Please enter a Hospital name!");
+    return;
+  }
+  registerHospitalFunction();
+  console.log("registerHospital are currently available");
+  window.location.href = "../Html/Hospitals.html";
+});
+
+
+

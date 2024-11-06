@@ -34,7 +34,9 @@ img {
     box-shadow: 0px 0px 2px #e0e0e0;
     padding-block: 1.3rem;
 }
-
+.H-container{
+    flex-direction: column;
+}
 .d-side-bar {
     height: 100vh;
 }
@@ -187,7 +189,7 @@ header .left {
     align-items: center;
     gap: 1rem;
 }
-
+/* modal registeration btns */
 .register-btns .register-Intern-btn,
 .registerhospital,
 .registerInstitutionBtn {
@@ -295,7 +297,7 @@ header .right form {
 }
 
 .model,
-.Internmodal {
+.Internmodal, .HospMOdal {
     width: 100%;
     height: 100%;
     display: none;
@@ -403,10 +405,14 @@ textarea {
     grid-column: 1 / span 3;
     border: none;
     background: #4880ff;
+    cursor: pointer;
     color: #fff;
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
     font-size: 1rem;
+}
+.registerBTN:hover{
+    background-color: #406ed9;
 }
 
 .registerForm .additionalRemarks {
@@ -415,7 +421,7 @@ textarea {
 
 
 /* Interns display Page */
-.RegisteredInterns {
+.RegisteredInterns, .RegisteredHospitals {
     padding: 1rem 1rem 0rem 2rem;
     display: flex;
     flex-direction: column;
@@ -438,7 +444,6 @@ textarea {
     justify-content: center;
     cursor: pointer;
     padding-inline: 10px;
-    /* border-right: 0.6px solid #D5D5D5; */
 }
 
 .filter-icon img {
@@ -461,14 +466,15 @@ textarea {
     cursor: pointer;
 }
 
-.internsDisplay {
+.internsDisplay, .HospitalsDisplay {
     border: 0.6px solid #D5D5D5;
     background-color: transparent;
     border-radius: 10px;
     border-bottom: none;
 }
 
-.intern-table {
+
+.intern-table, .HospitalsTable {
     width: 100%;
     border-collapse: collapse;
     border-radius: 10px;
@@ -480,7 +486,10 @@ textarea {
     background-color: rgba(24, 193, 94, 0.35);
     text-align: left;
 }
-
+.HospitalsTable thead {
+    background-color: rgba(55, 109, 236, 0.4);
+    text-align: left;
+}
 .intern-table th,
 .intern-table td {
     padding: 12px 15px;
@@ -489,20 +498,24 @@ textarea {
     font-size: 0.9rem;
     border-bottom: 0.6px solid rgba(151, 151, 151, 0.4);
 }
-
-.intern-table th {
-    font-weight: bold;
-    color: #333;
+.HospitalsTable th,
+.HospitalsTable,
+td {
+    padding: 12px 15px;
+    text-align: left;
+    color: #202224;
+    font-size: 0.9rem;
+    border-bottom: 0.6px solid rgba(151, 151, 151, 0.4);
 }
-
-.intern-table tbody tr {
+.intern-table, .HospitalsTable tbody tr {
     cursor: pointer;
 }
 
-.intern-table tbody tr:hover {
+.intern-table, .HospitalsTable tbody tr:hover {
     background-color: #f1f5f9;
     transition: background-color 0.3s ease-in-out;
 }
+
 
 .status {
     padding: 5px 10px;

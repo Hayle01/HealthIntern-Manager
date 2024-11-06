@@ -14,7 +14,7 @@
   <body>
     <!-- side bar section -->
     <div class="dashboard-container">
-      <section class="side-bar mobile-device">
+      <section class="side-bar">
         <div class="logo">
           <a href="./Dashboard.html">
             <h1>HealthIntern <span>Manager</span></h1>
@@ -24,39 +24,27 @@
           <ul class="side-bar-links">
             <li>
               <div class="path"></div>
-              <a href="../Html/Dashboard.html"
-                ><img src="../Icons/dashboard2.svg" alt="" />Dashboard</a
-              >
+              <a href="./Dashboard.html"><img src="../Icons/dashboard2.svg" alt="" />Dashboard</a>
             </li>
             <li>
               <div class="path d-link"></div>
-              <a href="#" class="current-link"
-                ><i class="fa-solid fa-user"></i>Registeration</a
-              >
+              <a href="./registeration.html" class="current-link"><i class="fa-solid fa-user"></i>Registeration</a>
             </li>
             <li>
               <div class="path"></div>
-              <a href="#"
-                ><i class="fa-solid fa-house-medical"></i>Register Hospital</a
-              >
+              <a href="./Interns.html" id="interns"><i class="fa-solid fa-user-group"></i>Interns</a>
             </li>
             <li>
               <div class="path"></div>
-              <a href="../Html/Interns.html" id="interns"
-                ><i class="fa-solid fa-user-group"></i>Interns</a
-              >
+              <a href="./Hospitals.html"><i class="fa-solid fa-house-medical"></i>Hospitals</a>
             </li>
             <li>
               <div class="path"></div>
-              <a href="#" id="Hospitals"
-                ><i class="fa-solid fa-hospital"></i>Hospitals</a
-              >
+              <a href="./Institutions.html" id="Institutions"><i class="fa-solid fa-hospital"></i>Institutions</a>
             </li>
             <li>
               <div class="path"></div>
-              <a href="#" id="logout"
-                ><i class="fa-solid fa-power-off"></i>Log out</a
-              >
+              <a href="#" id="logout"><i class="fa-solid fa-power-off"></i>Log out</a>
             </li>
           </ul>
         </nav>
@@ -121,7 +109,7 @@
               </div>
             </div>
 
-            <div class="input-Label">
+            <!-- <div class="input-Label">
               <label for="martialStatus">Martial Status:</label>
               <div class="martialStatus">
                 <div class="Status">
@@ -163,7 +151,7 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
             <div class="input-Label">
               <label for="nationality">Nationality:</label>
               <input
@@ -191,6 +179,7 @@
             <div class="input-Label">
               <label for="Department">Department:</label>
               <select id="Department" name="Department">
+                <option value="" selected>Select Department</option>
                 <option value="NUR">Nursing</option>
                 <option value="PHA">Pharmacy</option>
                 <option value="LAB">Laboratory</option>
@@ -218,9 +207,15 @@
               <input
                 type="text"
                 id="Institution"
-                placeholder="Enter Intern Institution"
-              />
+                placeholder="Enter Intern Institution"/>
             </div>
+            <!-- Hospital -->
+             <div class="input-Label">
+              <label for="hospitalSelect">Choose Hospital:</label>
+              <select id="hospitalSelect">
+                <option value="">Select a hospital</option>
+              </select>
+             </div>
             <div class="input-Label">
               <label for="StartDate">Start Date:</label>
               <input type="date" id="StartDate" />
@@ -255,7 +250,7 @@
             </div>
             <!-- hospital location -->
             <div class="input-Label">
-              <label for="Location">Location:</label>
+              <label for="Location">Address:</label>
               <input
                 type="text"
                 id="hospitallocation"
@@ -340,7 +335,7 @@
             </div>
 
             <!-- Submit Button -->
-            <button type="submit" id="RegisterFormBtn" class="registerBTN">
+            <button type="submit" id="RegisterHospitalBTN" class="registerBTN">
               Register Hospital
             </button>
           </form>
