@@ -189,7 +189,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (intern.endDate && new Date(intern.endDate) <= currentDate) {
           status = "Completed"; 
         }
-        
+
         return { ...intern, status };
       });
 
@@ -238,6 +238,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
      const modal = document.getElementById("internModal");
      const modalImage = document.getElementById("InternImagModal");
+     const InstinLogo = document.getElementById("InstinLogo");
+     const HospitalLogo = document.getElementById("HospitalLogo");
      const modalFullName = document.getElementById("modalFullName");
      const modalMotherName = document.getElementById("modalMotherName");
      const modalDateOfBirth = document.getElementById("modalDateOfBirth");
@@ -257,29 +259,36 @@ document.addEventListener("DOMContentLoaded", function () {
      function openInternModal(intern) {
       console.log("Opening Modal:", intern);
       const hospitals = JSON.parse(localStorage.getItem("hospitals")) || [];
-      // Find the hospital that matches the intern's SelectedHospitalID
+      // const institutions = JSON.parse(localStorage.getItem("institutions")) || [];
+
       const hospital = hospitals.find(h => h.id === intern.SelectedHospitalID);
+      // const institution = institutions.find(i => i.id === intern.institutionID);
+      
+
+
        // Populate modal with intern data
        modalImage.src = intern.image || "../Images/default-profile-image.png";
-       modalFullName.textContent = intern.fullName;
-       modalMotherName.textContent = intern.motherName;
-       modalDateOfBirth.textContent = intern.dateOfBirth;
-       modalGender.textContent = intern.gender;
-       modalMaritalStatus.textContent = intern.maritalStatus;
-       modalNationality.textContent = intern.nationality;
-       modalAddress.textContent = intern.address;
-       modalEmail.textContent = intern.email;
-       modalPhoneNumber.textContent = intern.phoneNumber; 
-       modalDepartment.textContent = departmentNames[intern.department];
-       modalInstitution.textContent = intern.institution;
-       ModalSelectedHospital.textContent = hospital
-         ? hospital.hospitalName
-         : "Unknown Hospital";
-       modalStartDate.textContent = intern.startDate;
-       modalEndDate.textContent = intern.endDate;
-       modalStatus.textContent = intern.status || "Pending"; // default status
+      //  InstinLogo.src = institution.InstitLogo || "../Images/Universitydefault-logo.png";
+      HospitalLogo.src = hospital.hospitalLogo || "../Images/defaultHospitalLogo.jpg";
+      modalFullName.textContent = intern.fullName;
+      modalMotherName.textContent = intern.motherName;
+      modalDateOfBirth.textContent = intern.dateOfBirth;
+      modalGender.textContent = intern.gender;
+      modalMaritalStatus.textContent = intern.maritalStatus;
+      modalNationality.textContent = intern.nationality;
+      modalAddress.textContent = intern.address;
+      modalEmail.textContent = intern.email;
+      modalPhoneNumber.textContent = intern.phoneNumber; 
+      modalDepartment.textContent = departmentNames[intern.department];
+      modalInstitution.textContent = intern.institution;
+      ModalSelectedHospital.textContent = hospital
+       ? hospital.hospitalName
+       : "Unknown Hospital";
+      modalStartDate.textContent = intern.startDate;
+      modalEndDate.textContent = intern.endDate;
+      modalStatus.textContent = intern.status || "Pending"; // default status
 
-       modal.style.display = "block";
+      modal.style.display = "block";
      }
 
      // Close modal functionality
@@ -298,6 +307,7 @@ document.addEventListener("DOMContentLoaded", function () {
 }
 
 if (window.location.pathname.includes("Hospitals.html")) {
+
   const HospitalTableBody = document.getElementById("HospitalTableBody");
   const registeredHospitals = JSON.parse(localStorage.getItem("hospitals")) || [];
   const registeredInterns = JSON.parse(localStorage.getItem("interns")) || [];
@@ -319,13 +329,54 @@ if (window.location.pathname.includes("Hospitals.html")) {
 
     // Add click event to show hospital details modal
     row.addEventListener("click", () => {
-      openHospitalDetailsModal(hospital);
+      console.log("Hospital row clicked");
+      openHospitalDetailsModal(hospital, internCount);
     });
-
     HospitalTableBody.appendChild(row);
   });
+
+
+  const CloseHospitalModal = document.getElementById("CloseHospitalModal");
+  const HospitalModal = document.getElementById("HospitalModal");
+
+  const HospitalLogo = document.getElementById("HospitalLogo");
+  const HospNAMEModal = document.getElementById("HospNAMEModal");
+  const HospitalIDmodal = document.getElementById("HospitalIDmodal");
+  const HospitalTypeMOdal = document.getElementById("HospitalTypeMOdal");
+  const HospitalCapaModal = document.getElementById("HospitalCapaModal");
+  const modalHosDepartments = document.getElementById("modalHosDepartments");
+  const modalHosShifts = document.getElementById("modalHosShifts");
+  const modalHosPhone = document.getElementById("modalHosPhone");
+  const modalHosEmail = document.getElementById("modalHosEmail");
+  const HospitalAddressModal = document.getElementById("HospitalAddressModal");
+  const InternsReceivedModal = document.getElementById("InternsReceivedModal");
+
+  function openHospitalDetailsModal(hospital, internCount) {
+    HospitalLogo.src = hospital.hospitalLogo || "../Images/defaultHospitalLogo.jpg";
+    HospNAMEModal.textContent = hospital.hospitalName;
+    HospitalIDmodal.textContent = hospital.id;
+    HospitalTypeMOdal.textContent = hospital.hospitalType;
+    HospitalCapaModal.textContent = hospital.hospitalCapacity;
+    modalHosDepartments.textContent = hospital.hospitalsdepartment;
+    modalHosShifts.textContent = hospital.availableShifts;
+    modalHosPhone.textContent = hospital.hospitalPhone;
+    modalHosEmail.textContent = hospital.hospitalEmail;
+    HospitalAddressModal.textContent = hospital.hospitallocation;
+    InternsReceivedModal.textContent = internCount;
+
+    HospitalModal.style.display = "block";
+  }
+
+  CloseHospitalModal.addEventListener("click", () => {
+    HospitalModal.style.display = "none";
+  });
+
+  window.onclick = function (event) {
+       if (event.target == HospitalModal) {
+         HospitalModal.style.display = "none";
+       }
+  }
+
 }
-
-
 
 });

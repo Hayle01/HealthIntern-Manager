@@ -550,8 +550,8 @@ td {
 }
 
 
-/* Intern modal section */
-.Internmodal-content {
+/* modals section */
+.Internmodal-content, .HospitalModal-content {
     position: relative;
     margin: 2% auto;
     width: 70%;
@@ -564,17 +564,17 @@ td {
     gap: 1rem;
 }
 
-.Internmodal-content h2 {
+.Internmodal-content, .HospitalModal-content h2 {
     margin-top: 10px;
 }
 
-.Internmodal-content p {
+.Internmodal-content, .HospitalModal-content p {
     font-size: 1rem;
     font-weight: bold;
     color: #202224;
 }
 
-.Internmodal-content p span {
+.Internmodal-content, .HospitalModal-content p span {
     font-weight: normal;
 
 }
@@ -599,6 +599,15 @@ td {
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
     background-color: #f1f5f9;
+}
+#HospitalLogo{
+    width: 150px;
+    height: 150px;
+    border: 0.6px solid #D5D5D5;
+    border-radius: 10px;
+}
+.HospitalInfo{
+
 }
 
 
