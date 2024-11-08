@@ -606,12 +606,60 @@ td {
     border: 0.6px solid #D5D5D5;
     border-radius: 10px;
 }
-.HospitalInfo{
 
+/* dashboard-metrix */
+.metrix{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.top-metrix {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
 
+.top-metrix .metrix-box {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    background-color: #FFFFFF;
+    padding: 10px;
+    border-radius: 10px;
+    border: 0.6px solid #D5D5D5;
+    width: 200px;
+}
 
+.metrix-box .metrixicon-title   {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
 
+.metrixicon-title .Metrix-Icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    background-color: rgba(72, 128, 255, 0.3);
+    border-radius: 10px;
+    cursor: pointer;
+}
+.Metrix-Icon i{
+    font-size: 1.3rem;
+    color: #202224;
+}
+
+.metrix-box .metrix-title{
+    font-size: 1.1rem;
+    color: #8B8D97;
+}
+
+.metrix-box .metrix-value {
+    font-size: 1.3rem;
+    font-weight: bold;
+}
 /* Regsiterations */
 
 /* resposive design */

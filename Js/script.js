@@ -169,6 +169,15 @@ document.addEventListener("DOMContentLoaded", function () {
       saveInternData();
       window.location.href = "../Html/Interns.html";
     });
+
+    // dashboard metrix
+    // Total Intenrs Count
+    let interns = JSON.parse(localStorage.getItem("interns"));
+    const totalInterns = document.querySelector("#TotalInternsValue");
+
+    totalInterns.textContent = interns.length || 0;
+
+
   }
 
   if (window.location.pathname.includes("Interns.html")) {
