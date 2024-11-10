@@ -123,8 +123,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Function to save intern data
     async function saveInternData() {
       const selectedDepartment = departmentDropdown.value;
-      const serial = departmentSerials[selectedDepartment]; // Get the current serial
-
+      const serial = departmentSerials[selectedDepartment];
       // Set the ID using the department code and current serial
       IntenID.value = `${selectedDepartment}${String(serial).padStart(3, "0")}`;
 
@@ -204,17 +203,11 @@ document.addEventListener("DOMContentLoaded", function () {
     updateTotalInterns();
 
     let hospitals = JSON.parse(localStorage.getItem("hospitals")) || [];
-    // Create a mapping of hospital IDs to intern counts
     let hospitalInternCounts = hospitals.map((hospital) => {
       // Filter interns based on SelectedHospitalID
       let internCount = interns.filter(
         (intern) => intern.SelectedHospitalID === hospital.id
       ).length;
-
-      // Debugging statement to check each hospital's intern count
-      console.log(
-        `Hospital: ${hospital.hospitalName}, Intern Count: ${internCount}`
-      );
 
       return {
         name: hospital.hospitalName,
@@ -272,7 +265,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // gender based chart
-    // Filter and count genders (only Male and Female)
     let maleCount = 0;
     let femaleCount = 0;
 
@@ -290,8 +282,8 @@ document.addEventListener("DOMContentLoaded", function () {
       datasets: [
         {
           data: [maleCount, femaleCount],
-          backgroundColor: ["#4e73df", "#f6c23e"], // Colors for Male and Female
-          hoverBackgroundColor: ["#2e59d9", "#d4b106"], // Hover colors
+          backgroundColor: ["#4e73df", "#f6c23e"], 
+          hoverBackgroundColor: ["#2e59d9", "#d4b106"],
         },
       ],
     };
