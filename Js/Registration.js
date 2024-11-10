@@ -1,27 +1,29 @@
+const toggleBtn = document.getElementById("toggleBtn");
+const sidebar = document.querySelector(".side-bar");
+const CloseToggleBtn = document.querySelector("#CloseToggleBtn");
+
+toggleBtn.addEventListener("click", () => {
+  sidebar.classList.toggle("active");
+});
+CloseToggleBtn.addEventListener("click", () => {
+  sidebar.classList.remove("active");
+});
+
+
 const RegisterInternForm = document.querySelector(".Register-intern");
 const RegisterHospitalForm = document.querySelector(".registerHospital");
-const RegisterInstitutionForm = document.querySelector(".RegisterInstitution");
 
 // BTNS registration
 const registerInternBTN = document.querySelector("#registerIntern");
 const registerhospitalBTN = document.querySelector("#registerhospital");
-const registerInstitutionBTN = document.querySelector("#registerInstitution");
 
 registerInternBTN.addEventListener("click", () => {
   RegisterInternForm.style.display = "flex";
   RegisterHospitalForm.style.display = "none";
-  RegisterInstitutionForm.style.display = "none";
 });
 
 registerhospitalBTN.addEventListener("click", () => {
   RegisterHospitalForm.style.display = "flex";
-  RegisterInternForm.style.display = "none";
-  RegisterInstitutionForm.style.display = "none";
-});
-
-registerInstitutionBTN.addEventListener("click", () => {
-  RegisterInstitutionForm.style.display = "flex";
-  RegisterHospitalForm.style.display = "none";
   RegisterInternForm.style.display = "none";
 });
 
@@ -97,14 +99,13 @@ departmentDropdown.addEventListener("change", function () {
 });
 
 const currentDate = new Date();
-// console.log(currentDate)
 let status = "Pending";
 
 if (StartDate.value && new Date(StartDate.value) <= currentDate) {
-  status = "Active"; 
+  status = "Active";
 }
 if (EndDate.value && new Date(EndDate.value) <= currentDate) {
-  status = "Completed"; 
+  status = "Completed";
 }
 
 // get hospitals from the local storage
@@ -112,8 +113,8 @@ let hospitals = JSON.parse(localStorage.getItem("hospitals")) || [];
 
 hospitals.forEach((hospital) => {
   const option = document.createElement("option");
-  option.value = hospital.id; 
-  option.textContent = hospital.hospitalName; 
+  option.value = hospital.id;
+  option.textContent = hospital.hospitalName;
   selectedhospital.appendChild(option);
 });
 
@@ -152,7 +153,7 @@ async function saveInternData() {
     image: InternImage.files[0]
       ? await getImageBase64(InternImage.files[0])
       : null,
-    status: status
+    status: status,
   };
 
   let interns = JSON.parse(localStorage.getItem("interns")) || [];
@@ -170,14 +171,12 @@ async function saveInternData() {
 // Event listener for form submission
 InternRegisterForm.addEventListener("submit", (e) => {
   e.preventDefault();
+  if (InternmotherName.value == "") {
+    alert("Please enter your mother name");
+  }
   saveInternData();
   window.location.href = "../Html/Interns.html";
 });
-
-
-
-
-
 
 // hospital registration form handling events
 const registerationHospital = document.getElementById("registerHospital");
@@ -192,9 +191,7 @@ const availableShifts = document.querySelector("#availableShifts");
 const hospitalLogo = document.querySelector("#hospitalLogo");
 const RegisterHospitalSubBTN = document.querySelector("#RegisterHospitalBTN");
 
-
 async function registerHospitalFunction() {
-
   let hospitals = JSON.parse(localStorage.getItem("hospitals")) || [];
   const hospitalData = {
     id: "HOS" + (hospitals.length + 1).toString().padStart(3, "0"),
@@ -214,8 +211,8 @@ async function registerHospitalFunction() {
       ? await getImageBase64(hospitalLogo.files[0])
       : null,
   };
-  console.log('HOSPITAL ID is :', hospitalData.id);
-  
+  console.log("HOSPITAL ID is :", hospitalData.id);
+
   hospitals.push(hospitalData);
   localStorage.setItem("hospitals", JSON.stringify(hospitals));
   registerationHospital.reset();
@@ -231,6 +228,3 @@ RegisterHospitalSubBTN.addEventListener("click", (e) => {
   console.log("registerHospital are currently available");
   window.location.href = "../Html/Hospitals.html";
 });
-
-
-

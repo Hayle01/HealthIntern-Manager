@@ -11,6 +11,10 @@
     <div class="dashboard-container">
         <!-- side bar section -->
         <section class="side-bar d-side-bar">
+            <div class="CloseToggle-btn" id="CloseToggleBtn">
+                <div class="CloseBar"></div>
+                <div class="CloseBar"></div>
+            </div>
             <div class="logo">
                 <a href="./Dashboard.html">
                     <h1>HealthIntern <span>Manager</span></h1>
@@ -34,10 +38,7 @@
                         <div class="path d-link"></div>
                         <a href="./Hospitals.html" class="current-link"><i class="fa-solid fa-house-medical"></i>Hospitals</a>
                     </li>
-                    <li>
-                        <div class="path"></div>
-                        <a href="./Institutions.html" id="Hospitals"><i class="fa-solid fa-hospital"></i>Institutions</a>
-                    </li>
+                    
                     <li>
                         <div class="path"></div>
                         <a href="#" id="logout"><i class="fa-solid fa-power-off"></i>Log out</a>
@@ -48,7 +49,15 @@
 
         <!-- content section -->
         <section class="content-section">
-   
+
+            <header class="header-content">
+                    <div class="toggle-btn" id="toggleBtn">
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                    </div>
+            </header>
+            
             <!-- registered interns display -->
             <div class="RegisteredHospitals">
                 <a href="./Hospitals.html">

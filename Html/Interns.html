@@ -12,7 +12,12 @@
 <body>
   <!-- side bar section -->
   <div class="dashboard-container">
+    
     <section class="side-bar d-side-bar">
+      <div class="CloseToggle-btn" id="CloseToggleBtn">
+        <div class="CloseBar"></div>
+        <div class="CloseBar"></div>
+      </div>
       <div class="logo">
         <a href="./Dashboard.html">
           <h1>HealthIntern <span>Manager</span></h1>
@@ -38,10 +43,6 @@
         </li>
           <li>
             <div class="path"></div>
-            <a href="./Institutions.html" id="Institutions"><i class="fa-solid fa-hospital"></i>Institutions</a>
-          </li>
-          <li>
-            <div class="path"></div>
             <a href="#" id="logout"><i class="fa-solid fa-power-off"></i>Log out</a>
           </li>
         </ul>
@@ -50,14 +51,30 @@
 
     <!-- content section -->
     <section class="content-section">
-
+      <header>
+        <div class="left">    
+          <div class="toggle-btn" id="toggleBtn">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+          </div>
+        </div>
+      
+      
+        <div class="right">
+          <form id="searchInternForm">
+            <input type="text" id="search-intern" placeholder="Search Intern by ID" />
+            <button type="submit" id="searchInternbtn"><i class="fa-solid fa-magnifying-glass"></i></button>
+          </form>
+        </div>
+      </header>
       <!-- registered interns display -->
       <div class="RegisteredInterns">
         <a href="Interns.html">
-          <h1 class="page-title">Interns</h1>
+          <h1 class="page-title">Registered Interns</h1>
         </a>
 
-        <div class="filter-bar">
+        <!-- <div class="filter-bar">
           <div class="filter-icon">
             <img src="../Icons/filter.svg" alt="filter-icon">
           </div>
@@ -89,7 +106,7 @@
               </select>
             </div>
           </div>
-        </div>
+        </div> -->
 
         <!-- Interns Sections display-->
         <section class="internsDisplay">
@@ -107,7 +124,9 @@
               </tr>
             </thead>
             <tbody id="InternsTableBody">
-
+              <tr>
+                
+              </tr>
             </tbody>
           </table>
         </section>
@@ -122,7 +141,6 @@
             <div class="InternImage">
               <div class="InternImageAndINsLogo">
                 <img id="InternImagModal"  src="" alt="Intern Image">
-                <img id="InstinLogo"  src="" alt="Institution logo">
               </div>
               <img src="" id="HospitalLogo" alt="Hospital Logo">
             </div>

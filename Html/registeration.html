@@ -15,6 +15,10 @@
     <!-- side bar section -->
     <div class="dashboard-container">
       <section class="side-bar">
+        <div class="CloseToggle-btn" id="CloseToggleBtn">
+          <div class="CloseBar"></div>
+          <div class="CloseBar"></div>
+        </div>
         <div class="logo">
           <a href="./Dashboard.html">
             <h1>HealthIntern <span>Manager</span></h1>
@@ -38,10 +42,7 @@
               <div class="path"></div>
               <a href="./Hospitals.html"><i class="fa-solid fa-house-medical"></i>Hospitals</a>
             </li>
-            <li>
-              <div class="path"></div>
-              <a href="./Institutions.html" id="Institutions"><i class="fa-solid fa-hospital"></i>Institutions</a>
-            </li>
+            
             <li>
               <div class="path"></div>
               <a href="#" id="logout"><i class="fa-solid fa-power-off"></i>Log out</a>
@@ -53,21 +54,22 @@
       <!-- content section -->
       <section class="content-section">
         <!-- Header -->
-        <header>
-          <div class="left">
-            <div class="register-btns">
-              <button class="register-Intern-btn" id="registerIntern">
-                Register Intern
-              </button>
-              <button class="registerhospital" id="registerhospital">
-                Register Hospital
-              </button>
-              <button class="registerInstitutionBtn" id="registerInstitution">
-                Register Institution
-              </button>
-            </div>
+        <div class="dash-header">
+          <div class="toggle-btn" id="toggleBtn">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
           </div>
-        </header>
+        
+          <div class="register-btns">
+            <button class="register-Intern-btn" id="registerIntern">
+              Register Intern
+            </button>
+            <button class="registerhospital" id="registerhospital">
+              Register Hospital
+            </button>
+          </div>
+        </div>
 
         <!-- Register Intern -->
         <div class="registers Register-intern">
@@ -80,11 +82,7 @@
             </div>
             <div class="input-Label">
               <label for="mothername">Mother's Name:</label>
-              <input
-                type="text"
-                id="mothername"
-                placeholder="Enter Mother Name"
-              />
+              <input type="text" id="mothername" placeholder="Enter Mother Name" />
             </div>
             <div class="input-Label">
               <label for="dateoFBirth">Date of Birth:</label>
@@ -98,50 +96,41 @@
                   <label for="male">Male</label>
                 </div>
                 <div class="female">
-                  <input
-                    type="radio"
-                    id="female"
-                    name="gender"
-                    value="female"
-                  />
+                  <input type="radio" id="female" name="gender" value="female" />
                   <label for="female">Female</label>
                 </div>
               </div>
             </div>
-
+          
             <!-- <div class="input-Label">
-              <label for="martialStatus">Martial Status:</label>
-              <div class="martialStatus">
-                <div class="Status">
-                  <div class="single">
-                    <input
-                      type="radio"
-                      id="single"
-                      name="martialStatus"
-                      value="single"
-                    />
-                    <label id="Single">Single</label>
-                  </div>
-                  <div class="married">
-                    <input
-                      type="radio"
-                      name="martialStatus"
-                      id="married"
-                      value="married"
-                    />
-                    <label id="Married">Married</label>
-                  </div>
-                </div>
-              </div>
-            </div> -->
+                        <label for="martialStatus">Martial Status:</label>
+                        <div class="martialStatus">
+                          <div class="Status">
+                            <div class="single">
+                              <input
+                                type="radio"
+                                id="single"
+                                name="martialStatus"
+                                value="single"
+                              />
+                              <label id="Single">Single</label>
+                            </div>
+                            <div class="married">
+                              <input
+                                type="radio"
+                                name="martialStatus"
+                                id="married"
+                                value="married"
+                              />
+                              <label id="Married">Married</label>
+                            </div>
+                          </div>
+                        </div>
+                      </div> -->
             <!-- nationality -->
             <div class="input-Label">
               <label for="nationality">Nationality:</label>
-              <input
-                type="text"
-                id="nationality"
-                placeholder="Enter Nationality"
-              />
+              <input type="text" id="nationality" placeholder="Enter Nationality" />
             </div>
             <div class="input-Label">
               <label for="address">Address:</label>
@@ -153,11 +142,7 @@
             </div>
             <div class="input-Label">
               <label for="phonenumber">Phone Number:</label>
-              <input
-                type="text"
-                id="phonenumber"
-                placeholder="Enter Phone Number"
-              />
+              <input type="text" id="phonenumber" placeholder="Enter Phone Number" />
             </div>
             <div class="input-Label">
               <label for="Department">Department:</label>
@@ -184,21 +169,18 @@
               <label for="InternID">ID</label>
               <input type="text" id="IntenID" />
             </div>
-
+          
             <div class="input-Label">
               <label for="Institution">Institution:</label>
-              <input
-                type="text"
-                id="Institution"
-                placeholder="Enter Intern Institution"/>
+              <input type="text" id="Institution" placeholder="Enter Intern Institution" />
             </div>
             <!-- Hospital -->
-             <div class="input-Label">
+            <div class="input-Label">
               <label for="hospitalSelect">Choose Hospital:</label>
               <select id="hospitalSelect">
                 <option value="">Select a hospital</option>
               </select>
-             </div>
+            </div>
             <div class="input-Label">
               <label for="StartDate">Start Date:</label>
               <input type="date" id="StartDate" />
@@ -211,13 +193,14 @@
               <label for="upoadImage">Upload Image:</label>
               <input type="file" style="border: none" id="InternImage" />
             </div>
-
+          
             <button type="submit" id="RegisterFormBtn" class="registerBTN">
               Register Intern
             </button>
           </form>
         </div>
 
+        <!-- Register Hospital -->
         <div class="registers registerHospital">
           <h1 class="page-title">Hospital Registration</h1>
           <!-- form for register hospital -->
@@ -324,103 +307,9 @@
           </form>
         </div>
 
-        <div class="registers RegisterInstitution">
-          <h1 class="page-title">University/Institution Registration</h1>
-          <!-- form for register institution -->
-          <form id="RegisterInstitution" class="registerForm">
-            <!-- Basic Information -->
-            <!-- institution name -->
-            <div class="input-label">
-              <label for="institutionName">Institution Name:</label>
-              <input
-                type="text"
-                id="institutionName"
-                name="institutionName"
-                placeholder="Institution Name"
-                required
-              />
-            </div>
-            <!-- institution Location -->
-            <div class="input-label">
-              <label for="institutionLocation">Location:</label>
-              <input
-                type="text"
-                id="institutionLocation"
-                name="institutionLocation"
-                placeholder="Enter Institution Location"
-                required
-              />
-            </div>
-            <!--  institution Contact phone-->
-            <div class="input-label">
-              <label for="institutionPhone">Phone Number:</label>
-              <input
-                type="tel"
-                id="institutionPhone"
-                name="institutionPhone"
-                placeholder="Enter phone number"
-                required
-              />
-            </div>
-            <!-- Email Address -->
-            <div class="input-label">
-              <label for="institutionEmail">Email Address:</label>
-              <input
-                type="email"
-                id="institutionEmail"
-                name="institutionEmail"
-                placeholder="Enter email address"
-                required
-              />
-            </div>
-            <!-- Student Capacity: -->
-            <div class="input-label">
-              <label for="studentCapacity">Student Capacity:</label>
-              <input
-                type="number"
-                id="studentCapacity"
-                name="studentCapacity"
-                required
-              />
-            </div>
-            <!-- Programs and Degrees Offered  -->
-            <div class="input-label">
-              <label for="programsOffered">Programs and Degrees Offered:</label>
-              <select id="programsOffered" name="programsOffered" multiple>
-                <option value="diploma">Diploma</option>
-                <option value="bachelors">Bachelor’s</option>
-                <option value="masters">Master’s</option>
-                <option value="doctorate">Doctorate</option>
-              </select>
-            </div>
-            <!-- Additional Remarks: -->
-            <div class="input-label additionalRemarks">
-              <label for="additionalRemarks">Additional Remarks:</label>
-              <textarea
-                id="additionalRemarks"
-                name="additionalRemarks"
-              ></textarea>
-            </div>
-
-            <!-- Institution logo -->
-            <div class="input-Label">
-              <label for="institutionLogo">Institution Logo</label>
-              <input type="file" name="institutionLogo" id="institutionLogo" />
-            </div>
-
-            <!-- submit btn -->
-            <button
-              type="submit"
-              id="registerInstitutionBTN"
-              class="registerBTN"
-            >
-              Register Institution
-            </button>
-          </form>
-        </div>
+        
       </section>
     </div>
-
-    <script src="../Js/Registration.js"></script>
+  <script src="../Js/Registration.js"></script>
   </body>
 </html>
