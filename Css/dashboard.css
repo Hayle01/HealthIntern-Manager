@@ -275,7 +275,7 @@ header .right form {
     padding-inline: 2rem;
     display: flex;
     flex-direction: column;
-    gap: 1.55rem;
+    gap: 0.6rem;
 }
 
 .registers.Register-intern {
@@ -306,13 +306,6 @@ header .right form {
     left: 0;
     top: 0;
     background-color: rgb(0, 0, 0, 0.5);
-}
-
-.model .path {
-    background-color: #406ed9;
-    width: 100%;
-    height: 25px;
-
 }
 
 .model-content {
@@ -346,7 +339,7 @@ header .right form {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: 0.6rem;
 }
 
 
@@ -355,9 +348,9 @@ select,
 textarea {
     width: 100%;
     border: 1px solid #D5D5D5;
-    padding: 0.8rem 1rem;
+    padding: 0.7rem 1rem;
     border-radius: 10px;
-    font-size: 1rem;
+    font-size: 0.9rem;
     outline: none;
 }
 
@@ -368,7 +361,7 @@ textarea {
 }
 
 .input-Label label {
-    font-size: 1rem;
+    font-size: 0.8rem;
     font-weight: 600;
     color: #202224;
 }
@@ -390,9 +383,7 @@ textarea {
 }
 
 .Status .single,
-.married,
-.divorced,
-.widowed {
+.married {
     display: flex;
     align-items: center;
     flex-direction: wrap;
@@ -511,12 +502,15 @@ td {
     cursor: pointer;
 }
 
-.intern-table, .HospitalsTable tbody tr:hover {
+.intern-table tbody tr:hover {
     background-color: #f1f5f9;
     transition: background-color 0.3s ease-in-out;
 }
 
-
+.HospitalsTable tbody tr:hover {
+    background-color: #f1f5f9;
+    transition: background-color 0.3s ease-in-out;
+}
 .status {
     padding: 5px 10px;
     border-radius: 12px;
@@ -553,7 +547,7 @@ td {
 /* modals section */
 .Internmodal-content, .HospitalModal-content {
     position: relative;
-    margin: 2% auto;
+    margin: 3% auto;
     width: 70%;
     height: 80%;
     background-color: #f5f6fa;
@@ -614,8 +608,8 @@ td {
     gap: 1rem;
 }
 .top-metrix {
-    display: flex;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
     gap: 1rem;
 }
 
@@ -627,7 +621,7 @@ td {
     padding: 10px;
     border-radius: 10px;
     border: 0.6px solid #D5D5D5;
-    width: 200px;
+    /* width: 200px; */
 }
 
 .metrix-box .metrixicon-title   {
@@ -642,23 +636,60 @@ td {
     align-items: center;
     justify-content: center;
     padding: 10px;
-    background-color: rgba(72, 128, 255, 0.3);
+    background-color: rgba(255, 204, 145, 0.4);
     border-radius: 10px;
     cursor: pointer;
 }
-.Metrix-Icon i{
-    font-size: 1.3rem;
-    color: #202224;
-}
 
+.Metrix-Icon.pending-status{
+    background-color: rgba(139, 141, 151, 0.3);
+}
+.Metrix-Icon.active-status{
+    background-color: rgba(40, 180, 99, 0.4);
+}
+.Metrix-Icon.completed-status{
+    background-color: rgba(85, 112, 241, 0.3);
+}
 .metrix-box .metrix-title{
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: #8B8D97;
 }
 
 .metrix-box .metrix-value {
     font-size: 1.3rem;
     font-weight: bold;
+    margin-top: 10px;
+}
+.charts{
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+}
+
+#internsByHospital,
+#genderDistribution {
+    padding: 10px;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.1);
+    border: 0.6px solid #D5D5D5;
+}
+#internsByHospital{
+    flex: 1;
+}
+#genderDistribution{
+    display: block;
+    max-width: 400px;
+}
+#internsByHospital p,
+#genderDistribution p {
+    font-size: 1rem;
+    color: #8B8D97;
+}
+canvas {
+    width: 100% !important;
+    height: 250px !important;
+    /* object-fit:  contain; */
 }
 /* Regsiterations */
 

@@ -36,12 +36,12 @@ document.addEventListener("DOMContentLoaded", function () {
     if (registerhospital) {
       registerhospital.addEventListener("click", openModal);
     }
-    if (registerInstitution){
+    if (registerInstitution) {
       registerInstitution.addEventListener("click", openModal);
     }
-      document
-        .querySelector(".close-model")
-        .addEventListener("click", () => closeModel());
+    document
+      .querySelector(".close-model")
+      .addEventListener("click", () => closeModel());
 
     function openModal() {
       const registerModal = document.querySelector("#register-model");
@@ -173,11 +173,147 @@ document.addEventListener("DOMContentLoaded", function () {
     // dashboard metrix
     // Total Intenrs Count
     let interns = JSON.parse(localStorage.getItem("interns"));
-    const totalInterns = document.querySelector("#TotalInternsValue");
 
-    totalInterns.textContent = interns.length || 0;
+    const totalInternsValue = document.querySelector("#TotalInternsValue");
+    const pendingInternsValue = document.querySelector("#pendingInternsValue");
+    const activeInternsValue = document.querySelector("#activeInternsValue");
+    const completedInternsValue = document.querySelector(
+      "#completedInternsValue"
+    );
 
+    function updateTotalInterns() {
+      const totalInterns = interns.length;
 
+      // Filter interns by status to get counts for Active, Pending, and Completed
+      const activeInterns = interns.filter(
+        (intern) => intern.status === "Active"
+      ).length;
+      const pendingInterns = interns.filter(
+        (intern) => intern.status === "Pending"
+      ).length;
+      const completedInterns = interns.filter(
+        (intern) => intern.status === "Completed"
+      ).length;
+
+      totalInternsValue.textContent = totalInterns;
+      pendingInternsValue.textContent = pendingInterns;
+      activeInternsValue.textContent = activeInterns;
+      completedInternsValue.textContent = completedInterns;
+    }
+    // Run the function to display the data when the dashboard loads
+    updateTotalInterns();
+
+    let hospitals = JSON.parse(localStorage.getItem("hospitals")) || [];
+    // Create a mapping of hospital IDs to intern counts
+    let hospitalInternCounts = hospitals.map((hospital) => {
+      // Filter interns based on SelectedHospitalID
+      let internCount = interns.filter(
+        (intern) => intern.SelectedHospitalID === hospital.id
+      ).length;
+
+      // Debugging statement to check each hospital's intern count
+      console.log(
+        `Hospital: ${hospital.hospitalName}, Intern Count: ${internCount}`
+      );
+
+      return {
+        name: hospital.hospitalName,
+        count: internCount,
+        capacity: hospital.hospitalCapacity,
+      };
+    });
+
+    // Check if hospitalInternCounts has correct data
+    console.log("hospitalInternCounts:", hospitalInternCounts);
+
+    // Prepare data for the chart
+    let hospitalLabels = hospitalInternCounts.map((item) => item.name);
+    let internData = hospitalInternCounts.map((item) => item.count);
+    let capacityData = hospitalInternCounts.map((item) => item.capacity);
+
+    // Create Hospital Bar Chart
+    new Chart(document.getElementById("hospitalBarChart"), {
+      type: "bar",
+      data: {
+        labels: hospitalLabels,
+        datasets: [
+          {
+            label: "Interns",
+            backgroundColor: "#18c15e",
+            data: internData,
+          },
+          {
+            label: "Capacity",
+            backgroundColor: "#406ed9",
+            data: capacityData,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        scales: {
+          xAxes: [
+            {
+              display: true,
+              barPercentage: 0.7,
+            },
+          ],
+          yAxes: [
+            {
+              display: true,
+              ticks: { beginAtZero: true },
+            },
+          ],
+        },
+        legend: {
+          position: "top",
+        },
+      },
+    });
+
+    // gender based chart
+    // Filter and count genders (only Male and Female)
+    let maleCount = 0;
+    let femaleCount = 0;
+
+    interns.forEach((intern) => {
+      if (intern.gender === "male") {
+        maleCount++;
+      } else if (intern.gender === "female") {
+        femaleCount++;
+      }
+    });
+
+    // Data and labels for the Doughnut Chart
+    const genderData = {
+      labels: ["Male", "Female"],
+      datasets: [
+        {
+          data: [maleCount, femaleCount],
+          backgroundColor: ["#4e73df", "#f6c23e"], // Colors for Male and Female
+          hoverBackgroundColor: ["#2e59d9", "#d4b106"], // Hover colors
+        },
+      ],
+    };
+
+    // Doughnut Chart options
+    const genderChartOptions = {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          position: "bottom",
+        },
+      },
+    };
+
+    // Render the Doughnut Chart
+    const ctx = document.getElementById("genderDoughnutChart").getContext("2d");
+    new Chart(ctx, {
+      type: "doughnut",
+      data: genderData,
+      options: genderChartOptions,
+    });
   }
 
   if (window.location.pathname.includes("Interns.html")) {
