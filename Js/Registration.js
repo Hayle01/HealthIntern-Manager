@@ -1,3 +1,18 @@
+document.addEventListener("DOMContentLoaded", () => {
+  const onlineUser = JSON.parse(localStorage.getItem("onlineUser")) || null;
+  if (!onlineUser) {
+    window.location.href = "../Html/index.html";
+    return;
+  }
+
+  const logout = document.getElementById("logout");
+  if (logout) {
+    logout.addEventListener("click", () => {
+      localStorage.removeItem("onlineUser");
+      window.location.href = "../Html/index.html";
+      console.log("Touched logout");
+    });
+  }
 const toggleBtn = document.getElementById("toggleBtn");
 const sidebar = document.querySelector(".side-bar");
 const CloseToggleBtn = document.querySelector("#CloseToggleBtn");
@@ -8,7 +23,6 @@ toggleBtn.addEventListener("click", () => {
 CloseToggleBtn.addEventListener("click", () => {
   sidebar.classList.remove("active");
 });
-
 
 const RegisterInternForm = document.querySelector(".Register-intern");
 const RegisterHospitalForm = document.querySelector(".registerHospital");
@@ -171,8 +185,13 @@ async function saveInternData() {
 // Event listener for form submission
 InternRegisterForm.addEventListener("submit", (e) => {
   e.preventDefault();
+  if (fullName.value == "") {
+    alert("Please enter the full name");
+    return;
+  }
   if (InternmotherName.value == "") {
     alert("Please enter your mother name");
+    return;
   }
   saveInternData();
   window.location.href = "../Html/Interns.html";
@@ -228,3 +247,6 @@ RegisterHospitalSubBTN.addEventListener("click", (e) => {
   console.log("registerHospital are currently available");
   window.location.href = "../Html/Hospitals.html";
 });
+
+});
+

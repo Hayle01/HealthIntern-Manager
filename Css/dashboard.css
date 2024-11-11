@@ -752,7 +752,6 @@ canvas {
     }
     .header-content {
         display: flex;
-        ;
     }
     .internsDisplay, .HospitalsDisplay {
         max-height: 100%;
@@ -789,16 +788,9 @@ canvas {
     .side-bar .logo a h1 {
         padding-top: 10px;
     }
-    header {
-        flex-direction: column;
-        padding: 1rem 1rem;
+    .dash-header {
+        padding: 0.5rem;
         height: auto;
-    }
-
-    header .left {
-        justify-content: space-between;
-        gap: 0.5rem;
-        width: 100%;
     }
     .register-btns .register-Intern-btn,
     .registerhospital,

@@ -336,7 +336,7 @@ document.addEventListener("DOMContentLoaded", function () {
           xAxes: [
             {
               display: true,
-              barPercentage: 0.7,
+              barPercentage: 0.6,
             },
           ],
           yAxes: [
@@ -394,6 +394,14 @@ document.addEventListener("DOMContentLoaded", function () {
       data: genderData,
       options: genderChartOptions,
     });
+    const onlineUser = JSON.parse(localStorage.getItem("onlineUser")) || null;
+    if(!onlineUser) return (window.location.href = "../Html/index.html");
+    const logout = document.getElementById("logout");
+    logout.addEventListener("click", () => {
+      localStorage.removeItem("onlineUser");
+      window.location.href = "../Html/index.html";
+    });
+
   }
 
   if (window.location.pathname.includes("Interns.html")) {
@@ -471,7 +479,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
      const modal = document.getElementById("internModal");
      const modalImage = document.getElementById("InternImagModal");
-     const InstinLogo = document.getElementById("InstinLogo");
      const HospitalLogo = document.getElementById("HospitalLogo");
      const modalFullName = document.getElementById("modalFullName");
      const modalMotherName = document.getElementById("modalMotherName");
@@ -531,6 +538,13 @@ document.addEventListener("DOMContentLoaded", function () {
          modal.style.display = "none";
        }
      };
+     const onlineUser = JSON.parse(localStorage.getItem("onlineUser")) || null;
+     if (!onlineUser) return (window.location.href = "../Html/index.html");
+     const logout = document.getElementById("logout");
+     logout.addEventListener("click", () => {
+      localStorage.removeItem("onlineUser");
+      window.location.href = "../Html/index.html";
+     });
 }
 
 if (window.location.pathname.includes("Hospitals.html")) {
@@ -613,6 +627,13 @@ if (window.location.pathname.includes("Hospitals.html")) {
          HospitalModal.style.display = "none";
        }
   }
+  const onlineUser = JSON.parse(localStorage.getItem("onlineUser")) || null;
+  if (!onlineUser) return (window.location.href = "../Html/index.html");
+  const logout = document.getElementById("logout");
+  logout.addEventListener("click", () => {
+    localStorage.removeItem("onlineUser");
+    window.location.href = "../Html/index.html";
+  });
 
 }
 
