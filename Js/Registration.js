@@ -309,12 +309,51 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   RegisterHospitalSubBTN.addEventListener("click", (e) => {
     e.preventDefault();
-    if (hospitalName.value == "") {
+    if (hospitalName.value === "") {
       alert("Please enter a Hospital name!");
+      hospitalName.focus();
       return;
     }
+    if (hospitallocation.value === "") {
+      alert("Please enter the hospital location!");
+      hospitallocation.focus();
+      return;
+    }
+    if (hospitalEmail.value === "" || !validateEmail(hospitalEmail.value)) {
+      alert("Please enter a valid hospital email address!");
+      hospitalEmail.focus();
+      return;
+    }
+    if (
+      hospitalPhone.value === ""
+    ) {
+      alert("Please enter a valid hospital phone number!");
+      hospitalPhone.focus();
+      return;
+    }
+    if (
+      hospitalCapacity.value === "" ||
+      isNaN(hospitalCapacity.value) ||
+      hospitalCapacity.value <= 0
+    ) {
+      alert("Please enter a valid hospital capacity!");
+      hospitalCapacity.focus();
+      return;
+    }
+    if (hospitalType.value === "") {
+      alert("Please select a hospital type!");
+      return;
+    }
+    if (HdepartmentsAvailable.selectedOptions.length === 0) {
+      alert("Please select at least one department!");
+      return;
+    }
+    if (availableShifts.selectedOptions.length === 0) {
+      alert("Please select at least one shift!");
+      return;
+    }
+
     registerHospitalFunction();
-    console.log("registerHospital are currently available");
     window.location.href = "../Html/Hospitals.html";
   });
 });
