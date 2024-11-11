@@ -31,7 +31,7 @@ authForm.addEventListener("submit", (event) => {
     );
     if(userExisting){
       localStorage.setItem("onlineUser", JSON.stringify(userExisting));
-      window.location.href = "../Html/Dashboard.html";
+      window.location.href = "../html/dashboard.html";
     }else{
       alert("Invalid username or password")
       return

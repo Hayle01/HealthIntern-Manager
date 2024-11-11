@@ -1,863 +1,866 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap");
 
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    text-decoration: none;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  text-decoration: none;
 }
 
 body {
-    font-family: "Nunito Sans", sans-serif;
-    background-color: #f5f6fa;
+  font-family: "Nunito Sans", sans-serif;
+  background-color: #f5f6fa;
 }
 
 img {
-    max-width: 100%;
+  max-width: 100%;
 }
 
 .dashboard-container {
-    width: 100%;
-    height: 100%;
-    margin: 0 auto;
-    max-width: 1536px;
-    display: flex;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  max-width: 1536px;
+  display: flex;
 }
 
 .dashboard-container .side-bar {
-    width: 270px;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    background-color: #FFFFFF;
-    box-shadow: 0px 0px 2px #e0e0e0;
-    padding-block: 1.3rem;
-    transition: transform 0.3s ease;
+  width: 270px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  background-color: #ffffff;
+  box-shadow: 0px 0px 2px #e0e0e0;
+  padding-block: 1.3rem;
+  transition: transform 0.3s ease;
 }
-.H-container{
-    flex-direction: column;
-}
+/* .H-container {
+  flex-direction: column;
+} */
 .CloseToggle-btn {
-    display: none;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 30px;
-    height: 30px;
-    position: absolute;
-    top: 5px;
-    right: 10px;
-    cursor: pointer;
-    z-index: 1001;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  cursor: pointer;
+  z-index: 1001;
 }
 
 .CloseToggle-btn .CloseBar {
-    width: 100%;
-    height: 4px;
-    background-color: #202224;
-    border-radius: 5px;
+  width: 100%;
+  height: 4px;
+  background-color: #202224;
+  border-radius: 5px;
 }
 .CloseBar:first-child {
-    transform: translateY(12.3px) rotate(45deg);
+  transform: translateY(12.3px) rotate(45deg);
 }
 
 .CloseBar:last-child {
-    transform: translateY(-13px) rotate(-45deg);
+  transform: translateY(-13px) rotate(-45deg);
 }
 
 .side-bar .logo {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
 }
 
 .side-bar .logo a h1 {
-    font-size: 1.5rem;
-    font-weight: 800;
-    text-align: center;
-    color: #4880ff;
+  font-size: 1.5rem;
+  font-weight: 800;
+  text-align: center;
+  color: #4880ff;
 }
 
 .side-bar .logo a h1 span {
-    color: #202224;
-    font-size: 1;
+  color: #202224;
+  font-size: 1;
 }
 
 /* side-bar links */
+.side-bar nav{
+    margin-top: 1rem;
+}
 .side-bar nav ul {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .side-bar nav ul li {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 }
 
 .side-bar nav ul li .path {
-    display: none;
-    position: absolute;
-    top: 0;
-    left: 0px;
-    background-color: #4880ff;
-    width: 5px;
-    height: 100%;
-    border-radius: 5px;
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0px;
+  background-color: #4880ff;
+  width: 5px;
+  height: 100%;
+  border-radius: 5px;
 }
 
 .side-bar nav ul li:hover .path {
-    display: flex;
+  display: flex;
 }
 
 .side-bar nav ul li .d-link {
-    display: block;
+  display: block;
 }
 
 .side-bar nav ul li a {
-    width: 80%;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    padding-inline: 1rem;
-    gap: 1rem;
-    border-radius: 6px;
-    font-size: 1rem;
-    font-weight: 550;
-    color: #202224;
+  width: 80%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  padding-inline: 1rem;
+  gap: 1rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 550;
+  color: #202224;
 }
 
 .side-bar nav ul li .current-link {
-    background-color: #4880ff;
-    color: #ffffff;
+  background-color: #4880ff;
+  color: #ffffff;
 }
 
 .side-bar nav ul li .current-link img {
-    filter: invert(100%);
+  filter: invert(100%);
 }
 
 .side-bar nav ul li a:hover {
-    background-color: #4880ff;
-    color: #ffffff;
-    transition: background-color 0.3s ease-in-out;
+  background-color: #4880ff;
+  color: #ffffff;
+  transition: background-color 0.3s ease-in-out;
 }
 
 .side-bar nav ul li a:hover i {
-    color: #ffffff;
+  color: #ffffff;
 }
 
 /* content section */
 .content-section {
-    display: flex;
-    flex-direction: column;
-    gap: 0.6rem;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  width: 100%;
 }
 
 /* header */
 header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    padding: 1rem 2rem;
-    width: 100%;
-    height: 60px;
-    background-color: #ffffff;
-    box-shadow: 0px 0px 2px #e0e0e0;
-    position: sticky;
-    top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 2rem;
+  width: 100%;
+  height: 60px;
+  background-color: #ffffff;
+  box-shadow: 0px 0px 2px #e0e0e0;
+  position: sticky;
+  top: 0;
 }
-.dash-header{
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 1rem 2rem;
-    width: 100%;
-    height: 60px;
-    background-color: #ffffff;
-    box-shadow: 0px 0px 2px #e0e0e0;
-    position: sticky;
-    top: 0;
+.dash-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 2rem;
+  width: 100%;
+  height: 60px;
+  background-color: #ffffff;
+  box-shadow: 0px 0px 2px #e0e0e0;
+  position: sticky;
+  top: 0;
 }
 .toggle-btn {
-    display: none;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
-    z-index: 1001;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  z-index: 1001;
 }
 
 .toggle-btn .bar {
-    width: 100%;
-    height: 4px;
-    background-color: #202224;
-    border-radius: 5px;
+  width: 100%;
+  height: 4px;
+  background-color: #202224;
+  border-radius: 5px;
 }
 .register-btns {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 /* modal registeration btns */
 .register-Intern-btn,
 .registerhospital {
-    background-color: #4880ff;
-    border: none;
-    border-radius: 10px;
-    padding: 0.5rem 1rem;
-    font-family: "Nunito Sans", sans-serif;
-    font-weight: 600;
-    font-size: 1rem;
-    color: #FFFFFF;
-    cursor: pointer;
+  background-color: #4880ff;
+  border: none;
+  border-radius: 10px;
+  padding: 0.5rem 1rem;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #ffffff;
+  cursor: pointer;
 }
 
 .register-btns .register-Intern-btn:hover {
-    background-color: #376dec;
-    transition: background-color 0.5s ease;
+  background-color: #376dec;
+  transition: background-color 0.5s ease;
 }
 
 .registerhospital {
-    background-color: #28B463;
+  background-color: #28b463;
 }
 
 .registerhospital:hover {
-    background-color: #18c15e;
-    transition: background-color 0.5s ease;
+  background-color: #18c15e;
+  transition: background-color 0.5s ease;
 }
 header .right {
-    width: 60%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
+  width: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 
 header .right form {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding-left: 0.7rem;
-    border: 1px solid #e0e0e0;
-    border-radius: 10px;
-    background-color: #f5f6fa;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-left: 0.7rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  background-color: #f5f6fa;
 }
 
-
 .right form input {
-    width: 80%;
-    padding: 0.7rem;
-    outline: none;
-    border: none;
-    background-color: #f5f6fa;
-    cursor: pointer;
-    font-family: "Nunito Sans", sans-serif;
+  width: 80%;
+  padding: 0.7rem;
+  outline: none;
+  border: none;
+  background-color: #f5f6fa;
+  cursor: pointer;
+  font-family: "Nunito Sans", sans-serif;
 }
 
 .right form button {
-    width: 20%;
-    padding: 0.5rem;
-    outline: none;
-    border: none;
-    border-left: 1px solid #D5D5D5;
-    border-right: 1px solid #D5D5D5;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-    background-color: #f5f6fa;
-    font-family: "Nunito Sans", sans-serif;
-    cursor: pointer;
+  width: 20%;
+  padding: 0.5rem;
+  outline: none;
+  border: none;
+  border-left: 1px solid #d5d5d5;
+  border-right: 1px solid #d5d5d5;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background-color: #f5f6fa;
+  font-family: "Nunito Sans", sans-serif;
+  cursor: pointer;
 }
 
 .right form button i {
-    font-size: 1.3rem;
+  font-size: 1.3rem;
 }
 
 /* Dashboard page */
 .dashboard-page,
 .registers {
-    padding-inline: 2rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.6rem;
+  padding-inline: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
 }
 
 .registers.Register-intern {
-    display: flex;
+  display: flex;
 }
 
 .registerHospital {
-    display: none;
+  display: none;
 }
 
 .RegisterInstitution {
-    display: none;
+  display: none;
 }
 
 .page-title {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #202224;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #202224;
 }
 
 .model,
-.Internmodal, .HospMOdal {
-    width: 100%;
-    height: 100%;
-    display: none;
-    position: fixed;
-    z-index: 100;
-    left: 0;
-    top: 0;
-    background-color: rgb(0, 0, 0, 0.5);
+.Internmodal,
+.HospMOdal {
+  width: 100%;
+  height: 100%;
+  display: none;
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  background-color: rgb(0, 0, 0, 0.5);
 }
 
 .model-content {
-    position: relative;
-    margin: 2% auto;
-    width: 85%;
-    height: auto;
-    background-color: #f5f6fa;
-    border-radius: 10px;
-    padding: 20px;
+  position: relative;
+  margin: 2% auto;
+  width: 85%;
+  height: auto;
+  background-color: #f5f6fa;
+  border-radius: 10px;
+  padding: 20px;
 }
 
 .close-model {
-    position: absolute;
-    top: -10px;
-    right: -5px;
-    cursor: pointer;
-    font-size: 30px;
-    font-weight: bold;
-    color: #202224;
-    padding: 0 10px;
+  position: absolute;
+  top: -10px;
+  right: -5px;
+  cursor: pointer;
+  font-size: 30px;
+  font-weight: bold;
+  color: #202224;
+  padding: 0 10px;
 }
 
 .close-model:hover {
-    color: rgb(51, 51, 51, 0.8);
+  color: rgb(51, 51, 51, 0.8);
 }
 
 /* Registeration Form */
 .registerForm {
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    flex-wrap: wrap;
-    gap: 0.6rem;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  flex-wrap: wrap;
+  gap: 0.6rem;
 }
-
 
 .registerForm input,
 select,
 textarea {
-    width: 100%;
-    border: 1px solid #D5D5D5;
-    padding: 0.7rem 1rem;
-    border-radius: 10px;
-    font-size: 0.9rem;
-    outline: none;
+  width: 100%;
+  border: 1px solid #d5d5d5;
+  padding: 0.7rem 1rem;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  outline: none;
 }
 
 .registerForm .input-Label {
-    display: flex;
-    flex-direction: column;
-    gap: 0.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
 }
 
 .input-Label label {
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: #202224;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #202224;
 }
 
 .input-Label .gender,
 .martialStatus {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 10px;
 }
 
 .gender .male,
 .female,
 .Status {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .Status .single,
 .married {
-    display: flex;
-    align-items: center;
-    flex-direction: wrap;
-    gap: 0.5rem;
-    font-size: 1rem;
-    color: #202224;
+  display: flex;
+  align-items: center;
+  flex-direction: wrap;
+  gap: 0.5rem;
+  font-size: 1rem;
+  color: #202224;
 }
 
 .registerForm .registerBTN {
-    grid-column: 1 / span 3;
-    border: none;
-    background: #4880ff;
-    cursor: pointer;
-    color: #fff;
-    padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
-    font-size: 1rem;
+  grid-column: 1 / span 3;
+  border: none;
+  background: #4880ff;
+  cursor: pointer;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
 }
-.registerBTN:hover{
-    background-color: #406ed9;
+.registerBTN:hover {
+  background-color: #406ed9;
 }
 
 .registerForm .additionalRemarks {
-    grid-column: 1 / span 2;
+  grid-column: 1 / span 2;
 }
-
 
 /* Interns and hospitals display Page */
-.RegisteredInterns, .RegisteredHospitals {
-    padding: 1rem 1rem 0rem 2rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
+.RegisteredInterns,
+.RegisteredHospitals {
+  padding: 1rem 1rem 0rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
 }
-.RegisteredInterns{
-    padding-top: 0px;
+.RegisteredInterns {
+  padding-top: 0px;
 }
 .header-content {
-    display: none;
+  display: none;
 }
-.internsDisplay, .HospitalsDisplay {
-    border: 0.6px solid #D5D5D5;
-    background-color: transparent;
-    border-radius: 10px;
-    border-bottom: none;
-    max-height: 410px;
-    overflow-y: auto;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+.internsDisplay,
+.HospitalsDisplay {
+  border: 0.6px solid #d5d5d5;
+  background-color: transparent;
+  border-radius: 10px;
+  border-bottom: none;
+  max-height: 410px;
+  overflow-y: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
-.HospitalsDisplay{
-    max-height: 450px;
+.HospitalsDisplay {
+  max-height: 450px;
 }
 
-.intern-table, .HospitalsTable {
-    width: 100%;
-    border-collapse: collapse;
-    border-radius: 10px;
-    background-color: #FFFFFF;
+.intern-table,
+.HospitalsTable {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 10px;
+  background-color: #ffffff;
 }
 
 .intern-table thead {
-    background-color: #aee9c7;
-    text-align: left;
-    position: sticky;
-    top: 0;
+  background-color: #aee9c7;
+  text-align: left;
+  position: sticky;
+  top: 0;
 }
 .HospitalsTable thead {
-    background-color: #afc4f7;
-    text-align: left;
-    position: sticky;
-    top: 0;
+  background-color: #afc4f7;
+  text-align: left;
+  position: sticky;
+  top: 0;
 }
 .intern-table th,
 .intern-table td {
-    padding: 12px 15px;
-    text-align: left;
-    color: #202224;
-    font-size: 0.9rem;
-    border-bottom: 0.6px solid rgba(151, 151, 151, 0.4);
+  padding: 12px 15px;
+  text-align: left;
+  color: #202224;
+  font-size: 0.9rem;
+  border-bottom: 0.6px solid rgba(151, 151, 151, 0.4);
 }
 .HospitalsTable th,
 .HospitalsTable,
 td {
-    padding: 12px 15px;
-    text-align: left;
-    color: #202224;
-    font-size: 0.9rem;
-    border-bottom: 0.6px solid rgba(151, 151, 151, 0.4);
+  padding: 12px 15px;
+  text-align: left;
+  color: #202224;
+  font-size: 0.9rem;
+  border-bottom: 0.6px solid rgba(151, 151, 151, 0.4);
 }
-.intern-table, .HospitalsTable tbody tr {
-    cursor: pointer;
+.intern-table,
+.HospitalsTable tbody tr {
+  cursor: pointer;
 }
-
 
 .intern-table tbody tr:hover {
-    background-color: #f1f5f9;
-    transition: background-color 0.3s ease-in-out;
+  background-color: #f1f5f9;
+  transition: background-color 0.3s ease-in-out;
 }
 
 .HospitalsTable tbody tr:hover {
-    background-color: #f1f5f9;
-    transition: background-color 0.3s ease-in-out;
+  background-color: #f1f5f9;
+  transition: background-color 0.3s ease-in-out;
 }
 .status {
-    padding: 5px 20px;
-    border-radius: 12px;
-    font-weight: bold;
-    color: #202224;
-    font-size: 0.8rem;
-    display: inline-block;
-    text-align: center;
-
+  padding: 5px 20px;
+  border-radius: 12px;
+  font-weight: bold;
+  color: #202224;
+  font-size: 0.8rem;
+  display: inline-block;
+  text-align: center;
 }
 
 /* Status colors */
 .status.Pending {
-    background-color: #D5D5D5;
+  background-color: #d5d5d5;
 }
 
 .status.Active {
-    background-color: #a4bfff;
+  background-color: #a4bfff;
 }
 
 .status.Completed {
-    background-color: #d1fae5;
-    color: #202224;
-    padding: 5px 10px;
+  background-color: #d1fae5;
+  color: #202224;
+  padding: 5px 10px;
 }
-
 
 /* modals section */
-.Internmodal-content, .HospitalModal-content {
-    position: relative;
-    margin: 3% auto;
-    width: 70%;
-    background-color: #f5f6fa;
-    border-radius: 10px;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+.Internmodal-content,
+.HospitalModal-content {
+  position: relative;
+  margin: 3% auto;
+  width: 70%;
+  background-color: #f5f6fa;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 .Internmodal-content {
-    margin-top: 6%;
+  margin-top: 6%;
 }
 
-.Internmodal-content, .HospitalModal-content h2 {
-    margin-top: 10px;
+.Internmodal-content,
+.HospitalModal-content h2 {
+  margin-top: 10px;
 }
 
-.Internmodal-content, .HospitalModal-content p {
-    font-size: 1rem;
-    font-weight: bold;
-    color: #202224;
+.Internmodal-content,
+.HospitalModal-content p {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #202224;
 }
 
-.Internmodal-content, .HospitalModal-content p span {
-    font-weight: normal;
-
+.Internmodal-content,
+.HospitalModal-content p span {
+  font-weight: normal;
 }
 
 .InternImage {
-    width: 100%;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  width: 100%;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .InternImage img {
-    width: 150px;
-    height: 150px;
-    border: 0.6px solid #D5D5D5;
-    border-radius: 10px;
+  width: 150px;
+  height: 150px;
+  border: 0.6px solid #d5d5d5;
+  border-radius: 10px;
 }
 
 .internInfo {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-    background-color: #f1f5f9;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  background-color: #f1f5f9;
 }
-.internInfo p{
-    font-weight: bold;
+.internInfo p {
+  font-weight: bold;
 }
-.internInfo p span{
-    font-weight: normal;
+.internInfo p span {
+  font-weight: normal;
 }
-#HospitalLogo{
-    width: 150px;
-    height: 150px;
-    border: 0.6px solid #D5D5D5;
-    border-radius: 10px;
+#HospitalLogo {
+  width: 150px;
+  height: 150px;
+  border: 0.6px solid #d5d5d5;
+  border-radius: 10px;
 }
 
 /* dashboard-metrix */
-.metrix{
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+.metrix {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 .top-metrix {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 1rem;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
 }
 
 .top-metrix .metrix-box {
-    display: flex;
-    flex-direction: column;
-    gap: 0.7rem;
-    background-color: #FFFFFF;
-    padding: 10px;
-    border-radius: 10px;
-    border: 0.6px solid #D5D5D5;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  background-color: #ffffff;
+  padding: 10px;
+  border-radius: 10px;
+  border: 0.6px solid #d5d5d5;
 }
 
-.metrix-box .metrixicon-title   {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
+.metrix-box .metrixicon-title {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
 }
 
-.metrixicon-title .Metrix-Icon{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px;
-    background-color: rgba(255, 204, 145, 0.4);
-    border-radius: 10px;
-    cursor: pointer;
+.metrixicon-title .Metrix-Icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  background-color: rgba(255, 204, 145, 0.4);
+  border-radius: 10px;
+  cursor: pointer;
 }
 
-.Metrix-Icon.pending-status{
-    background-color: rgba(139, 141, 151, 0.3);
+.Metrix-Icon.pending-status {
+  background-color: rgba(139, 141, 151, 0.3);
 }
-.Metrix-Icon.active-status{
-    background-color: rgba(40, 180, 99, 0.4);
+.Metrix-Icon.active-status {
+  background-color: rgba(40, 180, 99, 0.4);
 }
-.Metrix-Icon.completed-status{
-    background-color: rgba(85, 112, 241, 0.3);
+.Metrix-Icon.completed-status {
+  background-color: rgba(85, 112, 241, 0.3);
 }
-.metrix-box .metrix-title{
-    font-size: 1rem;
-    color: #8B8D97;
+.metrix-box .metrix-title {
+  font-size: 1rem;
+  color: #8b8d97;
 }
 
 .metrix-box .metrix-value {
-    font-size: 1.3rem;
-    font-weight: bold;
-    margin-top: 10px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-top: 10px;
 }
-.charts{
-    width: 100%;
-    display: flex;
-    gap: 1rem;
+.charts {
+  width: 100%;
+  display: flex;
+  gap: 1rem;
 }
 
 #internsByHospital,
 #genderDistribution {
-    padding: 10px;
-    background-color: #FFFFFF;
-    border-radius: 10px;
-    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.1);
-    border: 0.6px solid #D5D5D5;
+  padding: 10px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.1);
+  border: 0.6px solid #d5d5d5;
 }
-#internsByHospital{
-    flex: 1;
+#internsByHospital {
+  flex: 1;
 }
-#genderDistribution{
-    display: block;
-    max-width: 400px;
+#genderDistribution {
+  display: block;
+  max-width: 400px;
 }
 #internsByHospital p,
 #genderDistribution p {
-    font-size: 1rem;
-    color: #8B8D97;
+  font-size: 1rem;
+  color: #8b8d97;
 }
 canvas {
-    width: 100% !important;
-    height: 250px !important;
-
+  width: 100% !important;
+  height: 250px !important;
 }
-
 
 /* resposive design */
 /* tablets and laptops */
 @media only screen and (min-width: 768px) and (max-width: 1200px) {
-    .dashboard-container {
-        flex-direction: column;
-    }
-    .side-bar {
-        width: 250px;
-        position: fixed;
-        top: 0;
-        left: 0;
-        transform: translateX(-100%);
-        transition: transform 0.3s ease;
-        z-index: 1111;
-    }
+  .dashboard-container {
+    flex-direction: column;
+  }
+  .side-bar {
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: 1111;
+  }
 
-    .side-bar.active {
-        transform: translateX(0);
-    }
+  .side-bar.active {
+    transform: translateX(0);
+  }
 
-    .toggle-btn {
-        display: flex;
-    }
+  .toggle-btn {
+    display: flex;
+  }
 
-    .CloseToggle-btn {
-        display: flex;
-    }
+  .CloseToggle-btn {
+    display: flex;
+  }
 
-    .side-bar .logo a h1 {
-        padding-top: 10px;
-    }
+  .side-bar .logo a h1 {
+    padding-top: 10px;
+  }
 
-    header {
-        align-items: flex-start;
-        padding: 1rem 0.5rem;
-        height: auto;
-    }
-    header .right {
-        flex: 1;
-        padding-inline: 10px;
-    }
-    .InternRegisteration {
-        padding-right: 10px;
-        grid-template-columns: 1fr 1fr;
-    }
-    .top-metrix {
-        grid-template-columns: repeat(3, 1fr);
-    }
-    .TotalHospitalsMetrix{
-        grid-column: 2 / span 2;
-    }
-    .charts{
-        flex-direction: column;
-    }
-    .registerForm {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    .registerForm .registerBTN {
-        grid-column: 1 / span 2;
-    }
-    .side-bar .logo a h1{
-        padding-top: 10px;
-    }
-    .RegisteredInterns,
-    .RegisteredHospitals {
-        padding: 1rem;
-    }
-    .header-content {
-        display: flex;
-    }
-    .internsDisplay, .HospitalsDisplay {
-        max-height: 100%;
-    }
-
-
-
+  header {
+    align-items: flex-start;
+    padding: 1rem 0.5rem;
+    height: auto;
+  }
+  header .right {
+    flex: 1;
+    padding-inline: 10px;
+  }
+  .InternRegisteration {
+    padding-right: 10px;
+    grid-template-columns: 1fr 1fr;
+  }
+  .top-metrix {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .TotalHospitalsMetrix {
+    grid-column: 2 / span 2;
+  }
+  .charts {
+    flex-direction: column;
+  }
+  .registerForm {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .registerForm .registerBTN {
+    grid-column: 1 / span 2;
+  }
+  .side-bar .logo a h1 {
+    padding-top: 10px;
+  }
+  .RegisteredInterns,
+  .RegisteredHospitals {
+    padding: 1rem;
+  }
+  .header-content {
+    display: flex;
+  }
+  .internsDisplay,
+  .HospitalsDisplay {
+    max-height: 100%;
+  }
 }
 
 /* phone */
 @media (max-width: 767px) {
-    .dashboard-container {
-        flex-direction: column;
-    }
-    .side-bar {
-        width: 250px;
-        position: fixed;
-        top: 0;
-        left: 0;
-        transform: translateX(-100%);
-        transition: transform 0.3s ease;
-        z-index: 1111;
-    }
+  .dashboard-container {
+    flex-direction: column;
+  }
+  .side-bar {
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: 1111;
+  }
 
-    .side-bar.active {
-        transform: translateX(0);
-    }
-    .toggle-btn {
-        display: flex;
-    }
-    .CloseToggle-btn{
-        display: flex;
-    }
-    .side-bar .logo a h1 {
-        padding-top: 10px;
-    }
-    .dash-header {
-        padding: 0.5rem;
-        height: auto;
-    }
-    .register-btns .register-Intern-btn,
-    .registerhospital,
-    .registerInstitutionBtn {
-        padding: 0.7rem 1rem;
-        font-family: "Nunito Sans", sans-serif;
-        font-weight: 600;
-        font-size: 0.9rem;
-        color: #FFFFFF;
-        cursor: pointer;
-    }
-    header {
-        align-items: flex-start;
-        padding: 1rem 0.5rem;
-        height: auto;
-    }
+  .side-bar.active {
+    transform: translateX(0);
+  }
+  .toggle-btn {
+    display: flex;
+  }
+  .CloseToggle-btn {
+    display: flex;
+  }
+  .side-bar .logo a h1 {
+    padding-top: 10px;
+  }
+  .dash-header {
+    padding: 0.5rem;
+    height: auto;
+  }
+  .register-btns .register-Intern-btn,
+  .registerhospital,
+  .registerInstitutionBtn {
+    padding: 0.7rem 1rem;
+    font-family: "Nunito Sans", sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #ffffff;
+    cursor: pointer;
+  }
+  header {
+    align-items: flex-start;
+    padding: 1rem 0.5rem;
+    height: auto;
+  }
 
-    header .right {
-        flex: 1;
-        padding-inline: 10px;
-    }
+  header .right {
+    flex: 1;
+    padding-inline: 10px;
+  }
 
-    .dashboard-page {
-        padding: 1rem;
-    }
+  .dashboard-page {
+    padding: 1rem;
+  }
 
-    .InternRegisteration {
-        padding-left: -10px;
-        grid-template-columns: 1fr;
-    }
+  .InternRegisteration {
+    padding-left: -10px;
+    grid-template-columns: 1fr;
+  }
 
-    .InternRegisteration input,
-    select {
-        width: 95%;
-    }
-    .top-metrix {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    .TotalHospitalsMetrix{
-        grid-column: 1 / span 2;
-    }
-    .charts{
-        flex-direction: column;
-    }
-    .registerForm {
-        grid-template-columns: repeat(1, 1fr);
-    }
-    .registerForm .registerBTN {
-        grid-column: 1 / span 1;
-    }
-    .model-content, .Internmodal-content,
-    .HospitalModal-content {
-        width: 90%;
-        overflow: scroll;
-    }
-    .internInfo {
-        grid-template-columns: repeat(1, 1fr);
-        gap: 0rem;
-    }
-    .RegisteredInterns,
-    .RegisteredHospitals {
-        padding: 1rem;
-    }
-    .internsDisplay,
-    .HospitalsDisplay {
-        max-height: 455px;
-    }
-    .header-content {
-        display: flex;;
-    }
+  .InternRegisteration input,
+  select {
+    width: 95%;
+  }
+  .top-metrix {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .TotalHospitalsMetrix {
+    grid-column: 1 / span 2;
+  }
+  .charts {
+    flex-direction: column;
+  }
+  .registerForm {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .registerForm .registerBTN {
+    grid-column: 1 / span 1;
+  }
+  .model-content,
+  .Internmodal-content,
+  .HospitalModal-content {
+    width: 90%;
+    overflow: scroll;
+  }
+  .internInfo {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 0rem;
+  }
+  .RegisteredInterns,
+  .RegisteredHospitals {
+    padding: 1rem;
+  }
+  .internsDisplay,
+  .HospitalsDisplay {
+    max-height: 455px;
+  }
+  .header-content {
+    display: flex;
+  }
 }

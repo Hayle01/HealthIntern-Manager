@@ -1,114 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>HealthIntern Manager - Hospitals</title>
-    <link rel="stylesheet" href="../css/dashboard.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
-</head>
-<body>
+    <link rel="stylesheet" href="../css/dashboard.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+  </head>
+  <body>
     <div class="dashboard-container">
-        <!-- side bar section -->
-        <section class="side-bar d-side-bar">
-            <div class="CloseToggle-btn" id="CloseToggleBtn">
-                <div class="CloseBar"></div>
-                <div class="CloseBar"></div>
+      <!-- side bar section -->
+      <section class="side-bar d-side-bar">
+        <div class="CloseToggle-btn" id="CloseToggleBtn">
+          <div class="CloseBar"></div>
+          <div class="CloseBar"></div>
+        </div>
+        <div class="logo">
+          <a href="./dashboard.html">
+            <h1>HealthIntern <span>Manager</span></h1>
+          </a>
+        </div>
+        <nav>
+          <ul class="side-bar-links">
+            <li>
+              <div class="path"></div>
+              <a href="./dashboard.html"
+                ><img src="../Icons/dashboard2.svg" alt="" />Dashboard</a
+              >
+            </li>
+            <li>
+              <div class="path"></div>
+              <a href="./registeration.html"
+                ><i class="fa-solid fa-user"></i>Registeration</a
+              >
+            </li>
+            <li>
+              <div class="path"></div>
+              <a href="./interns.html" id="interns"
+                ><i class="fa-solid fa-user-group"></i>Interns</a
+              >
+            </li>
+            <li>
+              <div class="path d-link"></div>
+              <a href="./hospitals.html" class="current-link"
+                ><i class="fa-solid fa-house-medical"></i>Hospitals</a
+              >
+            </li>
+
+            <li>
+              <div class="path"></div>
+              <a href="#" id="logout"
+                ><i class="fa-solid fa-power-off"></i>Log out</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </section>
+
+      <!-- content section -->
+      <section class="content-section">
+        <header class="header-content">
+          <div class="toggle-btn" id="toggleBtn">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+          </div>
+        </header>
+
+        <!-- registered interns display -->
+        <div class="RegisteredHospitals">
+          <a href="./hospitals.html">
+            <h1 class="page-title">Registered Hospitals</h1>
+          </a>
+          <!-- Interns Sections display-->
+          <section class="HospitalsDisplay">
+            <table class="HospitalsTable">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Hospital Name</th>
+                  <th>Department</th>
+                  <th>Hospital Type</th>
+                  <th>Hospital Capacity</th>
+                  <th>Available Shifts</th>
+                  <th>Interns</th>
+                </tr>
+              </thead>
+              <tbody id="HospitalTableBody"></tbody>
+            </table>
+          </section>
+
+          <!-- Modal Structure -->
+          <div id="HospitalModal" class="HospMOdal">
+            <div class="HospitalModal-content">
+              <span id="CloseHospitalModal" class="close-model">&times;</span>
+              <h2>Hospital Details</h2>
+              <img src="" id="HospitalLogo" alt="Hospital-logo" />
+              <div class="HospitalInfo">
+                <p>Hospital Name: <span id="HospNAMEModal">kalkaal</span></p>
+                <p>Hospital ID: <span id="HospitalIDmodal"></span></p>
+                <p>Hospital Type: <span id="HospitalTypeMOdal"></span></p>
+                <p>Hospital Capacity <span id="HospitalCapaModal"></span></p>
+                <p>
+                  Departments Available: <span id="modalHosDepartments"></span>
+                </p>
+                <p>Available Shifts: <span id="modalHosShifts"></span></p>
+                <p>Hospital Phone: <span id="modalHosPhone"></span></p>
+                <p>Hospital Email: <span id="modalHosEmail"></span></p>
+                <p>Hospital Address: <span id="HospitalAddressModal"></span></p>
+                <p>Interns: <span id="InternsReceivedModal"></span></p>
+              </div>
             </div>
-            <div class="logo">
-                <a href="./Dashboard.html">
-                    <h1>HealthIntern <span>Manager</span></h1>
-                </a>
-            </div>
-            <nav>
-                <ul class="side-bar-links">
-                    <li>
-                        <div class="path"></div>
-                        <a href="./Dashboard.html"><img src="../Icons/dashboard2.svg" alt="" />Dashboard</a>
-                    </li>
-                    <li>
-                        <div class="path"></div>
-                        <a href="./registeration.html"><i class="fa-solid fa-user"></i>Registeration</a>
-                    </li>
-                    <li>
-                        <div class="path"></div>
-                        <a href="./Interns.html" id="interns"><i class="fa-solid fa-user-group"></i>Interns</a>
-                    </li>
-                    <li>
-                        <div class="path d-link"></div>
-                        <a href="./Hospitals.html" class="current-link"><i class="fa-solid fa-house-medical"></i>Hospitals</a>
-                    </li>
-                    
-                    <li>
-                        <div class="path"></div>
-                        <a href="#" id="logout"><i class="fa-solid fa-power-off"></i>Log out</a>
-                    </li>
-                </ul>
-            </nav>
-        </section>
-
-        <!-- content section -->
-        <section class="content-section">
-
-            <header class="header-content">
-                    <div class="toggle-btn" id="toggleBtn">
-                        <div class="bar"></div>
-                        <div class="bar"></div>
-                        <div class="bar"></div>
-                    </div>
-            </header>
-            
-            <!-- registered interns display -->
-            <div class="RegisteredHospitals">
-                <a href="./Hospitals.html">
-                    <h1 class="page-title">Registered Hospitals</h1>
-                </a>
-                <!-- Interns Sections display-->
-                <section class="HospitalsDisplay">
-        
-                    <table class="HospitalsTable">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Hospital Name</th>
-                                <th>Department</th>
-                                <th>Hospital Type</th>
-                                <th>Hospital Capacity</th>
-                                <th>Available Shifts</th>
-                                <th>Interns</th>
-                            </tr>
-                        </thead>
-                        <tbody id="HospitalTableBody">
-        
-                        </tbody>
-                    </table>
-                </section>
-
-                <!-- Modal Structure -->
-                <div id="HospitalModal" class="HospMOdal">
-                    <div class="HospitalModal-content">
-                        <span id="CloseHospitalModal" class="close-model">&times;</span>
-                        <h2>Hospital Details</h2>
-                        <img src="" id="HospitalLogo" alt="Hospital-logo">
-                        <div class="HospitalInfo">
-                                <p>Hospital Name: <span id="HospNAMEModal">kalkaal</span></p>
-                                <p>Hospital ID: <span id="HospitalIDmodal"></span></p>
-                                <p>Hospital Type: <span id="HospitalTypeMOdal"></span></p>
-                                <p>Hospital Capacity <span id="HospitalCapaModal"></span></p>
-                                <p>Departments Available: <span id="modalHosDepartments"></span>
-                                <p>Available Shifts: <span id="modalHosShifts"></span>
-                                <p>Hospital Phone: <span id="modalHosPhone"></span></p>
-                                <p>Hospital Email: <span id="modalHosEmail"></span></p>
-                                <p>Hospital Address: <span  id="HospitalAddressModal"></span></p>
-                                <p>Interns: <span  id="InternsReceivedModal"></span></p>
-                        </div>
-                    </div>
-                </div>        
-            </div>
-        </section>
-
+          </div>
+        </div>
+      </section>
     </div>
 
-    <script src="../Js/script.js"></script>
-</body>
+    <script src="../js/script.js"></script>
+  </body>
 </html>

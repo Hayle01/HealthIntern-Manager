@@ -19,9 +19,8 @@ let departmentSerials = JSON.parse(
   ANE: 1,
 };
 
-
 document.addEventListener("DOMContentLoaded", function () {
-  if (window.location.pathname.includes("Dashboard.html")) {
+  if (window.location.pathname.includes("dashboard.html")) {
     const toggleBtn = document.getElementById("toggleBtn");
     const sidebar = document.querySelector(".side-bar");
     const CloseToggleBtn = document.querySelector("#CloseToggleBtn");
@@ -70,15 +69,15 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     };
 
-    // Intern registration form handling events
+    // Intern registration form element selections
     const InternRegisterForm = document.getElementById("InternRegister");
     const InternfullName = document.getElementById("fullName");
     const InternmotherName = document.getElementById("mothername");
     const dateoFBirth = document.getElementById("dateoFBirth");
     const genderRadios = document.querySelectorAll('input[name="gender"]');
-    const martialStatus = document.querySelectorAll(
-      'input[name="martialStatus"]'
-    );
+    // const martialStatus = document.querySelectorAll(
+    //   'input[name="martialStatus"]'
+    // );
     const InternNationality = document.getElementById("nationality");
     const InternAddresss = document.getElementById("addresss");
     const InternEmail = document.getElementById("email");
@@ -104,15 +103,15 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Function to get selected marital status
-    function getSelectedMaritalStatus() {
-      let selectedStatus = "";
-      martialStatus.forEach((radio) => {
-        if (radio.checked) {
-          selectedStatus = radio.value;
-        }
-      });
-      return selectedStatus;
-    }
+    // function getSelectedMaritalStatus() {
+    //   let selectedStatus = "";
+    //   martialStatus.forEach((radio) => {
+    //     if (radio.checked) {
+    //       selectedStatus = radio.value;
+    //     }
+    //   });
+    //   return selectedStatus;
+    // }
 
     // Function to update the ID input when department changes
     departmentDropdown.addEventListener("change", function () {
@@ -162,7 +161,7 @@ document.addEventListener("DOMContentLoaded", function () {
         motherName: InternmotherName.value,
         dateOfBirth: dateoFBirth.value,
         gender: getSelectedGender(),
-        maritalStatus: getSelectedMaritalStatus(),
+        // maritalStatus: getSelectedMaritalStatus(),
         nationality: InternNationality.value,
         address: InternAddresss.value,
         email: InternEmail.value,
@@ -194,15 +193,83 @@ document.addEventListener("DOMContentLoaded", function () {
       InternRegisterForm.reset();
     }
 
-    // Event listener for form submission
+    /// Event listener for form submission
     InternRegisterForm.addEventListener("submit", (e) => {
       e.preventDefault();
-      if (InternmotherName.value == "") {
-        alert("Please enter your mother name");
+
+      // Validation checks for each required field
+      if (InternfullName.value === "") {
+        alert("Please enter the full name");
+        InternfullName.focus();
+        return;
       }
+      if (InternmotherName.value === "") {
+        alert("Please enter your mother’s name");
+        InternmotherName.focus();
+        return;
+      }
+      if (dateoFBirth.value === "") {
+        alert("Please enter the date of birth");
+        dateoFBirth.focus();
+        return;
+      }
+      if (!getSelectedGender()) {
+        alert("Please select your gender");
+        return;
+      }
+      // if (!getSelectedMaritalStatus()) {
+      //   alert("Please select your marital status");
+      //   return;
+      // }
+      if (InternNationality.value === "") {
+        alert("Please enter your nationality");
+        InternNationality.focus();
+        return;
+      }
+      if (InternAddresss.value === "") {
+        alert("Please enter your address");
+        InternAddresss.focus();
+        return;
+      }
+      if (InternEmail.value === "" || !validateEmail(InternEmail.value)) {
+        alert("Please enter a valid email address");
+        InternEmail.focus();
+        return;
+      }
+      if (InternPhonenumber.value === "") {
+        alert("Please enter a valid phone number");
+        InternPhonenumber.focus();
+        return;
+      }
+      if (departmentDropdown.value === "") {
+        alert("Please select a department");
+        return;
+      }
+      if (selectedhospital.value === "") {
+        alert("Please select a hospital");
+        return;
+      }
+      if (StartDate.value === "") {
+        alert("Please enter the start date");
+        StartDate.focus();
+        return;
+      }
+      if (EndDate.value === "") {
+        alert("Please enter the end date");
+        EndDate.focus();
+        return;
+      }
+
+      // Save intern data if validation passes
       saveInternData();
-      window.location.href = "../Html/Interns.html";
+      window.location.href = "../html/interns.html";
     });
+
+    // Email validation function
+    function validateEmail(email) {
+      const re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+      return re.test(String(email).toLowerCase());
+    }
 
     // hospital registration form handling events
     const registerationHospital = document.getElementById("registerHospital");
@@ -250,13 +317,50 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     RegisterHospitalSubBTN.addEventListener("click", (e) => {
       e.preventDefault();
-      if (hospitalName.value == "") {
+      if (hospitalName.value === "") {
         alert("Please enter a Hospital name!");
+        hospitalName.focus();
         return;
       }
+      if (hospitallocation.value === "") {
+        alert("Please enter the hospital location!");
+        hospitallocation.focus();
+        return;
+      }
+      if (hospitalEmail.value === "" || !validateEmail(hospitalEmail.value)) {
+        alert("Please enter a valid hospital email address!");
+        hospitalEmail.focus();
+        return;
+      }
+      if (hospitalPhone.value === "") {
+        alert("Please enter a valid hospital phone number!");
+        hospitalPhone.focus();
+        return;
+      }
+      if (
+        hospitalCapacity.value === "" ||
+        isNaN(hospitalCapacity.value) ||
+        hospitalCapacity.value <= 0
+      ) {
+        alert("Please enter a valid hospital capacity!");
+        hospitalCapacity.focus();
+        return;
+      }
+      if (hospitalType.value === "") {
+        alert("Please select a hospital type!");
+        return;
+      }
+      if (HdepartmentsAvailable.selectedOptions.length === 0) {
+        alert("Please select at least one department!");
+        return;
+      }
+      if (availableShifts.selectedOptions.length === 0) {
+        alert("Please select at least one shift!");
+        return;
+      }
+
       registerHospitalFunction();
-      console.log("registerHospital are currently available");
-      window.location.href = "../Html/Hospitals.html";
+      window.location.href = "../html/hospitals.html";
     });
 
     // dashboard metrix
@@ -394,17 +498,17 @@ document.addEventListener("DOMContentLoaded", function () {
       data: genderData,
       options: genderChartOptions,
     });
+
     const onlineUser = JSON.parse(localStorage.getItem("onlineUser")) || null;
-    if(!onlineUser) return (window.location.href = "../Html/index.html");
+    if (!onlineUser) return (window.location.href = "../index.html");
     const logout = document.getElementById("logout");
     logout.addEventListener("click", () => {
       localStorage.removeItem("onlineUser");
-      window.location.href = "../Html/index.html";
+      window.location.href = "../index.html";
     });
-
   }
 
-  if (window.location.pathname.includes("Interns.html")) {
+  if (window.location.pathname.includes("interns.html")) {
     const toggleBtn = document.getElementById("toggleBtn");
     const sidebar = document.querySelector(".side-bar");
     const CloseToggleBtn = document.querySelector("#CloseToggleBtn");
@@ -520,7 +624,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const modalMotherName = document.getElementById("modalMotherName");
     const modalDateOfBirth = document.getElementById("modalDateOfBirth");
     const modalGender = document.getElementById("modalGender");
-    const modalMaritalStatus = document.getElementById("modalMaritalStatus");
+    // const modalMaritalStatus = document.getElementById("modalMaritalStatus");
     const modalNationality = document.getElementById("modalNationality");
     const modalAddress = document.getElementById("modalAddress");
     const modalEmail = document.getElementById("modalEmail");
@@ -543,14 +647,14 @@ document.addEventListener("DOMContentLoaded", function () {
       );
 
       // Populate modal with intern data
-      modalImage.src = intern.image || "../Images/default-profile-image.png";
+      modalImage.src = intern.image || "../images/default-profile-image.png";
       HospitalLogo.src =
-        hospital.hospitalLogo || "../Images/defaultHospitalLogo.jpg";
+        hospital.hospitalLogo || "../images/defaultHospitalLogo.jpg";
       modalFullName.textContent = intern.fullName;
       modalMotherName.textContent = intern.motherName;
       modalDateOfBirth.textContent = intern.dateOfBirth;
       modalGender.textContent = intern.gender;
-      modalMaritalStatus.textContent = intern.maritalStatus;
+      // modalMaritalStatus.textContent = intern.maritalStatus;
       modalNationality.textContent = intern.nationality;
       modalAddress.textContent = intern.address;
       modalEmail.textContent = intern.email;
@@ -581,36 +685,37 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     };
     const onlineUser = JSON.parse(localStorage.getItem("onlineUser")) || null;
-    if (!onlineUser) return (window.location.href = "../Html/index.html");
+    if (!onlineUser) return (window.location.href = "../index.html");
     const logout = document.getElementById("logout");
     logout.addEventListener("click", () => {
       localStorage.removeItem("onlineUser");
-      window.location.href = "../Html/index.html";
+      window.location.href = "../index.html";
     });
   }
 
-if (window.location.pathname.includes("Hospitals.html")) {
-  const toggleBtn = document.getElementById("toggleBtn");
-  const sidebar = document.querySelector(".side-bar");
-  const CloseToggleBtn = document.querySelector("#CloseToggleBtn");
+  if (window.location.pathname.includes("hospitals.html")) {
+    const toggleBtn = document.getElementById("toggleBtn");
+    const sidebar = document.querySelector(".side-bar");
+    const CloseToggleBtn = document.querySelector("#CloseToggleBtn");
 
-  toggleBtn.addEventListener("click", () => {
-    sidebar.classList.toggle("active");
-  });
-  CloseToggleBtn.addEventListener("click", () => {
-    sidebar.classList.remove("active");
-  });
+    toggleBtn.addEventListener("click", () => {
+      sidebar.classList.toggle("active");
+    });
+    CloseToggleBtn.addEventListener("click", () => {
+      sidebar.classList.remove("active");
+    });
 
-  const HospitalTableBody = document.getElementById("HospitalTableBody");
-  const registeredHospitals = JSON.parse(localStorage.getItem("hospitals")) || [];
-  const registeredInterns = JSON.parse(localStorage.getItem("interns")) || [];
+    const HospitalTableBody = document.getElementById("HospitalTableBody");
+    const registeredHospitals =
+      JSON.parse(localStorage.getItem("hospitals")) || [];
+    const registeredInterns = JSON.parse(localStorage.getItem("interns")) || [];
 
-  registeredHospitals.forEach((hospital) => {
-    const internCount = registeredInterns.filter(
-      (intern) => intern.SelectedHospitalID === hospital.id
-    ).length;
-    const row = document.createElement("tr");
-    row.innerHTML = `
+    registeredHospitals.forEach((hospital) => {
+      const internCount = registeredInterns.filter(
+        (intern) => intern.SelectedHospitalID === hospital.id
+      ).length;
+      const row = document.createElement("tr");
+      row.innerHTML = `
       <td>${hospital.id}</td>
       <td>${hospital.hospitalName}</td>
       <td>${hospital.hospitalsdepartment}</td> 
@@ -620,63 +725,65 @@ if (window.location.pathname.includes("Hospitals.html")) {
       <td>${internCount}</td>
     `;
 
-    // Add click event to show hospital details modal
-    row.addEventListener("click", () => {
-      console.log("Hospital row clicked");
-      openHospitalDetailsModal(hospital, internCount);
+      // Add click event to show hospital details modal
+      row.addEventListener("click", () => {
+        console.log("Hospital row clicked");
+        openHospitalDetailsModal(hospital, internCount);
+      });
+      HospitalTableBody.appendChild(row);
     });
-    HospitalTableBody.appendChild(row);
-  });
 
+    const CloseHospitalModal = document.getElementById("CloseHospitalModal");
+    const HospitalModal = document.getElementById("HospitalModal");
 
-  const CloseHospitalModal = document.getElementById("CloseHospitalModal");
-  const HospitalModal = document.getElementById("HospitalModal");
+    const HospitalLogo = document.getElementById("HospitalLogo");
+    const HospNAMEModal = document.getElementById("HospNAMEModal");
+    const HospitalIDmodal = document.getElementById("HospitalIDmodal");
+    const HospitalTypeMOdal = document.getElementById("HospitalTypeMOdal");
+    const HospitalCapaModal = document.getElementById("HospitalCapaModal");
+    const modalHosDepartments = document.getElementById("modalHosDepartments");
+    const modalHosShifts = document.getElementById("modalHosShifts");
+    const modalHosPhone = document.getElementById("modalHosPhone");
+    const modalHosEmail = document.getElementById("modalHosEmail");
+    const HospitalAddressModal = document.getElementById(
+      "HospitalAddressModal"
+    );
+    const InternsReceivedModal = document.getElementById(
+      "InternsReceivedModal"
+    );
 
-  const HospitalLogo = document.getElementById("HospitalLogo");
-  const HospNAMEModal = document.getElementById("HospNAMEModal");
-  const HospitalIDmodal = document.getElementById("HospitalIDmodal");
-  const HospitalTypeMOdal = document.getElementById("HospitalTypeMOdal");
-  const HospitalCapaModal = document.getElementById("HospitalCapaModal");
-  const modalHosDepartments = document.getElementById("modalHosDepartments");
-  const modalHosShifts = document.getElementById("modalHosShifts");
-  const modalHosPhone = document.getElementById("modalHosPhone");
-  const modalHosEmail = document.getElementById("modalHosEmail");
-  const HospitalAddressModal = document.getElementById("HospitalAddressModal");
-  const InternsReceivedModal = document.getElementById("InternsReceivedModal");
+    function openHospitalDetailsModal(hospital, internCount) {
+      HospitalLogo.src =
+        hospital.hospitalLogo || "../images/defaultHospitalLogo.jpg";
+      HospNAMEModal.textContent = hospital.hospitalName;
+      HospitalIDmodal.textContent = hospital.id;
+      HospitalTypeMOdal.textContent = hospital.hospitalType;
+      HospitalCapaModal.textContent = hospital.hospitalCapacity;
+      modalHosDepartments.textContent = hospital.hospitalsdepartment;
+      modalHosShifts.textContent = hospital.availableShifts;
+      modalHosPhone.textContent = hospital.hospitalPhone;
+      modalHosEmail.textContent = hospital.hospitalEmail;
+      HospitalAddressModal.textContent = hospital.hospitallocation;
+      InternsReceivedModal.textContent = internCount;
 
-  function openHospitalDetailsModal(hospital, internCount) {
-    HospitalLogo.src = hospital.hospitalLogo || "../Images/defaultHospitalLogo.jpg";
-    HospNAMEModal.textContent = hospital.hospitalName;
-    HospitalIDmodal.textContent = hospital.id;
-    HospitalTypeMOdal.textContent = hospital.hospitalType;
-    HospitalCapaModal.textContent = hospital.hospitalCapacity;
-    modalHosDepartments.textContent = hospital.hospitalsdepartment;
-    modalHosShifts.textContent = hospital.availableShifts;
-    modalHosPhone.textContent = hospital.hospitalPhone;
-    modalHosEmail.textContent = hospital.hospitalEmail;
-    HospitalAddressModal.textContent = hospital.hospitallocation;
-    InternsReceivedModal.textContent = internCount;
+      HospitalModal.style.display = "block";
+    }
 
-    HospitalModal.style.display = "block";
+    CloseHospitalModal.addEventListener("click", () => {
+      HospitalModal.style.display = "none";
+    });
+
+    window.onclick = function (event) {
+      if (event.target == HospitalModal) {
+        HospitalModal.style.display = "none";
+      }
+    };
+    const onlineUser = JSON.parse(localStorage.getItem("onlineUser")) || null;
+    if (!onlineUser) return (window.location.href = "../index.html");
+    const logout = document.getElementById("logout");
+    logout.addEventListener("click", () => {
+      localStorage.removeItem("onlineUser");
+      window.location.href = "../index.html";
+    });
   }
-
-  CloseHospitalModal.addEventListener("click", () => {
-    HospitalModal.style.display = "none";
-  });
-
-  window.onclick = function (event) {
-       if (event.target == HospitalModal) {
-         HospitalModal.style.display = "none";
-       }
-  }
-  const onlineUser = JSON.parse(localStorage.getItem("onlineUser")) || null;
-  if (!onlineUser) return (window.location.href = "../Html/index.html");
-  const logout = document.getElementById("logout");
-  logout.addEventListener("click", () => {
-    localStorage.removeItem("onlineUser");
-    window.location.href = "../Html/index.html";
-  });
-
-}
-
 });

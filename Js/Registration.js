@@ -1,18 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
   const onlineUser = JSON.parse(localStorage.getItem("onlineUser")) || null;
-  if (!onlineUser) {
-    window.location.href = "../Html/index.html";
-    return;
-  }
-
+  if (!onlineUser) return (window.location.href = "../index.html");
   const logout = document.getElementById("logout");
-  if (logout) {
-    logout.addEventListener("click", () => {
-      localStorage.removeItem("onlineUser");
-      window.location.href = "../Html/index.html";
-      console.log("Touched logout");
-    });
-  }
+  logout.addEventListener("click", () => {
+    localStorage.removeItem("onlineUser");
+    window.location.href = "../index.html";
+  });
+
   const toggleBtn = document.getElementById("toggleBtn");
   const sidebar = document.querySelector(".side-bar");
   const CloseToggleBtn = document.querySelector("#CloseToggleBtn");
@@ -69,9 +63,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const InternmotherName = document.getElementById("mothername");
   const dateoFBirth = document.getElementById("dateoFBirth");
   const genderRadios = document.querySelectorAll('input[name="gender"]');
-  const martialStatus = document.querySelectorAll(
-    'input[name="martialStatus"]'
-  );
+  // const martialStatus = document.querySelectorAll(
+  //   'input[name="martialStatus"]'
+  // );
   const InternNationality = document.getElementById("nationality");
   const InternAddresss = document.getElementById("addresss");
   const InternEmail = document.getElementById("email");
@@ -97,15 +91,15 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Function to get selected marital status
-  function getSelectedMaritalStatus() {
-    let selectedStatus = "";
-    martialStatus.forEach((radio) => {
-      if (radio.checked) {
-        selectedStatus = radio.value;
-      }
-    });
-    return selectedStatus;
-  }
+  // function getSelectedMaritalStatus() {
+  //   let selectedStatus = "";
+  //   martialStatus.forEach((radio) => {
+  //     if (radio.checked) {
+  //       selectedStatus = radio.value;
+  //     }
+  //   });
+  //   return selectedStatus;
+  // }
 
   // Function to update the ID input when department changes
   departmentDropdown.addEventListener("change", function () {
@@ -155,7 +149,7 @@ document.addEventListener("DOMContentLoaded", () => {
       motherName: InternmotherName.value,
       dateOfBirth: dateoFBirth.value,
       gender: getSelectedGender(),
-      maritalStatus: getSelectedMaritalStatus(),
+      // maritalStatus: getSelectedMaritalStatus(),
       nationality: InternNationality.value,
       address: InternAddresss.value,
       email: InternEmail.value,
@@ -211,10 +205,10 @@ document.addEventListener("DOMContentLoaded", () => {
       alert("Please select your gender");
       return;
     }
-    if (!getSelectedMaritalStatus()) {
-      alert("Please select your marital status");
-      return;
-    }
+    // if (!getSelectedMaritalStatus()) {
+    //   alert("Please select your marital status");
+    //   return;
+    // }
     if (InternNationality.value === "") {
       alert("Please enter your nationality");
       InternNationality.focus();
@@ -230,9 +224,7 @@ document.addEventListener("DOMContentLoaded", () => {
       InternEmail.focus();
       return;
     }
-    if (
-      InternPhonenumber.value === ""
-    ) {
+    if (InternPhonenumber.value === "") {
       alert("Please enter a valid phone number");
       InternPhonenumber.focus();
       return;
@@ -258,7 +250,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Save intern data if validation passes
     saveInternData();
-    window.location.href = "../Html/Interns.html";
+    window.location.href = "../html/interns.html";
   });
 
   // Email validation function
@@ -324,9 +316,7 @@ document.addEventListener("DOMContentLoaded", () => {
       hospitalEmail.focus();
       return;
     }
-    if (
-      hospitalPhone.value === ""
-    ) {
+    if (hospitalPhone.value === "") {
       alert("Please enter a valid hospital phone number!");
       hospitalPhone.focus();
       return;
@@ -354,7 +344,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     registerHospitalFunction();
-    window.location.href = "../Html/Hospitals.html";
+    window.location.href = "../html/hospitals.html";
   });
 });
-

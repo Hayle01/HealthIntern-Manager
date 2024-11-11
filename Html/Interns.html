@@ -1,80 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HealthIntern Manager - Interns</title>
+    <link rel="stylesheet" href="../css/dashboard.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HealthIntern Manager - Interns</title>
-  <link rel="stylesheet" href="../css/dashboard.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
-</head>
+  <body>
+    <!-- side bar section -->
+    <div class="dashboard-container">
+      <section class="side-bar d-side-bar">
+        <div class="CloseToggle-btn" id="CloseToggleBtn">
+          <div class="CloseBar"></div>
+          <div class="CloseBar"></div>
+        </div>
+        <div class="logo">
+          <a href="./dashboard.html">
+            <h1>HealthIntern <span>Manager</span></h1>
+          </a>
+        </div>
+        <nav>
+          <ul class="side-bar-links">
+            <li>
+              <div class="path"></div>
+              <a href="./dashboard.html"
+                ><img src="../Icons/dashboard2.svg" alt="" />Dashboard</a
+              >
+            </li>
+            <li>
+              <div class="path"></div>
+              <a href="./registeration.html"
+                ><i class="fa-solid fa-user"></i>Registeration</a
+              >
+            </li>
+            <li>
+              <div class="path d-link"></div>
+              <a href="./interns.html" id="interns" class="current-link"
+                ><i class="fa-solid fa-user-group"></i>Interns</a
+              >
+            </li>
+            <li>
+              <div class="path"></div>
+              <a href="./hospitals.html"
+                ><i class="fa-solid fa-house-medical"></i>Hospitals</a
+              >
+            </li>
+            <li>
+              <div class="path"></div>
+              <a href="#" id="logout"
+                ><i class="fa-solid fa-power-off"></i>Log out</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </section>
 
-<body>
-  <!-- side bar section -->
-  <div class="dashboard-container">
-    
-    <section class="side-bar d-side-bar">
-      <div class="CloseToggle-btn" id="CloseToggleBtn">
-        <div class="CloseBar"></div>
-        <div class="CloseBar"></div>
-      </div>
-      <div class="logo">
-        <a href="./Dashboard.html">
-          <h1>HealthIntern <span>Manager</span></h1>
-        </a>
-      </div>
-      <nav>
-        <ul class="side-bar-links">
-          <li>
-            <div class="path"></div>
-            <a href="./Dashboard.html"><img src="../Icons/dashboard2.svg" alt="" />Dashboard</a>
-          </li>
-          <li>
-            <div class="path"></div>
-            <a href="./registeration.html"><i class="fa-solid fa-user"></i>Registeration</a>
-          </li>
-          <li>
-            <div class="path d-link"></div>
-            <a href="./Interns.html" id="interns" class="current-link"><i class="fa-solid fa-user-group"></i>Interns</a>
-          </li>
-        <li>
-          <div class="path"></div>
-          <a href="./Hospitals.html"><i class="fa-solid fa-house-medical"></i>Hospitals</a>
-        </li>
-          <li>
-            <div class="path"></div>
-            <a href="#" id="logout"><i class="fa-solid fa-power-off"></i>Log out</a>
-          </li>
-        </ul>
-      </nav>
-    </section>
-
-    <!-- content section -->
-    <section class="content-section">
-      <header>
-        <div class="left">    
-          <div class="toggle-btn" id="toggleBtn">
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
+      <!-- content section -->
+      <section class="content-section">
+        <header>
+          <div class="left">
+            <div class="toggle-btn" id="toggleBtn">
+              <div class="bar"></div>
+              <div class="bar"></div>
+              <div class="bar"></div>
+            </div>
           </div>
-        </div>
-      
-      
-        <div class="right">
-          <form id="searchInternForm">
-            <input type="text" id="search-intern" placeholder="Search Intern by ID" />
-            <button type="submit" id="searchInternbtn"><i class="fa-solid fa-magnifying-glass"></i></button>
-          </form>
-        </div>
-      </header>
-      <!-- registered interns display -->
-      <div class="RegisteredInterns">
-        <a href="Interns.html">
-          <h1 class="page-title">Registered Interns</h1>
-        </a>
 
-        <!-- <div class="filter-bar">
+          <div class="right">
+            <form id="searchInternForm">
+              <input
+                type="text"
+                id="search-intern"
+                placeholder="Search Intern by ID"
+              />
+              <button type="submit" id="searchInternbtn">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </button>
+            </form>
+          </div>
+        </header>
+        <!-- registered interns display -->
+        <div class="RegisteredInterns">
+          <a href="interns.html">
+            <h1 class="page-title">Registered Interns</h1>
+          </a>
+
+          <!-- <div class="filter-bar">
           <div class="filter-icon">
             <img src="../Icons/filter.svg" alt="filter-icon">
           </div>
@@ -108,72 +124,67 @@
           </div>
         </div> -->
 
-        <!-- Interns Sections display-->
-        <section class="internsDisplay">
+          <!-- Interns Sections display-->
+          <section class="internsDisplay">
+            <table class="intern-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Institution</th>
+                  <th>Department</th>
+                  <th>Start-Date</th>
+                  <th>End-Date</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="InternsTableBody">
+                <tr></tr>
+              </tbody>
+            </table>
+          </section>
 
-          <table class="intern-table">
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Institution</th>
-                <th>Department</th>
-                <th>Start-Date</th>
-                <th>End-Date</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody id="InternsTableBody">
-              <tr>
-                
-              </tr>
-            </tbody>
-          </table>
-        </section>
-
-        
-        <!-- Modal Structure -->
-        <div id="internModal" class="Internmodal">
-          <div class="Internmodal-content">
-            <span id="CloseInternModal" class="close-model">&times;</span>
-            <h2>Intern Details</h2>
-            <img src="" alt="">
-            <div class="InternImage">
-              <div class="InternImageAndINsLogo">
-                <img id="InternImagModal"  src="" alt="Intern Image">
+          <!-- Modal Structure -->
+          <div id="internModal" class="Internmodal">
+            <div class="Internmodal-content">
+              <span id="CloseInternModal" class="close-model">&times;</span>
+              <h2>Intern Details</h2>
+              <img src="" alt="" />
+              <div class="InternImage">
+                <div class="InternImageAndINsLogo">
+                  <img id="InternImagModal" src="" alt="Intern Image" />
+                </div>
+                <img src="" id="HospitalLogo" alt="Hospital Logo" />
               </div>
-              <img src="" id="HospitalLogo" alt="Hospital Logo">
-            </div>
-            <div class="internInfo">
-              <div class="left-info">
-                <p>Full Name: <span id="modalFullName"></span></p>
-                <p>Mother Name: <span id="modalMotherName"></span></p>
-                <p>Date of Birth: <span id="modalDateOfBirth"></span></p>
-                <p>Gender: <span id="modalGender"></span></p>
-                <p>Marital Status: <span id="modalMaritalStatus"></span></p>
-                <p>Nationality: <span id="modalNationality"></span></p>
-                <p>Address: <span id="modalAddress"></span></p>
-              </div>
-              <div class="right-info">
-                <p>Email: <span id="modalEmail"></span></p>
-                <p>Phone Number: <span id="modalPhoneNumber"></span></p>
-                <p>Department: <span id="modalDepartment"></span></p>
-                <p>Institution: <span id="modalInstitution"></span></p>
-                <p>Trainig Hospital: <span id="ModalSelectedHospital"></span></p>
-                <p>Start Date: <span id="modalStartDate"></span></p>
-                <p>End Date: <span id="modalEndDate"></span></p>
-                <p>Status: <span id="modalStatus"></span></p>
+              <div class="internInfo">
+                <div class="left-info">
+                  <p>Full Name: <span id="modalFullName"></span></p>
+                  <p>Mother Name: <span id="modalMotherName"></span></p>
+                  <p>Date of Birth: <span id="modalDateOfBirth"></span></p>
+                  <p>Gender: <span id="modalGender"></span></p>
+                  <p>Marital Status: <span id="modalMaritalStatus"></span></p>
+                  <p>Nationality: <span id="modalNationality"></span></p>
+                  <p>Address: <span id="modalAddress"></span></p>
+                </div>
+                <div class="right-info">
+                  <p>Email: <span id="modalEmail"></span></p>
+                  <p>Phone Number: <span id="modalPhoneNumber"></span></p>
+                  <p>Department: <span id="modalDepartment"></span></p>
+                  <p>Institution: <span id="modalInstitution"></span></p>
+                  <p>
+                    Trainig Hospital: <span id="ModalSelectedHospital"></span>
+                  </p>
+                  <p>Start Date: <span id="modalStartDate"></span></p>
+                  <p>End Date: <span id="modalEndDate"></span></p>
+                  <p>Status: <span id="modalStatus"></span></p>
+                </div>
               </div>
             </div>
           </div>
         </div>
+      </section>
+    </div>
 
-
-      </div>
-    </section>
-  </div>
-
-  <script src="../Js/script.js"></script>
-</body>
-
+    <script src="../js/script.js"></script>
+  </body>
 </html>
