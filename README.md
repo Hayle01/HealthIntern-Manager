@@ -1,97 +1,82 @@
 
-# HealthIntern Manager
+# HealthIntern Manager System
 
-## Project Description
+The **Health Intern Manager System** is a web-based application designed for managing interns in the health field. This system provides features for intern registration, hospital registration, assignment of interns to hospitals, and management of intern data, along with other administrative tasks. Built using HTML, CSS, and JavaScript, it leverages Local Storage for data management.
 
-**HealthIntern Manager** is a web-based internship management system designed for health science colleges to streamline the registration and tracking of interns across various departments. It facilitates easy intern registration, hospital assignments, and internship progress tracking while ensuring that hospitals do not exceed the number of interns they can accommodate.
-
-The project is built using **HTML**, **CSS**, and **JavaScript**, utilizing **DOM manipulation**, **API integration**, and **localStorage** for data management.
+---
 
 ## Features
 
-1. **Admin Authentication:**
-   - Admins can sign up and log in to access the system.
-   - Only authenticated users can register interns.
+- **Intern Registration:** Allows users to register new interns with details like personal information, department, training hospital, and start/end dates.
+- **Hospital Registration:** Manage hospital information including name, location, contact details, capacity, available departments, and shifts.
+- **Dynamic Intern ID Generation:** Auto-generates unique intern IDs based on the selected department.
+- **Intern Profile Management:** View and update details for each intern, including their status and assigned hospital.
+- **Status Tracking:** Tracks intern status (e.g., Active, Pending, Completed) based on training start and end dates.
+- **Dynamic Forms:** Adjusts fields in the registration form based on the department or hospital selection.
+- **Filter and Search:** Includes filtering options for interns by date, gender, and status, with a reset filter feature.
+- **Hospital Capacity Management:** Manages intern assignments to hospitals, tracking current and available intern slots.
+- **User Authentication:** Checks if a user is logged in as an "onlineUser," otherwise redirects to the login page.
+- **Logout Functionality:** Allows users to log out, clearing session data.
 
-2. **Intern Registration:**
-   - Dynamic forms for each department (e.g., Nursing, Medicine).
-   - Unique department-specific intern IDs.
-   - Image uploads for intern profiles.
-
-3. **Hospital Management:**
-   - Register hospitals and set a limit on the number of interns per hospital.
-   - Track the number of interns per hospital and enforce limits.
-   
-4. **Internship Tracking:**
-   - Monitor intern progress and remaining days.
-   - Status updates such as **pending**, **approved**, etc.
-
-5. **Dashboard Features:**
-   - Display total interns registered, gender breakdown, number of hospitals, and active interns.
-
-## Brand Identity
-
-### Colors
-
-The brand uses a professional and clean color palette to represent the health and tech industries:
-
-- **Primary Color**: #2E86C1 (Bright Blue) – Represents trust, professionalism, and clarity.
-- **Secondary Color**: #28B463 (Green) – Symbolizes growth, health, and progress.
-- **Accent Color**: #F4D03F (Yellow) – Adds a touch of energy and attention, guiding the user’s focus.
-- **Neutral Color**: #F5F5F5 (Light Grey) – Used for backgrounds, giving a clean and modern look.
-
-### Typography
-
-- **Font Family**: 'Poppins', sans-serif – A modern, clean font that emphasizes clarity and readability.
-
-## Technology Stack
-
-- **HTML**: For page structure and intern registration forms.
-- **CSS**: For styling, including responsive layouts and form designs.
-- **JavaScript**: 
-  - Handles form validation, data processing, and dynamic content loading.
-  - Manages data storage using `localStorage` and implements API logic.
+---
 
 ## Project Structure
 
-```
-├── index.html                # Main login/signup page
-├── dashboard.html            # Admin dashboard
-├── register-intern.html      # Intern registration form
-├── register-hospital.html    # Hospital registration form
-├── assets/                   # Folder containing images and stylesheets
-│   ├── styles.css            # Main CSS file
-│   └── images/               # Folder containing images
-└── scripts/                  # JavaScript files
-    ├── auth.js               # Handles authentication logic
-    ├── register.js           # Manages intern and hospital registrations
-    ├── dashboard.js          # Handles displaying dashboard statistics
-    └── storage.js            # Manages data storage in localStorage
+```plaintext
+HealthIntern Manager System/
+├── Css/
+│   ├── dashboard.css        # Styles for the dashboard layout
+│   └── style.css            # General styles for the application
+│
+├── Html/
+│   ├── Dashboard.html       # Main dashboard view for managing interns and hospitals
+│   ├── Hospitals.html       # Hospital management view
+│   ├── index.html           # Authentication page for login/signup
+│   ├── Interns.html         # Intern management view
+│   └── registration.html    # Registration form page for new interns and hospitals
+│
+├── Icons/                   # Contains icon files for the UI
+├── Images/                  # Contains images used in the application
+│
+├── Js/
+│   ├── auth.js              # Handles authentication functionality
+│   ├── Registration.js      # Manages intern and hospital registration logic
+│   └── script.js            # Handles other UI interactions and event listeners
+│
+└── README.md                # Project documentation
 ```
 
-## Installation & Usage
+---
 
-1. **Clone the repository:**
+## Branding
+
+HealthIntern Manager System’s branding focuses on simplicity, professionalism, and usability. The platform uses a clean and organized interface that promotes easy navigation for users, helping administrators manage interns and hospitals efficiently.
+
+---
+
+## Installation
+
+1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/healthintern-manager.git
+   git clone https://github.com/your-username/HealthIntern-Manager.git
    ```
+2. Open the `index.html` file in a web browser to access the login page.
 
-2. **Open the project:**
-   Navigate to the project folder and open `index.html` in your browser to start.
+---
 
-3. **Admin Sign-Up/Login:**
-   - Create an account or log in to access the dashboard.
-   - Only authenticated users can register interns and manage hospitals.
+## Usage
 
-4. **Register Interns:**
-   - Choose a department and fill out the intern registration form.
-   - Upload an image and assign the intern to a hospital.
-   
-5. **View Dashboard:**
-   - Track the number of registered interns, their gender breakdown, and the number of active interns in hospitals.
+1. **Login:** Users must log in from `index.html` (auth page). If a user is not authenticated, they will be redirected back to this page.
+2. **Dashboard:** Accessible after login, the dashboard provides options to manage interns and hospitals.
+3. **Register Intern:** Fill in intern details on the `registration.html` page, including department selection which auto-generates an intern ID.
+4. **Register Hospital:** Enter hospital information with capacity limits and available departments.
+5. **Manage Interns and Hospitals:** View and update intern/hospital details, with filters and search features available on `Interns.html` and `Hospitals.html`.
 
-## Future Enhancements
+---
 
-- **Progress Tracking**: Automatically calculate remaining internship days.
-- **Notifications**: Alerts when hospitals reach their intern limit or when internships are nearing completion.
-- **Reporting**: Generate reports for each department or hospital.
+## Contact
+
+For further assistance, please contact:
+
+- **Email:** mabdirahim832@gmail.com
+- **GitHub:** [\[[Your GitHub Profile Link](https://github.com/Hayle01)\]]
