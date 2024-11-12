@@ -21,6 +21,15 @@ let departmentSerials = JSON.parse(
 
 document.addEventListener("DOMContentLoaded", function () {
   if (window.location.pathname.includes("dashboard.html")) {
+    const onlineUser = JSON.parse(localStorage.getItem("onlineUser")) || null;
+    if (!onlineUser) return (window.location.href = "../index.html");
+
+    const logout = document.getElementById("logout");
+    logout.addEventListener("click", () => {
+      localStorage.removeItem("onlineUser");
+      window.location.href = "../index.html";
+    });
+
     const toggleBtn = document.getElementById("toggleBtn");
     const sidebar = document.querySelector(".side-bar");
     const CloseToggleBtn = document.querySelector("#CloseToggleBtn");
@@ -31,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
     CloseToggleBtn.addEventListener("click", () => {
       sidebar.classList.remove("active");
     });
-
+    
     // Modal for quick registration
     const registerIntern = document.querySelector("#registerIntern");
     const registerhospital = document.querySelector("#registerhospital");
@@ -89,7 +98,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const StartDate = document.getElementById("StartDate");
     const EndDate = document.getElementById("EndDate");
     const InternImage = document.getElementById("InternImage");
-    const RegisterFormBtn = document.getElementById("RegisterFormBtn");
 
     // Function to get selected gender
     function getSelectedGender() {
@@ -114,6 +122,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // }
 
     // Function to update the ID input when department changes
+    
     departmentDropdown.addEventListener("change", function () {
       const selectedDepartment = departmentDropdown.value;
       const serial = departmentSerials[selectedDepartment];
@@ -308,7 +317,6 @@ document.addEventListener("DOMContentLoaded", function () {
           ? await getImageBase64(hospitalLogo.files[0])
           : null,
       };
-      console.log("HOSPITAL ID is :", hospitalData.id);
 
       hospitals.push(hospitalData);
       localStorage.setItem("hospitals", JSON.stringify(hospitals));
@@ -362,20 +370,24 @@ document.addEventListener("DOMContentLoaded", function () {
       registerHospitalFunction();
       window.location.href = "../html/hospitals.html";
     });
-
     // dashboard metrix
     // Total Intenrs Count
-    let interns = JSON.parse(localStorage.getItem("interns"));
-
-    const totalInternsValue = document.querySelector("#TotalInternsValue");
-    const pendingInternsValue = document.querySelector("#pendingInternsValue");
-    const activeInternsValue = document.querySelector("#activeInternsValue");
-    const completedInternsValue = document.querySelector(
-      "#completedInternsValue"
-    );
-    const totalHospitalsValue = document.querySelector("#totalHospitalsValue");
-
     function updateTotalInterns() {
+      let interns = JSON.parse(localStorage.getItem("interns")) || [];
+      let hospitals = JSON.parse(localStorage.getItem("hospitals")) || [];
+
+      const totalInternsValue = document.querySelector("#TotalInternsValue");
+      const pendingInternsValue = document.querySelector(
+        "#pendingInternsValue"
+      );
+      const activeInternsValue = document.querySelector("#activeInternsValue");
+      const completedInternsValue = document.querySelector(
+        "#completedInternsValue"
+      );
+      const totalHospitalsValue = document.querySelector(
+        "#totalHospitalsValue"
+      );
+
       const totalInterns = interns.length;
       const totalHospitals = hospitals.length;
       totalHospitalsValue.textContent = totalHospitals;
@@ -397,6 +409,11 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     updateTotalInterns();
 
+    // charts part
+{
+    let interns = JSON.parse(localStorage.getItem("interns"));
+    let hospitals = JSON.parse(localStorage.getItem("hospitals"));
+
     let hospitalInternCounts = hospitals.map((hospital) => {
       let internCount = interns.filter(
         (intern) => intern.SelectedHospitalID === hospital.id
@@ -408,9 +425,6 @@ document.addEventListener("DOMContentLoaded", function () {
         capacity: hospital.hospitalCapacity,
       };
     });
-
-    // Check if hospitalInternCounts has correct data
-    console.log("hospitalInternCounts:", hospitalInternCounts);
 
     // Prepare data for the chart
     let hospitalLabels = hospitalInternCounts.map((item) => item.name);
@@ -498,16 +512,9 @@ document.addEventListener("DOMContentLoaded", function () {
       data: genderData,
       options: genderChartOptions,
     });
-
-    const onlineUser = JSON.parse(localStorage.getItem("onlineUser")) || null;
-    if (!onlineUser) return (window.location.href = "../index.html");
-    const logout = document.getElementById("logout");
-    logout.addEventListener("click", () => {
-      localStorage.removeItem("onlineUser");
-      window.location.href = "../index.html";
-    });
   }
 
+}
   if (window.location.pathname.includes("interns.html")) {
     const toggleBtn = document.getElementById("toggleBtn");
     const sidebar = document.querySelector(".side-bar");
@@ -639,7 +646,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const modalStatus = document.getElementById("modalStatus");
 
     function openInternModal(intern) {
-      console.log("Opening Modal:", intern);
+      // console.log("Opening Modal:", intern);
       const hospitals = JSON.parse(localStorage.getItem("hospitals")) || [];
 
       const hospital = hospitals.find(
@@ -785,5 +792,5 @@ document.addEventListener("DOMContentLoaded", function () {
       localStorage.removeItem("onlineUser");
       window.location.href = "../index.html";
     });
-  }
+}
 });
