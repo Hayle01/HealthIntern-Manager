@@ -188,8 +188,6 @@ document.addEventListener("DOMContentLoaded", function () {
       "departmentSerials",
       JSON.stringify(departmentSerials)
     );
-
-    alert("Intern registered successfully!");
     InternRegisterForm.reset();
   }
 
@@ -262,7 +260,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Save intern data if validation passes
     saveInternData();
-    window.location.href = "../html/interns.html";
+    Swal.fire({
+      position: "center",
+      icon: "success",
+      title: "Intern registered successfully!",
+      showConfirmButton: false,
+      timer: 1500,
+    });
+    setTimeout(() => {
+      window.location.href = "../html/interns.html";
+    }, 1500);
   });
 
   // Email validation function
@@ -308,7 +315,6 @@ document.addEventListener("DOMContentLoaded", function () {
     hospitals.push(hospitalData);
     localStorage.setItem("hospitals", JSON.stringify(hospitals));
     registerationHospital.reset();
-    alert("Hospital registered successfully!");
   }
   RegisterHospitalSubBTN.addEventListener("click", (e) => {
     e.preventDefault();
@@ -355,7 +361,16 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     registerHospitalFunction();
-    window.location.href = "../html/hospitals.html";
+    Swal.fire({
+      position: "center",
+      icon: "success",
+      title: "Hospital registered successfully!",
+      showConfirmButton: false,
+      timer: 1500,
+    });
+    setTimeout(() => {
+      window.location.href = "../html/hospitals.html";
+    }, 1500);
   });
   // dashboard metrix
   // Total Intenrs Count

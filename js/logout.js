@@ -16,11 +16,13 @@ document.addEventListener("DOMContentLoaded", function() {
       }).then((result) => {
         if (result.isConfirmed) {
           localStorage.removeItem("onlineUser");
-          window.location.href = "../index.html";
+
           Swal.fire({
             title: "You’ve Logged Out!",
             text: "You’ve successfully logged out. See you next time!",
             icon: "success",
+          }).then(() => {
+            window.location.href = "../index.html";
           });
         } else if (
           /* Read more about handling dismissals below */
