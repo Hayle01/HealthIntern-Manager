@@ -1,12 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const onlineUser = JSON.parse(localStorage.getItem("onlineUser")) || null;
-  if (!onlineUser) return (window.location.href = "../index.html");
-  const logout = document.getElementById("logout");
-  logout.addEventListener("click", () => {
-    localStorage.removeItem("onlineUser");
-    window.location.href = "../index.html";
-  });
-
+  
   const toggleBtn = document.getElementById("toggleBtn");
   const sidebar = document.querySelector(".side-bar");
   const CloseToggleBtn = document.querySelector("#CloseToggleBtn");
