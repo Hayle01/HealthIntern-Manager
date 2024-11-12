@@ -86,9 +86,6 @@ img {
 }
 
 /* side-bar links */
-.side-bar nav{
-    margin-top: 1rem;
-}
 .side-bar nav ul {
   width: 100%;
   display: flex;
