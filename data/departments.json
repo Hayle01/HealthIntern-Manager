@@ -1,0 +1,62 @@
+[
+    {
+        "serial": "NUR",
+        "name": "Nursing"
+    },
+    {
+        "serial": "PHA",
+        "name": "Pharmacy"
+    },
+    {
+        "serial": "LAB",
+        "name": "Laboratory"
+    },
+    {
+        "serial": "RAD",
+        "name": "Radiology"
+    },
+    {
+        "serial": "SUR",
+        "name": "Surgery"
+    },
+    {
+        "serial": "PED",
+        "name": "Pediatrics"
+    },
+    {
+        "serial": "OBS",
+        "name": "Obstetrics"
+    },
+    {
+        "serial": "DEN",
+        "name": "Dentistry"
+    },
+    {
+        "serial": "PH",
+        "name": "Public Health"
+    },
+    {
+        "serial": "PHY",
+        "name": "Physiotherapy"
+    },
+    {
+        "serial": "EM",
+        "name": "Emergency Medicine"
+    },
+    {
+        "serial": "CAR",
+        "name": "Cardiology"
+    },
+    {
+        "serial": "NEU",
+        "name": "Neurology"
+    },
+    {
+        "serial": "ORT",
+        "name": "Orthopedics"
+    },
+    {
+        "serial": "ANE",
+        "name": "Anesthesiology"
+    }
+]

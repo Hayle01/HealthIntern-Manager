@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-  
   const toggleBtn = document.getElementById("toggleBtn");
   const sidebar = document.querySelector(".side-bar");
   const CloseToggleBtn = document.querySelector("#CloseToggleBtn");
@@ -64,6 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const InternEmail = document.getElementById("email");
   const InternPhonenumber = document.getElementById("phonenumber");
   const departmentDropdown = document.getElementById("Department");
+  const departmentError = document.getElementById("departmentError");
   const IntenID = document.getElementById("IntenID");
   const InternInstitution = document.getElementById("Institution");
   const selectedhospital = document.getElementById("hospitalSelect");
@@ -71,6 +71,30 @@ document.addEventListener("DOMContentLoaded", () => {
   const EndDate = document.getElementById("EndDate");
   const InternImage = document.getElementById("InternImage");
   const RegisterFormBtn = document.getElementById("RegisterFormBtn");
+
+  // fetching departments
+  async function fetchingDepartments() {
+    try {
+      const response = await fetch("../data/departments.json");
+      if (!response.ok) {
+        throw new Error("Failed to fetch department data.");
+      }
+      const data = await response.json();
+      if (data.length === 0) {
+        throw new Error("No department data available.");
+      }
+      departmentDropdown.innerHTML =
+        '<option value="" selected>Select Department</option>';
+      data.forEach((department) => {
+        departmentDropdown.innerHTML += `<option value="${department.serial}">${department.name}</option>`;
+      });
+      departmentError.textContent = "";
+    } catch (err) {
+      departmentError.textContent = err.message;
+      departmentError.classList.add("error-message");
+    }
+  }
+  fetchingDepartments();
 
   // Function to get selected gender
   function getSelectedGender() {
@@ -82,6 +106,13 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     return selectedGender;
   }
+
+  // Function to update the ID input when department changes
+  departmentDropdown.addEventListener("change", function () {
+    const selectedDepartment = departmentDropdown.value;
+    const serial = departmentSerials[selectedDepartment];
+    IntenID.value = `${selectedDepartment}${String(serial).padStart(3, "0")}`;
+  });
 
   // Function to get selected marital status
   // function getSelectedMaritalStatus() {
@@ -95,11 +126,12 @@ document.addEventListener("DOMContentLoaded", () => {
   // }
 
   // Function to update the ID input when department changes
-  departmentDropdown.addEventListener("change", function () {
-    const selectedDepartment = departmentDropdown.value;
-    const serial = departmentSerials[selectedDepartment];
-    IntenID.value = `${selectedDepartment}${String(serial).padStart(3, "0")}`;
-  });
+  // departmentDropdown.addEventListener("change", function () {
+  //   const selectedDepartment = departmentDropdown.value;
+  //   return selectedDepartment
+  //   // const serial = departmentSerials[selectedDepartment];
+  //   // IntenID.value = `${selectedDepartment}${String(serial).padStart(3, "0")}`;
+  // });
 
   const currentDate = new Date();
   let status = "Pending";
@@ -133,10 +165,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Function to save intern data
   async function saveInternData() {
-    const selectedDepartment = departmentDropdown.value;
-    const serial = departmentSerials[selectedDepartment];
-    IntenID.value = `${selectedDepartment}${String(serial).padStart(3, "0")}`;
-
     const internData = {
       fullName: InternfullName.value,
       motherName: InternmotherName.value,
@@ -147,7 +175,7 @@ document.addEventListener("DOMContentLoaded", () => {
       address: InternAddresss.value,
       email: InternEmail.value,
       phoneNumber: InternPhonenumber.value,
-      department: selectedDepartment,
+      department: departmentDropdown.value,
       internID: IntenID.value,
       institution: InternInstitution.value,
       SelectedHospitalID: selectedhospital.value,
@@ -246,7 +274,7 @@ document.addEventListener("DOMContentLoaded", () => {
       icon: "success",
       title: "Intern registered successfully!",
       showConfirmButton: false,
-      timer: 1500
+      timer: 1500,
     });
     setTimeout(() => {
       window.location.href = "../html/interns.html";

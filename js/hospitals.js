@@ -11,9 +11,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     const HospitalTableBody = document.getElementById("HospitalTableBody");
-    const registeredHospitals =
-      JSON.parse(localStorage.getItem("hospitals")) || [];
-    const registeredInterns = JSON.parse(localStorage.getItem("interns")) || [];
+    const registeredHospitals = JSON.parse(localStorage.getItem("hospitals")) || [];
+    const registeredInterns =   JSON.parse(localStorage.getItem("interns")) || [];
 
     registeredHospitals.forEach((hospital) => {
       const internCount = registeredInterns.filter(

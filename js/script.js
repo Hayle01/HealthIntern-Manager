@@ -20,7 +20,6 @@ let departmentSerials = JSON.parse(
 };
 
 document.addEventListener("DOMContentLoaded", function () {
-  
   const toggleBtn = document.getElementById("toggleBtn");
   const sidebar = document.querySelector(".side-bar");
   const CloseToggleBtn = document.querySelector("#CloseToggleBtn");
@@ -90,6 +89,30 @@ document.addEventListener("DOMContentLoaded", function () {
   const EndDate = document.getElementById("EndDate");
   const InternImage = document.getElementById("InternImage");
 
+  // fetching departments
+  async function fetchingDepartments() {
+    try {
+      const response = await fetch("../data/departments.json");
+      if (!response.ok) {
+        throw new Error("Failed to fetch department data.");
+      }
+      const data = await response.json();
+      if (data.length === 0) {
+        throw new Error("No department data available.");
+      }
+      departmentDropdown.innerHTML =
+        '<option value="" selected>Select Department</option>';
+      data.forEach((department) => {
+        departmentDropdown.innerHTML += `<option value="${department.serial}">${department.name}</option>`;
+      });
+      departmentError.textContent = "";
+    } catch (err) {
+      departmentError.textContent = err.message;
+      departmentError.classList.add("error-message");
+    }
+  }
+  fetchingDepartments();
+
   // Function to get selected gender
   function getSelectedGender() {
     let selectedGender = "";
@@ -113,7 +136,6 @@ document.addEventListener("DOMContentLoaded", function () {
   // }
 
   // Function to update the ID input when department changes
-
   departmentDropdown.addEventListener("change", function () {
     const selectedDepartment = departmentDropdown.value;
     const serial = departmentSerials[selectedDepartment];
@@ -152,10 +174,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Function to save intern data
   async function saveInternData() {
-    const selectedDepartment = departmentDropdown.value;
-    const serial = departmentSerials[selectedDepartment];
-    IntenID.value = `${selectedDepartment}${String(serial).padStart(3, "0")}`;
-
     const internData = {
       fullName: InternfullName.value,
       motherName: InternmotherName.value,

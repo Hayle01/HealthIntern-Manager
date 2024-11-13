@@ -34,6 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
     localStorage.setItem("interns", JSON.stringify(interns));
   }
   updateInternStatuses();
+
   const departmentNames = {
     NUR: "Nursing",
     PHA: "Pharmacy",
@@ -135,6 +136,7 @@ document.addEventListener("DOMContentLoaded", function () {
     modalImage.src = intern.image || "../images/default-profile-image.png";
     HospitalLogo.src =
       hospital.hospitalLogo || "../images/defaultHospitalLogo.jpg";
+      console.log("hospiyal logo,", hospital.hospitalLogo);
     modalFullName.textContent = intern.fullName;
     modalMotherName.textContent = intern.motherName;
     modalDateOfBirth.textContent = intern.dateOfBirth;
