@@ -78,14 +78,17 @@
             <div class="input-Label">
               <label for="fullName">Full Name:</label>
               <input type="text" id="fullName" placeholder="Enter Fullname" />
+              <span id="fullNameError" class="error-message"></span>
             </div>
             <div class="input-Label">
               <label for="mothername">Mother's Name:</label>
               <input type="text" id="mothername" placeholder="Enter Mother Name" />
+              <span id="motherNameError" class="error-message"></span>
             </div>
             <div class="input-Label">
               <label for="dateoFBirth">Date of Birth:</label>
               <input type="date" id="dateoFBirth" />
+              <span id="dateOfBirthError" class="error-message"></span>
             </div>
             <div class="input-Label">
               <label for="Gender">Gender:</label>
@@ -99,6 +102,7 @@
                   <label for="female">Female</label>
                 </div>
               </div>
+              <span id="genderError" class="error-message"></span>
             </div>
           
             <!-- <div class="input-Label">
@@ -126,22 +130,27 @@
                           </div>
                         </div>
                       </div> -->
-            <!-- nationality -->
+            
+                      <!-- nationality -->
             <div class="input-Label">
               <label for="nationality">Nationality:</label>
               <input type="text" id="nationality" placeholder="Enter Nationality" />
+              <span class="error-message" id="genderError"></span>
             </div>
             <div class="input-Label">
               <label for="address">Address:</label>
               <input type="text" id="addresss" placeholder="Enter Address" />
+              <span class="error-message" id="addressError"></span>
             </div>
             <div class="input-Label">
               <label for="email">Email:</label>
               <input type="text" id="email" placeholder="Enter Email" />
+              <span class="error-message" id="emailError"></span>
             </div>
             <div class="input-Label">
               <label for="phonenumber">Phone Number:</label>
               <input type="text" id="phonenumber" placeholder="Enter Phone Number" />
+              <span id="phoneError" class="error-message"></span>
             </div>
             <!-- department -->
             <div class="input-Label">
@@ -159,6 +168,7 @@
             <div class="input-Label">
               <label for="Institution">Institution:</label>
               <input type="text" id="Institution" placeholder="Enter Intern Institution" />
+              <span id="institutionError" class="error-message"></span>
             </div>
             <!-- Hospital -->
             <div class="input-Label">
@@ -166,18 +176,22 @@
               <select id="hospitalSelect">
                 <option value="">Select a hospital</option>
               </select>
+              <span id="hospitalError" class="error-message"></span>
             </div>
             <div class="input-Label">
               <label for="StartDate">Start Date:</label>
               <input type="date" id="StartDate" />
+              <span id="startDateError" class="error-message"></span>
             </div>
             <div class="input-Label">
               <label for="EndDate">End Date:</label>
               <input type="date" id="EndDate" />
+              <span id="endDateError" class="error-message"></span>
             </div>
             <div class="input-Label">
               <label for="upoadImage">Upload Image:</label>
               <input type="file" style="border: none" id="InternImage" />
+              <span id="imageError" class="error-message"></span>
             </div>
           
             <button type="submit" id="RegisterFormBtn" class="registerBTN">

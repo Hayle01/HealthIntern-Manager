@@ -205,69 +205,95 @@ document.addEventListener("DOMContentLoaded", () => {
   InternRegisterForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    // Validation checks for each required field
-    if (InternfullName.value === "") {
-      alert("Please enter the full name");
-      InternfullName.focus();
+    // Reset all error messages
+    document
+      .querySelectorAll(".error-message")
+      .forEach((span) => (span.textContent = ""));
+
+    if (fullName.value === "") {
+      document.getElementById("fullNameError").textContent =
+        "Please enter the full name";
+      fullName.focus();
       return;
     }
-    if (InternmotherName.value === "") {
-      alert("Please enter your mother’s name");
-      InternmotherName.focus();
+    if (mothername.value === "") {
+      document.getElementById("motherNameError").textContent =
+        "Please enter your mother's name";
+      motherName.focus();
       return;
     }
     if (dateoFBirth.value === "") {
-      alert("Please enter the date of birth");
+      document.getElementById("dateOfBirthError").textContent =
+        "Please enter the date of birth";
       dateoFBirth.focus();
       return;
     }
     if (!getSelectedGender()) {
-      alert("Please select your gender");
+      document.getElementById("genderError").textContent =
+        "Please select your gender";
       return;
     }
-    // if (!getSelectedMaritalStatus()) {
-    //   alert("Please select your marital status");
-    //   return;
-    // }
     if (InternNationality.value === "") {
-      alert("Please enter your nationality");
+      document.getElementById("genderError").textContent =
+        "Please enter your nationality";
       InternNationality.focus();
       return;
     }
     if (InternAddresss.value === "") {
-      alert("Please enter your address");
+      document.getElementById("addressError").textContent =
+        "Please enter your address";
       InternAddresss.focus();
       return;
     }
     if (InternEmail.value === "" || !validateEmail(InternEmail.value)) {
-      alert("Please enter a valid email address");
+      document.getElementById("emailError").textContent =
+        "Please enter a valid email address";
       InternEmail.focus();
       return;
     }
     if (InternPhonenumber.value === "") {
-      alert("Please enter a valid phone number");
+      document.getElementById("phoneError").textContent =
+        "Please enter your phone number";
       InternPhonenumber.focus();
       return;
     }
     if (departmentDropdown.value === "") {
-      alert("Please select a department");
+      document.getElementById("departmentError").textContent =
+        "Please select a department";
+      departmentDropdown.focus();
       return;
     }
-    if (selectedhospital.value === "") {
-      alert("Please select a hospital");
+    if (InternInstitution.value === "") {
+      document.getElementById("institutionError").textContent =
+        "Please enter the institution";
+      InternInstitution.focus();
+      return;
+    }
+    if (hospitalSelect.value === "") {
+      document.getElementById("hospitalError").textContent =
+        "Please select a hospital";
+      hospitalSelect.focus();
       return;
     }
     if (StartDate.value === "") {
-      alert("Please enter the start date");
+      document.getElementById("startDateError").textContent =
+        "Please enter the start date";
       StartDate.focus();
       return;
     }
     if (EndDate.value === "") {
-      alert("Please enter the end date");
+      document.getElementById("endDateError").textContent =
+        "Please enter the end date";
       EndDate.focus();
       return;
     }
-    // Save intern data if validation passes
+    if (InternImage.files.length === 0) {
+      document.getElementById("imageError").textContent =
+        "Please upload an image";
+      InternImage.focus();
+      return;
+    }
+
     saveInternData();
     Swal.fire({
       position: "center",

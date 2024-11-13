@@ -422,8 +422,8 @@ textarea {
 }
 .error-message {
   color: red;
-  font-size: 0.9em;
-  margin-top: 5px;
+  font-size: 0.8em;
+  /* margin-top: 1px; */
 }
 
 /* Interns and hospitals display Page */
