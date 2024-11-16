@@ -104,7 +104,12 @@ document.addEventListener("DOMContentLoaded", function () {
     if (foundIntern) {
       displayInterns([foundIntern], tableBody);
     } else {
-      alert("No intern found with that ID.");
+      Swal.fire({
+        position: "top-end",
+        icon: "warning",
+        title: "No intern found with that ID.",
+        showConfirmButton: true,
+      });
     }
   }
 
@@ -117,7 +122,12 @@ document.addEventListener("DOMContentLoaded", function () {
     if (internID) {
       searchAndDisplayInternByID(internID);
     } else {
-      alert("Please enter an Intern ID to search.");
+      Swal.fire({
+        position: "top-end",
+        icon: "warning",
+        title: "Please enter an Intern ID to search.",
+        showConfirmButton: true,
+      });
     }
   });
 
