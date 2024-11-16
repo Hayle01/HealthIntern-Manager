@@ -465,20 +465,18 @@ textarea {
 
 .intern-table thead {
   background-color: #aee9c7;
-  text-align: left;
   position: sticky;
   top: 0;
 }
 .HospitalsTable thead {
   background-color: #afc4f7;
-  text-align: left;
   position: sticky;
   top: 0;
 }
 .intern-table th,
 .intern-table td {
   padding: 12px 15px;
-  text-align: left;
+  text-align: center;
   color: #202224;
   font-size: 0.9rem;
   border-bottom: 0.6px solid rgba(151, 151, 151, 0.4);
@@ -552,12 +550,18 @@ td {
   align-items: center;
   gap: 0.6rem;
 }
-.top-internModal #deleteInternModalButton{
+.top-internModal #deleteInternModalButton, .delete-btn{
   border: none;
   background-color: transparent;
+  border-radius: 10px;
   font-size: 1.1rem;
   color: #376dec;
   cursor: pointer;
+  text-align: left;
+}
+fa-trash:hover{
+  background-color: #193880;
+  transition: background-color 0.3s ease-in-out;
 }
 .Internmodal-content,
 .HospitalModal-content h2 {

@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
         <td>${intern.startDate}</td>
         <td>${intern.endDate}</td>
         <td><span class="status ${intern.status}">${intern.status}</span></td>
-        <td><button class="delete-btn">Delete</button></td>
+        <td><button class="delete-btn"><i class="fa-solid fa-trash"></i></button></td>
       `;
 
       row.addEventListener("click", (e) => {
