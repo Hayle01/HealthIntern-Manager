@@ -59,18 +59,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
     interns.forEach((intern) => {
       const row = document.createElement("tr");
+      row.setAttribute("data-id", intern.internID);
       row.innerHTML = `
-      <td>${intern.internID}</td>
-      <td>${intern.fullName}</td>
-      <td>${intern.institution}</td>
-      <td>${departmentNames[intern.department] || intern.department}</td>
-      <td>${intern.startDate}</td>
-      <td>${intern.endDate}</td>
-      <td><span class="status ${intern.status}">${intern.status}</span></td>
-    `;
-      // Add a click event to open a modal with intern details
-      row.addEventListener("click", () => {
-        openInternModal(intern);
+        <td>${intern.internID}</td>
+        <td>${intern.fullName}</td>
+        <td>${intern.institution}</td>
+        <td>${departmentNames[intern.department] || intern.department}</td>
+        <td>${intern.startDate}</td>
+        <td>${intern.endDate}</td>
+        <td><span class="status ${intern.status}">${intern.status}</span></td>
+        <td><button class="delete-btn">Delete</button></td>
+      `;
+
+      row.addEventListener("click", (e) => {
+        if (e.target.classList.contains("delete-btn")) {
+          e.stopPropagation();
+          deleteIntern(intern.internID);
+        } else {
+          openInternModal(intern);
+        }
       });
 
       tableBody.appendChild(row);
@@ -79,7 +86,16 @@ document.addEventListener("DOMContentLoaded", function () {
   const tableBody = document.getElementById("InternsTableBody");
   const RegisteredInterns = JSON.parse(localStorage.getItem("interns")) || [];
   displayInterns(RegisteredInterns, tableBody);
+  function deleteIntern(internID) {
+    let interns = JSON.parse(localStorage.getItem("interns")) || [];
+    interns = interns.filter((intern) => intern.internID !== internID);
+    localStorage.setItem("interns", JSON.stringify(interns));
+    displayInterns(interns, tableBody);
 
+    if (modal.style.display === "block") {
+      modal.style.display = "none";
+    }
+  }
   // Search function to find and display intern by ID
   function searchAndDisplayInternByID(internID) {
     const interns = JSON.parse(localStorage.getItem("interns")) || [];
@@ -108,6 +124,10 @@ document.addEventListener("DOMContentLoaded", function () {
   // dispay intern in the modal
   const modal = document.getElementById("internModal");
   const modalImage = document.getElementById("InternImagModal");
+  const deleteInternModalButton = document.getElementById(
+    "deleteInternModalButton"
+  );
+  const modalInternID = document.getElementById("modalInternID");
   const HospitalLogo = document.getElementById("HospitalLogo");
   const modalFullName = document.getElementById("modalFullName");
   const modalMotherName = document.getElementById("modalMotherName");
@@ -136,7 +156,8 @@ document.addEventListener("DOMContentLoaded", function () {
     modalImage.src = intern.image || "../images/default-profile-image.png";
     HospitalLogo.src =
       hospital.hospitalLogo || "../images/defaultHospitalLogo.jpg";
-      console.log("hospiyal logo,", hospital.hospitalLogo);
+    console.log("hospiyal logo,", hospital.hospitalLogo);
+    modalInternID.textContent = intern.internID;
     modalFullName.textContent = intern.fullName;
     modalMotherName.textContent = intern.motherName;
     modalDateOfBirth.textContent = intern.dateOfBirth;
@@ -156,6 +177,9 @@ document.addEventListener("DOMContentLoaded", function () {
     modalStatus.textContent = intern.status || "Pending"; // default status
 
     modal.style.display = "block";
+    deleteInternModalButton.addEventListener("click", function () {
+      deleteIntern(intern.internID);
+    });
   }
 
   // Close modal functionality

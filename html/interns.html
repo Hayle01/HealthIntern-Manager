@@ -88,41 +88,6 @@
           <a href="interns.html">
             <h1 class="page-title">Registered Interns</h1>
           </a>
-
-          <!-- <div class="filter-bar">
-          <div class="filter-icon">
-            <img src="../Icons/filter.svg" alt="filter-icon">
-          </div>
-          <div class="byDate">
-            <label for="filterby" class="filterby">Filter By</label>
-            </select>
-
-            <div class="byDate">
-              <select id="byDateFilter" class="filter">
-                <option value="" hidden>Date</option>
-                <option value="Today">Today</option>
-                <option value="This Week">This Week</option>
-                <option value="This Month">This Month</option>
-              </select>
-            </div>
-            <div class="byDate">
-              <select id="byDateFilter" class="filter">
-                <option value="" hidden>Gender</option>
-                <option value="Male">Male</option>
-                <option value="female">Female</option>
-              </select>
-            </div>
-            <div class="byDate">
-              <select id="byDateFilter" class="filter">
-                <option value="" hidden>Intern Status</option>
-                <option value="Completed">Completed</option>
-                <option value="pending">Pending</option>
-                <option value="Processing">Processing</option>
-              </select>
-            </div>
-          </div>
-        </div> -->
-
           <!-- Interns Sections display-->
           <section class="internsDisplay">
             <table class="intern-table">
@@ -135,6 +100,7 @@
                   <th>Start-Date</th>
                   <th>End-Date</th>
                   <th>Status</th>
+                  <th>Action</th>
                 </tr>
               </thead>
               <tbody id="InternsTableBody">
@@ -148,6 +114,7 @@
             <div class="Internmodal-content">
               <span id="CloseInternModal" class="close-model">&times;</span>
               <h2>Intern Details</h2>
+              <button id="deleteInternModalButton">Delete Intern</button>
               <img src="" alt="" />
               <div class="InternImage">
                 <div class="InternImageAndINsLogo">
@@ -157,6 +124,7 @@
               </div>
               <div class="internInfo">
                 <div class="left-info">
+                  <p>ID: <span id="modalInternID"></span></p>
                   <p>Full Name: <span id="modalFullName"></span></p>
                   <p>Mother Name: <span id="modalMotherName"></span></p>
                   <p>Date of Birth: <span id="modalDateOfBirth"></span></p>
