@@ -547,7 +547,18 @@ td {
 .Internmodal-content {
   margin-top: 6%;
 }
-
+.top-internModal{
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.top-internModal #deleteInternModalButton{
+  border: none;
+  background-color: transparent;
+  font-size: 1.1rem;
+  color: #376dec;
+  cursor: pointer;
+}
 .Internmodal-content,
 .HospitalModal-content h2 {
   margin-top: 10px;
