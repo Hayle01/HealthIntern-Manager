@@ -550,7 +550,7 @@ td {
   align-items: center;
   gap: 0.6rem;
 }
-.top-internModal #deleteInternModalButton, .delete-btn{
+.top-internModal #deleteInternModalButton, .deleteBTN{
   border: none;
   background-color: transparent;
   border-radius: 10px;

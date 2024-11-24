@@ -170,7 +170,6 @@ document.addEventListener("DOMContentLoaded", () => {
       motherName: InternmotherName.value,
       dateOfBirth: dateoFBirth.value,
       gender: getSelectedGender(),
-      // maritalStatus: getSelectedMaritalStatus(),
       nationality: InternNationality.value,
       address: InternAddresss.value,
       email: InternEmail.value,
@@ -191,15 +190,24 @@ document.addEventListener("DOMContentLoaded", () => {
     interns.push(internData);
     localStorage.setItem("interns", JSON.stringify(interns));
 
-    // Increment and save the updated serial in localStorage
-    departmentSerials[selectedDepartment]++;
-    localStorage.setItem(
-      "departmentSerials",
-      JSON.stringify(departmentSerials)
-    );
+    // Get the selected department serial and increment it
+    const selectedDepartment = departmentDropdown.value;
+    if (
+      selectedDepartment &&
+      departmentSerials[selectedDepartment] !== undefined
+    ) {
+      departmentSerials[selectedDepartment]++;
+      localStorage.setItem(
+        "departmentSerials",
+        JSON.stringify(departmentSerials)
+      );
+    }
 
+    // Reset the form
     InternRegisterForm.reset();
   }
+
+
 
   /// Event listener for form submission
   InternRegisterForm.addEventListener("submit", (e) => {

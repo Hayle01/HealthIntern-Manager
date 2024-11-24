@@ -68,13 +68,12 @@ document.addEventListener("DOMContentLoaded", function () {
         <td>${intern.startDate}</td>
         <td>${intern.endDate}</td>
         <td><span class="status ${intern.status}">${intern.status}</span></td>
-        <td><button class="delete-btn"><i class="fa-solid fa-trash"></i></button></td>
+        <td><button class="deleteBTN"><i class="fa-solid fa-trash delete-btn"></i></button></td>
       `;
-
       row.addEventListener("click", (e) => {
         if (e.target.classList.contains("delete-btn")) {
           e.stopPropagation();
-          deleteIntern(intern.internID);
+          deleteInternWithConfirmation(intern.internID);
         } else {
           openInternModal(intern);
         }
@@ -86,6 +85,49 @@ document.addEventListener("DOMContentLoaded", function () {
   const tableBody = document.getElementById("InternsTableBody");
   const RegisteredInterns = JSON.parse(localStorage.getItem("interns")) || [];
   displayInterns(RegisteredInterns, tableBody);
+
+  function deleteInternWithConfirmation(internID) {
+    let interns = JSON.parse(localStorage.getItem("interns")) || [];
+    let intern = interns.find((intern) => intern.internID === internID);
+
+    if (!intern) {
+      Swal.fire({
+        title: "Error!",
+        text: "Intern not found.",
+        icon: "error",
+      });
+      return;
+    }
+
+    Swal.fire({
+      title: "Confirm Deletion",
+      text: `Are you sure you want to delete intern: ${intern.fullName} ID: ${intern.internID}?`,
+      icon: "warning",
+      confirmButtonColor: "#4880ff",
+      cancelButtonColor: "#C13739",
+      showCancelButton: true,
+      confirmButtonText: "Yes, Delete!",
+      cancelButtonText: "No, Cancel!",
+      reverseButtons: true,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteIntern(internID);
+        Swal.fire({
+          title: "Deleted!",
+          text: `Intern ${intern.fullName} (ID: ${intern.internID}) has been deleted successfully.`,
+          icon: "success",
+        });
+      } else {
+        Swal.fire({
+          title: "Deletion Canceled",
+          text: "No changes were made.",
+          icon: "error",
+        });
+      }
+    });
+  }
+
+
   function deleteIntern(internID) {
     let interns = JSON.parse(localStorage.getItem("interns")) || [];
     interns = interns.filter((intern) => intern.internID !== internID);
@@ -188,7 +230,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     modal.style.display = "block";
     deleteInternModalButton.addEventListener("click", function () {
-      deleteIntern(intern.internID);
+      deleteInternWithConfirmation(intern.internID);
     });
   }
 
