@@ -96,4 +96,10 @@ input:hover {
     text-align: left;
 }
 
+.error-message {
+    color: red;
+    margin-top: 10px;
+    display: block;
+    font-size: 0.9rem;
+}
 
